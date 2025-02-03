@@ -1,32 +1,6 @@
 // typography for the app
 import 'package:flutter/material.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
-// use Fira Code as default font
-
-// class SirteefyThemes {
-//
-//   static final ThemeData lightTheme = ThemeData(
-//     primarySwatch: Colors.blue,
-//     fontFamily: 'FiraCode',
-//     textTheme: const TextTheme(
-//       displayLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-//       displayMedium: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
-//       displaySmall: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-//       headlineMedium: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-//       headlineSmall: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
-//       titleLarge: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
-//       bodyLarge: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
-//       bodyMedium: TextStyle(fontSize: 12.0, fontFamily: 'Hind'),
-//     ),
-//   );
-//
-//   static final ThemeData darkTheme = ThemeData(
-//     primarySwatch: Colors.blue,
-//     fontFamily: 'FiraCode',
-//   );
-// }
-//
-
 
 class AppThemes {
   // Base text style with Fira Code font and configurable properties
@@ -47,6 +21,7 @@ class AppThemes {
   static ThemeData lightTheme({double scaleFactor = 1.0}) {
     return ThemeData(
       useMaterial3: true,
+      scaffoldBackgroundColor: primaryColor,
       colorScheme: ColorScheme.fromSeed(
         seedColor: primaryColor,
         brightness: Brightness.light,
@@ -120,6 +95,8 @@ class AppThemes {
   static ThemeData darkTheme({double scaleFactor = 1.0}) {
     return ThemeData(
       useMaterial3: true,
+      scaffoldBackgroundColor: primaryColor,
+
       colorScheme: ColorScheme.fromSeed(
         seedColor: primaryColor,
         brightness: Brightness.dark,
