@@ -7,6 +7,7 @@ import 'package:sirteefy/utils/color_palette/colors.dart';
 
 import '../widgets/about_me.dart';
 import '../widgets/contact_section.dart';
+import '../widgets/footer.dart';
 import '../widgets/header.dart';
 import '../widgets/my_skills.dart';
 import '../widgets/stupid_quote.dart';
@@ -21,51 +22,138 @@ class SirteefyHome extends StatefulWidget {
 class _SirteefyHomeState extends State<SirteefyHome> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                const Header(),
-                verticalSpace(30),
-                const HeaderBanner(),
-                verticalSpace(10),
-                const StupidQuote(),
-                verticalSpace(100),
-                const SectionHeader(
-                  title: 'Projects',
-                ),
-                verticalSpace(30),
-                const Projects(),
-              verticalSpace(100),
-                const SectionHeader(
-                  title: 'Skills',
-                  rightSection: false,
-                ),
-                verticalSpace(30),
-                const MySkills(),
-                verticalSpace(100),
-                const SectionHeader(
-                  title: 'About Me',
-                  rightSection: false,
-                ),
-                verticalSpace(30),
-                AboutMe(),
-                verticalSpace(100),
-                const SectionHeader(
-                  title: 'Contact',
-                  rightSection: false,
-                ),
-                verticalSpace(30),
-                Contact(),
-              ],
+        child: CustomScrollView(
+          slivers: [
+            const SliverAppBar(
+              pinned: true,
+              backgroundColor: primaryColor,
+              flexibleSpace: Header(),
             ),
-          ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(30),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: HeaderBanner(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(100),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: StupidQuote(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(100),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: SectionHeader(
+                      title: 'Projects',
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(30),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Projects(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(100),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: SectionHeader(
+                      title: 'Skills',
+                      rightSection: false,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(30),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: MySkills(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(100),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: SectionHeader(
+                      title: 'About Me',
+                      rightSection: false,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(30),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: AboutMe(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(100),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: SectionHeader(
+                      title: 'Contact',
+                      rightSection: false,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(30),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Contact(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(100),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Divider(
+                      color: textColorGray,
+                      height: 4,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(30),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Footer(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: verticalSpace(30),
+                  ),
+                ],
+              ),
+            )          ],
         ),
-      )
+      ),
     );
   }
 }

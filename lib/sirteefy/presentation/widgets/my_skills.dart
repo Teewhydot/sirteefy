@@ -4,6 +4,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/matrix_dot%20widget.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/skill_category_card.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
+import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
 import '../../../generated/assets.dart';
 
@@ -86,15 +87,15 @@ class MySkills extends StatelessWidget {
             layout: ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
                 ? ResponsiveRowColumnType.COLUMN
                 : ResponsiveRowColumnType.ROW,
-            children: const [
+            children: [
               ResponsiveRowColumnItem(
                 rowFlex: 1,
                 child: SkillCategoryCard(
                     title: "Tools",
                     content: Column(
                       children: [
-                        Text('Dart, Python, Java, C++'),
-                        Text('Dart, Python, Java, C++'),
+                        firacodeStyleText("Dart, Python, Java, C++"),
+                        firacodeStyleText("Dart, Python, Java, C++"),
                       ],
                     )),
               ),
@@ -104,8 +105,8 @@ class MySkills extends StatelessWidget {
                     title: "Tools",
                     content: Column(
                       children: [
-                        Text('Dart, Python, Java, C++'),
-                        Text('Dart, Python, Java, C++'),
+                        firacodeStyleText("Dart, Python, Java, C++"),
+                        firacodeStyleText("Dart, Python, Java, C++"),
                       ],
                     )),
               ),
@@ -115,8 +116,8 @@ class MySkills extends StatelessWidget {
                     title: "Tools",
                     content: Column(
                       children: [
-                        Text('Dart, Python, Java, C++'),
-                        Text('Dart, Python, Java, C++'),
+                        firacodeStyleText("Dart, Python, Java, C++"),
+                        firacodeStyleText("Dart, Python, Java, C++"),
                       ],
                     )),
               ),
@@ -126,4 +127,16 @@ class MySkills extends StatelessWidget {
       ),
     );
   }
+
+}
+
+
+Widget firacodeStyleText(String text, {double fontSize = 16,FontWeight fontWeight = FontWeight.w400}) {
+  return Text(
+    text,
+    style: AppThemes.firaCodeStyle(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+    )
+  );
 }

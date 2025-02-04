@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
+import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
 class SkillCategoryCard extends StatelessWidget {
   final String title;
@@ -23,7 +24,7 @@ class SkillCategoryCard extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: Text(
               title,
-              style: const TextStyle(
+              style: AppThemes.firaCodeStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
