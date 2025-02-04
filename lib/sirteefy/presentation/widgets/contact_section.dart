@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-class HeaderBanner extends StatelessWidget {
-  const HeaderBanner({super.key});
+class Contact extends StatelessWidget {
+  const Contact({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ResponsiveRowColumn(
+      rowSpacing: 10,
+      columnSpacing: 10,
       rowMainAxisAlignment: MainAxisAlignment.center,
       rowCrossAxisAlignment: CrossAxisAlignment.center,
       layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET)
@@ -16,7 +18,7 @@ class HeaderBanner extends StatelessWidget {
         ResponsiveRowColumnItem(
           rowFlex: 1,
           child: Container(
-            width: 500,
+            width: 300,
             height: 200,
             color: Colors.red,
           ),
@@ -24,7 +26,7 @@ class HeaderBanner extends StatelessWidget {
         ResponsiveRowColumnItem(
           rowFlex: 1,
           child: Container(
-            width: 500,
+            width: 200,
             height: 200,
             color: Colors.green,
           ),

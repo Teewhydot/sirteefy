@@ -5,6 +5,7 @@ import 'package:sirteefy/utils/color_palette/colors.dart';
 
 import '../../../generated/assets.dart';
 import '../../../utils/theme/sirteefy_themes.dart';
+import 'nav_item.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -12,7 +13,6 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       color: primaryColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,38 +49,18 @@ class Header extends StatelessWidget {
             ],
             child: Row(
               children: [
-                _buildNavItem('Home'),
+                buildNavItem('Home'),
                 const SizedBox(width: 20),
-                _buildNavItem('About'),
+                buildNavItem('About'),
                 const SizedBox(width: 20),
-                _buildNavItem('Services'),
+                buildNavItem('Services'),
                 const SizedBox(width: 20),
-                _buildNavItem('Contact'),
+                buildNavItem('Contact'),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildNavItem(String title) {
-    return Row(
-      children: [
-        const Icon(
-          Icons.arrow_forward_ios,
-          color: textColorPurple,
-          size: 16,
-        ),
-        Text(
-          title,
-          style: AppThemes.firaCodeStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: textColorWhite,
-          ),
-        ),
-      ],
     );
   }
 }

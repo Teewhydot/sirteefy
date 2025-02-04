@@ -10,5 +10,8 @@ class Assets {
   static const String pngsLogo = 'assets/pngs/logo.png';
   static const String pngsMe = 'assets/pngs/me.jpg';
   static const String pngsSignnn = 'assets/pngs/signnn.png';
+  static const String svgsQuotationMark = 'assets/svgs/quotation_mark.svg';
+  static const String svgsRectangleDesign = 'assets/svgs/rectangle_design.svg';
+  static const String svgsSquiglyArrow = 'assets/svgs/squigly_arrow.svg';
 
 }
