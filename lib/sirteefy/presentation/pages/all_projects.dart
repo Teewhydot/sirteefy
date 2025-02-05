@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/section_header.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import '../../../generated/assets.dart';
@@ -201,17 +202,7 @@ class AllProjects extends StatelessWidget {
                     ),
                     itemCount: 6,
                     itemBuilder: (context, index) {
-                      return Container(
-                        color: Colors.green,
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            Text('Project ${index + 1}'),
-                            const SizedBox(height: 10),
-                            Text('Description of project ${index + 1}'),
-                          ],
-                        ),
-                      );
+                      return const ProjectCard();
                     },
                   ),
                 ]),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
+import '../../../utils/other/misc.dart';
+
 class SkillCategoryCard extends StatelessWidget {
   final String title;
   final Widget content;
@@ -15,7 +17,7 @@ class SkillCategoryCard extends StatelessWidget {
       margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         border: Border.all(color: textColorGray, width: 2.0),
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(borderWidthRadius),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -27,6 +29,7 @@ class SkillCategoryCard extends StatelessWidget {
               style: AppThemes.firaCodeStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
+                color: textColorPurple,
               ),
             ),
           ),

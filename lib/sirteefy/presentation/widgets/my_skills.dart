@@ -131,12 +131,17 @@ class MySkills extends StatelessWidget {
 }
 
 
-Widget firacodeStyleText(String text, {double fontSize = 16,FontWeight fontWeight = FontWeight.w400}) {
-  return Text(
-    text,
-    style: AppThemes.firaCodeStyle(
-      fontSize: fontSize,
-      fontWeight: fontWeight,
-    )
+Widget firacodeStyleText(String text, {double fontSize = 16,FontWeight fontWeight = FontWeight.w400,bool applyPadding = true}) {
+  return Padding(
+    padding:applyPadding? const EdgeInsets.only(left: 10.0,right: 10.0,top: 8.0):EdgeInsets.zero,
+    child: Text(
+      text,
+
+      style: AppThemes.firaCodeStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: textColorGray
+      )
+    ),
   );
 }

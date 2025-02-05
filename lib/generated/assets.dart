@@ -9,6 +9,7 @@ class Assets {
   static const String firaCodeFiraCodeSemiBold = 'assets/fonts/fira_code/FiraCode-SemiBold.ttf';
   static const String pngsLogo = 'assets/pngs/logo.png';
   static const String pngsMe = 'assets/pngs/me.jpg';
+  static const String pngsMeBw = 'assets/pngs/me_bw.png';
   static const String pngsSignnn = 'assets/pngs/signnn.png';
   static const String svgsQuotationMark = 'assets/svgs/quotation_mark.svg';
   static const String svgsRectangleDesign = 'assets/svgs/rectangle_design.svg';

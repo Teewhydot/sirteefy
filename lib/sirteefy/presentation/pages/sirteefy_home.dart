@@ -61,18 +61,12 @@ class _SirteefyHomeState extends State<SirteefyHome> {
                       title: 'Projects',
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: verticalSpace(30),
-                  ),
+                  verticalSpace(30),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Projects(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: verticalSpace(100),
-                  ),
+                  verticalSpace(100),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
                     child: SectionHeader(
@@ -80,18 +74,12 @@ class _SirteefyHomeState extends State<SirteefyHome> {
                       rightSection: false,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: verticalSpace(30),
-                  ),
+                  verticalSpace(30),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
                     child: MySkills(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: verticalSpace(100),
-                  ),
+                  verticalSpace(100),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
                     child: SectionHeader(
@@ -99,18 +87,12 @@ class _SirteefyHomeState extends State<SirteefyHome> {
                       rightSection: false,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: verticalSpace(30),
-                  ),
+                  verticalSpace(30),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
                     child: AboutMe(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: verticalSpace(100),
-                  ),
+                  verticalSpace(100),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
                     child: SectionHeader(
@@ -118,18 +100,12 @@ class _SirteefyHomeState extends State<SirteefyHome> {
                       rightSection: false,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: verticalSpace(30),
-                  ),
+                  verticalSpace(30),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Contact(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: verticalSpace(100),
-                  ),
+                  verticalSpace(100),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Divider(
@@ -137,18 +113,12 @@ class _SirteefyHomeState extends State<SirteefyHome> {
                       height: 4,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: verticalSpace(30),
-                  ),
+                  verticalSpace(30),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Footer(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: verticalSpace(30),
-                  ),
+                  verticalSpace(30),
                 ],
               ),
             )          ],
