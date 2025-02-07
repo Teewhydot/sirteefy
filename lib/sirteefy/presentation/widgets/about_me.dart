@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 
 import '../../../utils/color_palette/colors.dart';
@@ -50,7 +52,8 @@ class AboutMe extends StatelessWidget {
             color: textColorGray,
           ),
         ),
-        verticalSpace(100),
+        verticalSpace(20),
+        const ProjectButton(color: textColorPurple, icon: Ionicons.document, text: 'Download Resume'),
       ],
     );
   }

@@ -11,6 +11,8 @@ class Assets {
   static const String pngsMe = 'assets/pngs/me.jpg';
   static const String pngsMeBw = 'assets/pngs/me_bw.png';
   static const String pngsSignnn = 'assets/pngs/signnn.png';
+  static const String svgsDarkMode = 'assets/svgs/dark_mode.svg';
+  static const String svgsLightMode = 'assets/svgs/light_mode.svg';
   static const String svgsQuotationMark = 'assets/svgs/quotation_mark.svg';
   static const String svgsRectangleDesign = 'assets/svgs/rectangle_design.svg';
   static const String svgsSquiglyArrow = 'assets/svgs/squigly_arrow.svg';

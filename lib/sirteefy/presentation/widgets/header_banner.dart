@@ -71,7 +71,6 @@ class HeaderBanner extends StatelessWidget {
           rowFlex: 1,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               RichText(text: TextSpan(
                 text: "",
@@ -105,7 +104,7 @@ class HeaderBanner extends StatelessWidget {
                   ),
                 ]
               )),
-              verticalSpace(50),
+              verticalSpace(20),
                Text('Using his expertise with Flutter and Jetpack Compose, He crafts beautiful and functional web and mobile applications with a touch of elegance and simplicity. He is passionate about building software that solves real-world problems and makes life easier for people.',
                 style: AppThemes.firaCodeStyle(
                   fontSize: 16,
@@ -113,7 +112,7 @@ class HeaderBanner extends StatelessWidget {
                   color: textColorGray,
                 ),
               ),
-              verticalSpace(100),
+              verticalSpace(50),
                     const ProjectButton(color: textColorPurple, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',),
             ],
           ),
