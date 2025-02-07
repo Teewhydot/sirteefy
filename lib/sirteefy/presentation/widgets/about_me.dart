@@ -11,7 +11,8 @@ class AboutMe extends StatelessWidget {
       columnSpacing: 10,
       rowMainAxisAlignment: MainAxisAlignment.center,
       rowCrossAxisAlignment: CrossAxisAlignment.center,
-      layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET)
+      layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET) ||
+          ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
           ? ResponsiveRowColumnType.COLUMN
           : ResponsiveRowColumnType.ROW,
       children: [

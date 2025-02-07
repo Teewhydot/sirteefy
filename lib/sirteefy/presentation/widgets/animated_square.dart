@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:sirteefy/utils/color_palette/colors.dart';
+
 class AnimatedSquare extends StatefulWidget {
   const AnimatedSquare({super.key});
 
@@ -9,7 +11,7 @@ class AnimatedSquare extends StatefulWidget {
 }
 
 class _AnimatedSquareState extends State<AnimatedSquare> {
-  Color _color = Colors.grey;
+  Color _color = textColorGray;
   late Timer _timer;
 
   @override
@@ -17,7 +19,7 @@ class _AnimatedSquareState extends State<AnimatedSquare> {
     super.initState();
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
       setState(() {
-        _color = _color == Colors.grey ? Colors.purple : Colors.grey;
+        _color = _color == textColorGray ? textColorPurple : textColorGray;
       });
     });
   }

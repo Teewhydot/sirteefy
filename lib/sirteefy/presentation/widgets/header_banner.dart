@@ -16,8 +16,9 @@ class HeaderBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return ResponsiveRowColumn(
-      columnSpacing: 40,
+      columnSpacing: 20,
       rowSpacing: 10,
       rowMainAxisAlignment: MainAxisAlignment.center,
       rowCrossAxisAlignment: CrossAxisAlignment.center,
@@ -39,17 +40,26 @@ class HeaderBanner extends StatelessWidget {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  child: MatrixDot(
-                    l: 6,
-                    r: 6,
+                  child: Opacity(
+                    opacity: 0.1,
+                    child: MatrixDot(
+                      l: 6,
+                      r: 6,
+                    ),
                   )
                 ),
-                Positioned( top: 50,right: 50, child: SvgPicture.asset(Assets.svgsRectangleDesign)),
-                const Positioned(
+                Positioned( top: 50,right: 50, child: Opacity( opacity: 0.3, child: SvgPicture.asset(Assets.svgsRectangleDesign,color: textColorPurple,))),
+                 Positioned(
                   bottom: 0,
-                  child: CurrentProjectWidget(
-                    borderColor: textColorGray,
-                    projectTitle: "Spoteefy",
+                  child: IntrinsicWidth(
+                    child: ScrollingText(
+                      project: "Sirteefy",
+                      style: AppThemes.firaCodeStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: textColorPurple,
+                      ),
+                    ),
                   ),
                 )
               ],
@@ -61,7 +71,6 @@ class HeaderBanner extends StatelessWidget {
           rowFlex: 1,
           child: SizedBox(
             width: 500,
-            height: 400,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,7 +108,7 @@ class HeaderBanner extends StatelessWidget {
                   ]
                 )),
                 verticalSpace(50),
-                 Text('He crafts beautiful and functional web applications with a touch of elegance and simplicity. He is passionate about building software that solves real-world problems and makes life easier for people.',
+                 Text('Using his expertise with Flutter and Jetpack Compose, He crafts beautiful and functional web and mobile applications with a touch of elegance and simplicity. He is passionate about building software that solves real-world problems and makes life easier for people.',
                   style: AppThemes.firaCodeStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.normal,

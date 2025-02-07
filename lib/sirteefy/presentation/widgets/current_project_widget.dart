@@ -2,59 +2,105 @@ import 'package:flutter/material.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/animated_square.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
-import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
 import '../../../utils/other/misc.dart';
 
-class CurrentProjectWidget extends StatelessWidget {
-final Color borderColor;
-final Color containerColor;
+class ScrollingText extends StatefulWidget {
+  final String project;
+  final TextStyle style;
 
-final String projectTitle;
+  const ScrollingText({
+    required this.project,
+    this.style = const TextStyle(),
+    super.key,
+  });
 
+  @override
+  _ScrollingTextState createState() => _ScrollingTextState();
+}
 
-const CurrentProjectWidget({  this.borderColor = textColorWhite,  this.containerColor = primaryColor,  this.projectTitle = "Project Title", super.key});
+class _ScrollingTextState extends State<ScrollingText>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  double _textWidth = 0;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 20),
+    )..repeat(
+    );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final textPainter = TextPainter(
+        text: TextSpan(
+            text: "Currently working on ${widget.project}",
+            style: widget.style),
+        maxLines: 1,
+        textDirection: TextDirection.ltr,
+      )..layout();
+
+      setState(() {
+        _textWidth = textPainter.width;
+        _animation = Tween<double>(
+          begin: 0,
+          end: _textWidth,
+        ).animate(CurvedAnimation(
+          parent: _controller,
+          curve: Curves.linear,
+        ));
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(
-      child: Container(
-        height: 50,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderWidthRadius),
-          color: containerColor,
-          border: Border.all(
-            color: borderColor,
-            width: 2,
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: textColorPurple,
+          width: 2,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Row(
-            children: [
-              const AnimatedSquare(),
-             horizontalSpace(10),
-             RichText(text: TextSpan(
-               text: "Currently working on ",
-               style: AppThemes.firaCodeStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: textColorGray,
-               ),
-               children: [
-                  TextSpan(
-                    text: projectTitle,
-                    style: AppThemes.firaCodeStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: textColorWhite,
-                    ),
-                  ),
-               ]
-             )),
-            ],
-          ),
-        ),
+        borderRadius: BorderRadius.circular(borderWidthRadius),
       ),
+      height: 50,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            const AnimatedSquare(),
+            horizontalSpace(10),
+            ClipRect(
+              child: AnimatedBuilder(
+                animation: _animation,
+                builder: (context, child) {
+                  return Transform.translate(
+                    offset: Offset(-_animation.value, 0),
+                    child: child,
+                  );
+                },
+                child: Center(
+                  child: Text(
+                    "Currently working on ${widget.project}",
+                    style: widget.style,
+                    maxLines: 1,
+                    softWrap: false,
+                    overflow: TextOverflow.visible,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      )
     );
   }
 }
