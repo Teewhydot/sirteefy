@@ -69,56 +69,53 @@ class HeaderBanner extends StatelessWidget {
 
         ResponsiveRowColumnItem(
           rowFlex: 1,
-          child: SizedBox(
-            width: 500,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                RichText(text: TextSpan(
-                  text: "",
-                  style: AppThemes.firaCodeStyle(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              RichText(text: TextSpan(
+                text: "",
+                style: AppThemes.firaCodeStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: textColorGray,
+                ),
+                children: [
+                  const TextSpan(
+                    text: "Tunde is a"
+                  ),
+                  TextSpan(
+                      text: " software developer ",
+                    style: AppThemes.firaCodeStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: textColorGray,
+                    color: textColorPurple,
                   ),
-                  children: [
-                    const TextSpan(
-                      text: "Tunde is a"
-                    ),
-                    TextSpan(
-                        text: " software developer ",
-                      style: AppThemes.firaCodeStyle(
+                  ),
+                  const TextSpan(
+                      text: "and a"
+                  ),
+                  TextSpan(
+                    text: " tech enthusiast ",
+                    style: AppThemes.firaCodeStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: textColorPurple,
                     ),
-                    ),
-                    const TextSpan(
-                        text: "and a"
-                    ),
-                    TextSpan(
-                      text: " tech enthusiast ",
-                      style: AppThemes.firaCodeStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: textColorPurple,
-                      ),
-                    ),
-                  ]
-                )),
-                verticalSpace(50),
-                 Text('Using his expertise with Flutter and Jetpack Compose, He crafts beautiful and functional web and mobile applications with a touch of elegance and simplicity. He is passionate about building software that solves real-world problems and makes life easier for people.',
-                  style: AppThemes.firaCodeStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                    color: textColorGray,
                   ),
+                ]
+              )),
+              verticalSpace(50),
+               Text('Using his expertise with Flutter and Jetpack Compose, He crafts beautiful and functional web and mobile applications with a touch of elegance and simplicity. He is passionate about building software that solves real-world problems and makes life easier for people.',
+                style: AppThemes.firaCodeStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.normal,
+                  color: textColorGray,
                 ),
-                verticalSpace(100),
-          const ProjectButton(color: textColorPurple, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',),
-              ],
-            ),
+              ),
+              verticalSpace(100),
+                    const ProjectButton(color: textColorPurple, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',),
+            ],
           ),
         ),
       ],
