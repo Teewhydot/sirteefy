@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
-
 import '../../../utils/color_palette/colors.dart';
 import '../../../utils/theme/sirteefy_themes.dart';
 
@@ -35,7 +34,16 @@ class AboutMe extends StatelessWidget {
               ),
               const TextSpan(text: "with specialty in"),
               TextSpan(
-                text: " Flutter and Jetpack Compose ",
+                text: " Flutter",
+                style: AppThemes.firaCodeStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: textColorPurple,
+                ),
+              ),
+              const TextSpan(text: " and"),
+              TextSpan(
+                text: " Jetpack Compose ",
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -53,7 +61,10 @@ class AboutMe extends StatelessWidget {
           ),
         ),
         verticalSpace(20),
-        const ProjectButton(color: textColorPurple, icon: Ionicons.document, text: 'Download Resume'),
+        const ProjectButton(
+            color: textColorPurple,
+            icon: Ionicons.document,
+            text: 'Download Resume'),
       ],
     );
   }

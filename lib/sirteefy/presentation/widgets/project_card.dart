@@ -94,6 +94,7 @@ class ProjectButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicWidth(
       child: Container(
+        padding: EdgeInsets.all(8.0),
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderWidthRadius),
