@@ -49,6 +49,11 @@ class _FormSectionState extends State<FormSection> {
               expands: widget.isExpand ?? false,
               minLines: null,
               maxLines: null,
+              style: AppThemes.firaCodeStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+                color: textColorGray,
+              ),
               onTapOutside: (_) {
                 Focus.of(context).unfocus;
               },

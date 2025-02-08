@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import 'package:sirteefy/utils/other/misc.dart';
-
+import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
 class StupidQuote extends StatelessWidget {
   const StupidQuote({super.key});
@@ -26,17 +26,32 @@ class StupidQuote extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(borderWidthRadius),
                   ),
-                  child: const Text(
+                  child: Text(
                     'I am a software developer, I am not a magician, I can\'t fix stupid.',
-                    style: TextStyle(
+                    style: AppThemes.firaCodeStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
-                    ),
+                      color: textColorGray,
+                    )
                   ),
                 ),
               ),
-              Positioned(top: -10,left: 10, child: Container( height: 25,width: 25,color: primaryColor, child: const Icon(Icons.format_quote))),
-              Positioned(bottom: -10,right: 10, child: Container( height: 25,width: 25,color: primaryColor, child: const Icon(Icons.format_quote))),
+              Positioned(
+                  top: -10,
+                  left: 10,
+                  child: Container(
+                      height: 25,
+                      width: 25,
+                      color: primaryColor,
+                      child: const Icon(Icons.format_quote, color: textColorGray))),
+              Positioned(
+                  bottom: -10,
+                  right: 10,
+                  child: Container(
+                      height: 25,
+                      width: 25,
+                      color: primaryColor,
+                      child: const Icon(Icons.format_quote, color: textColorGray))),
             ],
           ),
           IntrinsicWidth(
@@ -49,19 +64,18 @@ class StupidQuote extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(borderWidthRadius),
               ),
-              child: const Text(
+              child: Text(
                 'stupid.',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ),
+                  style: AppThemes.firaCodeStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: textColorGray,
+                  )
               ),
             ),
           ),
-
         ],
       ),
     );
-
   }
 }
