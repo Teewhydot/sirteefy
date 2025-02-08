@@ -77,7 +77,7 @@ class _SirteefyHomeState extends State<SirteefyHome> {
                 ),
               ),
             ),
-            const Positioned(top: 0,left: 0,right: 0, child: Header()),
+            const Positioned(top: 0,left: 0,right: 0, child: Header(isHome: true,)),
           ],
         ),
       ),

@@ -14,201 +14,204 @@ class AllProjects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final childAspectRatio = screenWidth / screenHeight;
+
     return Scaffold(
         backgroundColor: primaryColor,
         body: SafeArea(
-          child: Stack(
-            children: [
-              const Positioned(
-                top: 60,
-                left: 0,
-                child: Opacity(
-                  opacity: 0.1,
-                  child: MatrixDot(
-                    l: 6,
-                    r: 6,
-                  ),
+          child: Stack(children: [
+            const Positioned(
+              top: 60,
+              left: 0,
+              child: Opacity(
+                opacity: 0.1,
+                child: MatrixDot(
+                  l: 6,
+                  r: 6,
                 ),
               ),
-              const Positioned(
-                top: 0,
-                left: 60,
-                child: Opacity(
-                  opacity: 0.1,
-                  child: MatrixDot(
-                    l: 6,
-                    r: 6,
-                  ),
+            ),
+            const Positioned(
+              top: 0,
+              left: 60,
+              child: Opacity(
+                opacity: 0.1,
+                child: MatrixDot(
+                  l: 6,
+                  r: 6,
                 ),
               ),
-              Positioned(
-                  bottom: -20,
-                  left: 250,
-                  child: Opacity(
-                    opacity: 0.1,
-                    child: Container(
-                      height: 90,
-                      width: 90,
-                      decoration: BoxDecoration(
-                        color: primaryColor,
-                        border: Border.all(
-                          color: textColorPurple,
-                          width: 2,
-                        ),
+            ),
+            Positioned(
+                bottom: -20,
+                left: 250,
+                child: Opacity(
+                  opacity: 0.1,
+                  child: Container(
+                    height: 90,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      border: Border.all(
+                        color: textColorPurple,
+                        width: 2,
                       ),
                     ),
-                  )),
-              Positioned(
-                  top: 20,
-                  right: 250,
-                  child: Opacity(
-                    opacity: 0.1,
-                    child: Container(
-                      height: 90,
-                      width: 90,
-                      decoration: BoxDecoration(
-                        color: primaryColor,
-                        border: Border.all(
-                          color: textColorPurple,
-                          width: 2,
-                        ),
+                  ),
+                )),
+            Positioned(
+                top: 20,
+                right: 250,
+                child: Opacity(
+                  opacity: 0.1,
+                  child: Container(
+                    height: 90,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      border: Border.all(
+                        color: textColorPurple,
+                        width: 2,
                       ),
                     ),
-                  )),
-              Positioned(
-                  top: -20,
-                  left: -20,
-                  child: Opacity(
-                    opacity: 0.1,
-                    child: Container(
-                      height: 90,
-                      width: 90,
-                      decoration: BoxDecoration(
-                        color: primaryColor,
-                        border: Border.all(
-                          color: textColorPurple,
-                          width: 2,
-                        ),
+                  ),
+                )),
+            Positioned(
+                top: -20,
+                left: -20,
+                child: Opacity(
+                  opacity: 0.1,
+                  child: Container(
+                    height: 90,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      border: Border.all(
+                        color: textColorPurple,
+                        width: 2,
                       ),
                     ),
-                  )),
-              Positioned(
-                  top: 20,
-                  left: 250,
-                  child: Opacity(
-                    opacity: 0.1,
-                    child: Container(
-                      height: 90,
-                      width: 90,
-                      decoration: BoxDecoration(
-                        color: primaryColor,
-                        border: Border.all(
-                          color: textColorPurple,
-                          width: 2,
-                        ),
+                  ),
+                )),
+            Positioned(
+                top: 20,
+                left: 250,
+                child: Opacity(
+                  opacity: 0.1,
+                  child: Container(
+                    height: 90,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      border: Border.all(
+                        color: textColorPurple,
+                        width: 2,
                       ),
                     ),
-                  )),
-              const Positioned(
+                  ),
+                )),
+            const Positioned(
+              top: 200,
+              left: 300,
+              child: Opacity(
+                opacity: 0.1,
+                child: MatrixDot(
+                  l: 6,
+                  r: 6,
+                ),
+              ),
+            ),
+            const Positioned(
+              bottom: 200,
+              left: 300,
+              child: Opacity(
+                opacity: 0.1,
+                child: MatrixDot(
+                  l: 6,
+                  r: 6,
+                ),
+              ),
+            ),
+            const Positioned(
+              top: 200,
+              right: 300,
+              child: Opacity(
+                opacity: 0.1,
+                child: MatrixDot(
+                  l: 6,
+                  r: 6,
+                ),
+              ),
+            ),
+            Positioned(
                 top: 200,
-                left: 300,
+                left: 100,
                 child: Opacity(
-                  opacity: 0.1,
-                  child: MatrixDot(
-                    l: 6,
-                    r: 6,
-                  ),
-                ),
-              ),
-              const Positioned(
-                bottom: 200,
-                left: 300,
-                child: Opacity(
-                  opacity: 0.1,
-                  child: MatrixDot(
-                    l: 6,
-                    r: 6,
-                  ),
-                ),
-              ),
-              const Positioned(
-                top: 200,
-                right: 300,
-                child: Opacity(
-                  opacity: 0.1,
-                  child: MatrixDot(
-                    l: 6,
-                    r: 6,
-                  ),
-                ),
-              ),
-              Positioned(
-                  top: 200,
-                  left: 100,
-                  child: Opacity(
-                      opacity: 0.1,
-                      child: SvgPicture.asset(Assets.svgsRectangleDesign))),
-              Positioned(
-                  top: 300,
-                  left: -50,
-                  child: Opacity(
-                      opacity: 0.1,
-                      child: SvgPicture.asset(Assets.svgsRectangleDesign))),
-              Positioned(
-                  top: 300,
-                  right: -50,
-                  child: Opacity(
-                      opacity: 0.1,
-                      child: SvgPicture.asset(Assets.svgsRectangleDesign))),
-              Positioned(
-                  bottom: 300,
-                  right: -50,
-                  child: Opacity(
-                      opacity: 0.1,
-                      child: SvgPicture.asset(Assets.svgsRectangleDesign))),
-              Positioned(
-                  top: 100,
-                  left: 450,
-                  child: Opacity(
                     opacity: 0.1,
-                    child: Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        color: primaryColor,
-                        border: Border.all(
-                          color: textColorPurple,
-                          width: 2,
-                        ),
+                    child: SvgPicture.asset(Assets.svgsRectangleDesign))),
+            Positioned(
+                top: 300,
+                left: -50,
+                child: Opacity(
+                    opacity: 0.1,
+                    child: SvgPicture.asset(Assets.svgsRectangleDesign))),
+            Positioned(
+                top: 300,
+                right: -50,
+                child: Opacity(
+                    opacity: 0.1,
+                    child: SvgPicture.asset(Assets.svgsRectangleDesign))),
+            Positioned(
+                bottom: 300,
+                right: -50,
+                child: Opacity(
+                    opacity: 0.1,
+                    child: SvgPicture.asset(Assets.svgsRectangleDesign))),
+            Positioned(
+                top: 100,
+                left: 450,
+                child: Opacity(
+                  opacity: 0.1,
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      border: Border.all(
+                        color: textColorPurple,
+                        width: 2,
                       ),
                     ),
-                  )),
-              SingleChildScrollView(
-                child: Column(children: [
-                  const Header(),
-                  const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: SectionHeader(title: "Projects", rightSection: false),
                   ),
-                  verticalSpace(50),
-                  ResponsiveGridView.builder(
-                    alignment: Alignment.center,
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate: const ResponsiveGridDelegate(
-                      crossAxisSpacing: 15,
-                      mainAxisSpacing: 15,
-                      crossAxisExtent: 350,
-                    ),
-                    itemCount: 6,
-                    itemBuilder: (context, index) {
-                      return const ProjectCard();
-                    },
+                )),
+            SingleChildScrollView(
+              child: Column(children: [
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: SectionHeader(title: "Projects", rightSection: false),
+                ),
+                verticalSpace(50),
+                ResponsiveGridView.builder(
+                  alignment: Alignment.center,
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  gridDelegate: ResponsiveGridDelegate(
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15,
+                    crossAxisExtent: 350,
+                    childAspectRatio: childAspectRatio * 1.6,
                   ),
-                ]),
-              ),
-            ]
-          ),
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return const ProjectCard();
+                  },
+                ),
+              ]),
+            ),
+            const Positioned(top: 0, left: 0, right: 0, child: Header(isHome: false,)),
+          ]),
         ));
   }
 }

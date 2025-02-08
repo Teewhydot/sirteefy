@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
@@ -8,8 +9,9 @@ import '../../../utils/theme/sirteefy_themes.dart';
 import 'nav_item.dart';
 
 class Header extends StatelessWidget {
-  const Header({super.key});
+final bool isHome;
 
+const Header({super.key, this.isHome = false});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +22,18 @@ class Header extends StatelessWidget {
         children: [
           // Logo on the left
           Row(
-            children: [
+            children: [if(!isHome) GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: const SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: Icon(Ionicons.arrow_back, color: textColorWhite)
+                ),
+            ),
+              horizontalSpace(10),
+
               Image.asset(
               Assets.pngsLogo,
                 height: 30,
@@ -37,7 +50,7 @@ class Header extends StatelessWidget {
             ],
           ),
           // Navigation items on the right
-          ResponsiveVisibility(
+        if (isHome) ResponsiveVisibility(
             replacement: IconButton(
               icon: const Icon(Icons.menu, color: textColorWhite),
               onPressed: () {
