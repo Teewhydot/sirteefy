@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/header_banner.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/projects.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/section_header.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/thememode_widget.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
+import '../../../utils/theme/theme_provider.dart';
 import '../widgets/about_me.dart';
 import '../widgets/contact_section.dart';
 import '../widgets/footer.dart';
@@ -12,19 +14,20 @@ import '../widgets/header.dart';
 import '../widgets/my_skills.dart';
 import '../widgets/stupid_quote.dart';
 
-class SirteefyHome extends StatefulWidget {
+class SirteefyHome extends ConsumerStatefulWidget {
   const SirteefyHome({super.key});
 
   @override
-  State<SirteefyHome> createState() => _SirteefyHomeState();
+  ConsumerState<SirteefyHome> createState() => _SirteefyHomeState();
 }
 
-class _SirteefyHomeState extends State<SirteefyHome> {
+class _SirteefyHomeState extends ConsumerState<SirteefyHome> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider  = ref.watch(themeProviderController);
+
     final size = MediaQuery.of(context).size;
     return Scaffold(
-     
       body: SafeArea(
         child: Stack(
           children: [
@@ -36,7 +39,10 @@ class _SirteefyHomeState extends State<SirteefyHome> {
                     verticalSpace(100),
                     const HeaderBanner(),
                     verticalSpace(100),
-                    const StupidQuote(),
+                    GestureDetector( onTap: (){
+                      print('tapped');
+                      themeProvider.toggleTheme(themeProvider.isDarkMode);
+                    }, child: const StupidQuote()),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: verticalSpace(100),
