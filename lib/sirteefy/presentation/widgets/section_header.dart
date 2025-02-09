@@ -48,8 +48,7 @@ class SectionHeader extends StatelessWidget {
                     style: AppThemes.firaCodeStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: textColorGray,
-                    )),
+                        )),
                 horizontalSpace(5),
                 SvgPicture.asset(Assets.svgsSquiglyArrow)
               ],

@@ -21,8 +21,7 @@ class StupidQuote extends StatelessWidget {
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: textColorGray,
-                      width: 1,
+                          width: 1,
                     ),
                     borderRadius: BorderRadius.circular(borderWidthRadius),
                   ),
@@ -31,8 +30,7 @@ class StupidQuote extends StatelessWidget {
                     style: AppThemes.firaCodeStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
-                      color: textColorGray,
-                    )
+                        )
                   ),
                 ),
               ),
@@ -59,7 +57,6 @@ class StupidQuote extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: textColorGray,
                   width: 1,
                 ),
                 borderRadius: BorderRadius.circular(borderWidthRadius),
@@ -69,8 +66,7 @@ class StupidQuote extends StatelessWidget {
                   style: AppThemes.firaCodeStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
-                    color: textColorGray,
-                  )
+                    )
               ),
             ),
           ),

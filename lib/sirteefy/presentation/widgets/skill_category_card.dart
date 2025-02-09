@@ -16,7 +16,7 @@ class SkillCategoryCard extends StatelessWidget {
       width: 278,
       margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        border: Border.all(color: textColorGray, width: 2.0),
+        border: Border.all(width: 2.0),
         borderRadius: BorderRadius.circular(borderWidthRadius),
       ),
       child: Column(
@@ -34,7 +34,6 @@ class SkillCategoryCard extends StatelessWidget {
             ),
           ),
           const Divider(
-            color: textColorGray,
             height: 4,
           ),
           Container(

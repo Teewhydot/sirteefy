@@ -16,7 +16,6 @@ const Header({super.key, this.isHome = false});
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      color: primaryColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -44,8 +43,7 @@ const Header({super.key, this.isHome = false});
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
-                  color: textColorWhite,
-                ),
+                                 ),
               ),
             ],
           ),

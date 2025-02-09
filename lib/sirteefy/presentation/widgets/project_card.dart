@@ -16,7 +16,7 @@ class ProjectCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderWidthRadius),
         border: Border.all(
-          color: textColorGray,
+
           width: 2,
         ),
       ),
@@ -30,7 +30,6 @@ class ProjectCard extends StatelessWidget {
             decoration: const BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  color: textColorGray,
                   width: 2,
                 ),
               ),
@@ -47,7 +46,7 @@ class ProjectCard extends StatelessWidget {
           firacodeStyleText("Flutter,Dart,Firebase Github",
               fontWeight: FontWeight.normal, fontSize: 16),
           const Divider(
-            color: textColorGray,
+
             thickness: 2,
           ),
           verticalSpace(10),
@@ -64,13 +63,13 @@ class ProjectCard extends StatelessWidget {
             child: Row(
               children: [
                 const ProjectButton(
-                  color: textColorGray,
                   icon: Ionicons.logo_github,
                   text: "Code",
+                  borderColor: textColorPurple,
                 ),
                 horizontalSpace(10),
                 const ProjectButton(
-                  color: textColorPurple,
+                  borderColor: textColorPurple,
                   icon: Ionicons.play,
                   text: "Live",
                 ),
@@ -84,22 +83,22 @@ class ProjectCard extends StatelessWidget {
 }
 
 class ProjectButton extends StatelessWidget {
-  final Color color;
+  final Color borderColor;
   final IconData icon;
   final String text;
 
   const ProjectButton(
-      {super.key, required this.color, required this.icon, required this.text});
+      {super.key, required this.borderColor, required this.icon, required this.text});
   @override
   Widget build(BuildContext context) {
     return IntrinsicWidth(
       child: Container(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderWidthRadius),
           border: Border.all(
-            color: color,
+            color: borderColor,
             width: 2,
           ),
         ),
@@ -110,7 +109,7 @@ class ProjectButton extends StatelessWidget {
             children: [
               firacodeStyleText(text, fontWeight: FontWeight.normal, fontSize: 16,applyPadding: false),
               horizontalSpace(10),
-              Align(alignment: Alignment.center,  child: Icon(icon,color: color,))
+              Align(alignment: Alignment.center,  child: Icon(icon,color: borderColor,))
             ],
           ),
         ),

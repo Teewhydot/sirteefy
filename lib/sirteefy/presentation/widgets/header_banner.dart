@@ -4,6 +4,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/current_project_widget.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/matrix_dot%20widget.dart';
+import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
@@ -16,7 +17,6 @@ class HeaderBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return ResponsiveRowColumn(
       columnSpacing: 20,
       rowSpacing: 10,
@@ -77,12 +77,9 @@ class HeaderBanner extends StatelessWidget {
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: textColorGray,
                 ),
                 children: [
-                  const TextSpan(
-                    text: "Tunde is a"
-                  ),
+                  textSpanText("Tunde is a"),
                   TextSpan(
                       text: " software developer ",
                     style: AppThemes.firaCodeStyle(
@@ -91,9 +88,8 @@ class HeaderBanner extends StatelessWidget {
                     color: textColorPurple,
                   ),
                   ),
-                  const TextSpan(
-                      text: "and a"
-                  ),
+                  textSpanText("and a"),
+
                   TextSpan(
                     text: " tech enthusiast ",
                     style: AppThemes.firaCodeStyle(
@@ -109,11 +105,10 @@ class HeaderBanner extends StatelessWidget {
                 style: AppThemes.firaCodeStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.normal,
-                  color: textColorGray,
                 ),
               ),
               verticalSpace(50),
-                    const ProjectButton(color: textColorPurple, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',),
+                    const ProjectButton(borderColor: textColorPurple, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',),
             ],
           ),
         ),

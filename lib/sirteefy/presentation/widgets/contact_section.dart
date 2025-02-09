@@ -33,8 +33,7 @@ class Contact extends StatelessWidget {
                   style: AppThemes.firaCodeStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.normal,
-                    color: textColorGray,
-                  )),
+                    )),
               const SizedBox(height: 20),
               // ContactFormWidget(),
             ],
@@ -88,7 +87,7 @@ class Contact extends StatelessWidget {
                     verticalSpace(20),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: ProjectButton(color: textColorPurple, icon: Icons.send, text: "Send"),
+                      child: ProjectButton(borderColor: textColorPurple, icon: Icons.send, text: "Send"),
                     )
                   ],
                 ),

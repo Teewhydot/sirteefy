@@ -20,7 +20,6 @@ class AboutMe extends StatelessWidget {
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: textColorGray,
                 ),
                 children: [
               const TextSpan(text: "Hi, I'm Issa, a self taught"),
@@ -57,12 +56,12 @@ class AboutMe extends StatelessWidget {
           style: AppThemes.firaCodeStyle(
             fontSize: 16,
             fontWeight: FontWeight.normal,
-            color: textColorGray,
+
           ),
         ),
         verticalSpace(20),
         const ProjectButton(
-            color: textColorPurple,
+            borderColor: textColorPurple,
             icon: Ionicons.document,
             text: 'Download Resume'),
       ],

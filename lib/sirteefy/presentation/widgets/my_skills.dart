@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/matrix_dot%20widget.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/skill_category_card.dart';
@@ -140,8 +143,19 @@ Widget firacodeStyleText(String text, {double fontSize = 16,FontWeight fontWeigh
       style: AppThemes.firaCodeStyle(
         fontSize: fontSize,
         fontWeight: fontWeight,
-        color: textColorGray
       )
+    ),
+  );
+}
+
+
+TextSpan textSpanText(String text) {
+  return TextSpan(
+    text: text,
+    style: AppThemes.firaCodeStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: Get.isDarkMode ? textColorGray: textColorBlack,
     ),
   );
 }

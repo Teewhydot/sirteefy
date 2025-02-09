@@ -32,7 +32,10 @@ class _ScrollingTextState extends State<ScrollingText>
       duration: const Duration(seconds: 20),
     )..repeat(
     );
-
+    _animation = Tween<double>(
+      begin: 0,
+      end: 0,
+    ).animate(_controller);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final textPainter = TextPainter(
         text: TextSpan(

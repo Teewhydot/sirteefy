@@ -32,7 +32,7 @@ class Footer extends StatelessWidget {
         Text(
           '© 2025 Sirteefy. All rights reserved.',
           style: AppThemes.firaCodeStyle(
-            color: textColorGray,
+
             fontSize: 12,
           ),
         ),

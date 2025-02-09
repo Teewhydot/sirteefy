@@ -37,12 +37,11 @@ class _FormSectionState extends State<FormSection> {
           Text(widget.formLabel,style: AppThemes.firaCodeStyle(
             fontSize: 16,
             fontWeight: FontWeight.normal,
-            color: textColorGray,
           ),),
           Container(
             height: widget.height,
             decoration: BoxDecoration(
-                border: Border.all(color: textColorGray, width: 1)),
+                border: Border.all(width: 1)),
             child: TextField(
               controller: controller,
               keyboardType: widget.typeOfKeyboard,
@@ -52,7 +51,6 @@ class _FormSectionState extends State<FormSection> {
               style: AppThemes.firaCodeStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.normal,
-                color: textColorGray,
               ),
               onTapOutside: (_) {
                 Focus.of(context).unfocus;

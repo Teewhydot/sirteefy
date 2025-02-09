@@ -1,8 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import 'dart:math' as math;
+
+import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
+
 
 class ThemeModeWidget extends StatefulWidget {
   const ThemeModeWidget({super.key});
@@ -11,7 +15,8 @@ class ThemeModeWidget extends StatefulWidget {
   _ThemeModeWidgetState createState() => _ThemeModeWidgetState();
 }
 
-class _ThemeModeWidgetState extends State<ThemeModeWidget> with SingleTickerProviderStateMixin {
+class _ThemeModeWidgetState extends State<ThemeModeWidget>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _heightAnimation;
 
@@ -29,10 +34,12 @@ class _ThemeModeWidgetState extends State<ThemeModeWidget> with SingleTickerProv
           _controller.reverse();
         });
       }
+      // if the animation status
     });
   }
 
   void _handleTap() {
+    Get.changeTheme(Get.isDarkMode? ThemeData.light(): ThemeData.dark());
     if (_controller.isCompleted) {
       _controller.reverse();
     } else {
@@ -48,60 +55,76 @@ class _ThemeModeWidgetState extends State<ThemeModeWidget> with SingleTickerProv
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _handleTap,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Container(
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        GestureDetector(
+          onTap: _handleTap,
+          child: Container(
             width: 30,
             height: 10,
             decoration: const BoxDecoration(
               color: textColorGray,
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20)),
             ),
           ),
-          Positioned(
-            left: 13.5,
-            child: AnimatedBuilder(
-              animation: _heightAnimation,
-              builder: (context, child) {
-                return Container(
-                  width: 3,
-                  height: _heightAnimation.value,
-                  decoration: const BoxDecoration(
-                    color: textColorGray,
-                  ),
-                );
-              },
-            ),
-          ),
-          AnimatedBuilder(
+        ),
+        Positioned(
+          left: 13.5,
+          child: AnimatedBuilder(
             animation: _heightAnimation,
             builder: (context, child) {
-              return Positioned(
-                top: _heightAnimation.value,
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white.withOpacity(0.6),
-                        spreadRadius: 1,
-                        blurRadius: 20,
-                        offset: const Offset(0, 0),
-                      ),
-                    ],
-                  ),
-                  child: Transform.rotate(
-                    angle: -math.pi / 1,
-                    child: const Icon(Ionicons.bulb_outline, color: textColorGray, size: 30),
-                  ),
+              return Container(
+                width: 3,
+                height: _heightAnimation.value,
+                decoration: const BoxDecoration(
                 ),
               );
             },
           ),
-        ],
-      ),
+        ),
+        AnimatedBuilder(
+          animation: _heightAnimation,
+          builder: (context, child) {
+            return Positioned(
+              top: _heightAnimation.value,
+              child: GestureDetector(
+                onTap: () {
+                  print('object');
+                  Get.changeTheme(
+                      Get.isDarkMode ? AppThemes.lightTheme() : AppThemes.darkTheme());
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      Get.isDarkMode
+                          ? BoxShadow(
+                              color: Colors.white.withOpacity(0.6),
+                              spreadRadius: 1,
+                              blurRadius: 20,
+                              offset: const Offset(0, 0),
+                            )
+                          : BoxShadow(
+                              color: Colors.black.withOpacity(0.6),
+                              spreadRadius: 1,
+                              blurRadius: 20,
+                              offset: const Offset(0, 0),
+                            ),
+                    ],
+                  ),
+                  child: Transform.rotate(
+                    angle: -math.pi / 1,
+                    child: const Icon(Ionicons.bulb_outline,
+                        color: textColorGray, size: 30),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }

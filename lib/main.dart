@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:sirteefy/sirteefy/presentation/pages/all_projects.dart';
 import 'package:sirteefy/sirteefy/presentation/pages/sirteefy_home.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
@@ -13,6 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
         home: const SirteefyHome(),

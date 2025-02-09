@@ -19,7 +19,7 @@ class AllProjects extends StatelessWidget {
     final childAspectRatio = screenWidth / screenHeight;
 
     return Scaffold(
-        backgroundColor: primaryColor,
+       
         body: SafeArea(
           child: Stack(children: [
             const Positioned(

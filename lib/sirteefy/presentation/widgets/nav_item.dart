@@ -16,8 +16,7 @@ Widget buildNavItem(String title) {
         style: AppThemes.firaCodeStyle(
           fontSize: 16,
           fontWeight: FontWeight.w600,
-          color: textColorWhite,
-        ),
+                 ),
       ),
     ],
   );

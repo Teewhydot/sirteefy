@@ -20,24 +20,20 @@ class AngleWidget extends StatelessWidget {
         border: Border(
           left: angleType == AngleType.left
               ? const BorderSide(
-                  color: textColorGray,
                   width: 2,
                 )
               : BorderSide.none,
           top: angleType == AngleType.left
               ? const BorderSide(
-                  color: textColorGray,
                   width: 2,
                 )
               : BorderSide.none,
           bottom: angleType == AngleType.right
               ? const BorderSide(
-                  color: textColorGray,
                   width: 2,
                 )
               : BorderSide.none,
           right: angleType == AngleType.right? const BorderSide(
-                  color: textColorGray,
                   width: 2,
                 )
               : BorderSide.none,

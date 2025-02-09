@@ -21,16 +21,17 @@ class AppThemes {
   static ThemeData lightTheme({double scaleFactor = 1.0}) {
     return ThemeData(
       useMaterial3: true,
-      scaffoldBackgroundColor: primaryColor,
-      // colorScheme: ColorScheme.fromSeed(
-      //   seedColor: primaryColor,
-      //   brightness: Brightness.light,
-      // ),
+      scaffoldBackgroundColor: textColorWhite,
+      brightness: Brightness.light,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: textColorWhite,
+        brightness: Brightness.light,
+      ),
       // textTheme: TextTheme(
       //   displayLarge: firaCodeStyle(
       //     fontSize: 57 * scaleFactor,
       //     fontWeight: FontWeight.w400,
-      //     color: textColorGray,
+      //     ,
       //   ),
       //   displayMedium: firaCodeStyle(
       //     fontSize: 45 * scaleFactor,
@@ -99,19 +100,11 @@ class AppThemes {
     return ThemeData(
       useMaterial3: true,
       scaffoldBackgroundColor: primaryColor,
-
+brightness: Brightness.dark,
       colorScheme: ColorScheme.fromSeed(
         seedColor: primaryColor,
         brightness: Brightness.dark,
       ),
-      // textTheme: TextTheme(
-      //   // Same text styles as light theme but colors will auto-adjust
-      //   displayLarge: firaCodeStyle(
-      //     fontSize: 57 * scaleFactor,
-      //     fontWeight: FontWeight.w400,
-      //   ),
-      //   // ... (repeat all text styles from light theme)
-      // ),
     );
   }
 }

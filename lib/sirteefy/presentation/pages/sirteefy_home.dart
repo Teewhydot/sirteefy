@@ -24,7 +24,7 @@ class _SirteefyHomeState extends State<SirteefyHome> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: primaryColor,
+     
       body: SafeArea(
         child: Stack(
           children: [
@@ -69,8 +69,7 @@ class _SirteefyHomeState extends State<SirteefyHome> {
                     const Contact(),
                     verticalSpace(100),
                     const Divider(
-                      color: textColorGray,
-                      height: 4,
+                          height: 4,
                     ),
                     verticalSpace(30),
                     const Footer(),
@@ -80,7 +79,7 @@ class _SirteefyHomeState extends State<SirteefyHome> {
               ),
             ),
             const Positioned(top: 0,left: 0,right: 0, child: Header(isHome: true,)),
-            Positioned(top: 50,left: size.width*0.65, child: ThemeModeWidget(),)
+            Positioned(top: 50,left: size.width*0.65, child: const ThemeModeWidget(),)
           ],
         ),
       ),
