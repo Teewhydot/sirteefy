@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
@@ -7,15 +8,17 @@ import 'dart:math' as math;
 
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
+import '../../../utils/theme/theme_provider.dart';
 
-class ThemeModeWidget extends StatefulWidget {
+
+class ThemeModeWidget extends ConsumerStatefulWidget {
   const ThemeModeWidget({super.key});
 
   @override
   _ThemeModeWidgetState createState() => _ThemeModeWidgetState();
 }
 
-class _ThemeModeWidgetState extends State<ThemeModeWidget>
+class _ThemeModeWidgetState extends ConsumerState<ThemeModeWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _heightAnimation;
@@ -39,7 +42,7 @@ class _ThemeModeWidgetState extends State<ThemeModeWidget>
   }
 
   void _handleTap() {
-    Get.changeTheme(Get.isDarkMode? ThemeData.light(): ThemeData.dark());
+    ref.read(themeProviderController.notifier).toggleTheme(ref.read(themeProviderController).isDarkMode);
     // if (_controller.isCompleted) {
     //   _controller.reverse();
     // } else {
@@ -52,9 +55,9 @@ class _ThemeModeWidgetState extends State<ThemeModeWidget>
     _controller.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
+    final themeProvider  = ref.watch(themeProviderController);
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -92,14 +95,11 @@ class _ThemeModeWidgetState extends State<ThemeModeWidget>
               top: _heightAnimation.value,
               child: GestureDetector(
                 onTap: () {
-                  print('object');
-                  Get.changeTheme(
-                      Get.isDarkMode ? AppThemes.lightTheme() : AppThemes.darkTheme());
                 },
                 child: Container(
                   decoration: BoxDecoration(
                     boxShadow: [
-                      Get.isDarkMode
+                      themeProvider.isDarkMode
                           ? BoxShadow(
                               color: Colors.white.withOpacity(0.6),
                               spreadRadius: 1,

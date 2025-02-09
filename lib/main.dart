@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/pages/sirteefy_home.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
+import 'package:sirteefy/utils/theme/theme_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-
+  Widget build(BuildContext context, WidgetRef ref) {
+final themeProvider  = ref.watch(themeProviderController);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
         home: const SirteefyHome(),
         theme: AppThemes.lightTheme(),
         darkTheme: AppThemes.darkTheme(),
-        themeMode: ThemeMode.system,
+        themeMode: themeProvider.themeMode,
         builder: (context, child) => ResponsiveBreakpoints.builder(
               breakpoints: [
                 const Breakpoint(start: 0, end: 450, name: MOBILE),

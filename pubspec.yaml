@@ -17,6 +17,8 @@ dependencies:
   flutter_svg: ^2.0.17
   auto_size_text: ^3.0.0
   get: ^4.6.6
+  flutter_riverpod: ^2.6.1
+  shared_preferences: ^2.5.1
 
 dev_dependencies:
   flutter_test:
