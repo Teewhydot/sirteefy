@@ -19,7 +19,7 @@ const MatrixDot({super.key, this.l = 5, this.r = 5});
               height: 5,
               margin: const EdgeInsets.all(5),
               decoration: const BoxDecoration(
-                color: textColorGray,
+                color: grayColor,
                 shape: BoxShape.circle,
               ),
             );

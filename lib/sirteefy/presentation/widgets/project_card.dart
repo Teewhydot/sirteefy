@@ -16,7 +16,6 @@ class ProjectCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderWidthRadius),
         border: Border.all(
-
           width: 2,
         ),
       ),
@@ -65,11 +64,11 @@ class ProjectCard extends StatelessWidget {
                 const ProjectButton(
                   icon: Ionicons.logo_github,
                   text: "Code",
-                  borderColor: textColorPurple,
+                  borderColor: accentColor,
                 ),
                 horizontalSpace(10),
                 const ProjectButton(
-                  borderColor: textColorPurple,
+                  borderColor: accentColor,
                   icon: Ionicons.play,
                   text: "Live",
                 ),

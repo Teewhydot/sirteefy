@@ -55,7 +55,7 @@ class AllProjects extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: primaryColor,
                       border: Border.all(
-                        color: textColorPurple,
+                        color: accentColor,
                         width: 2,
                       ),
                     ),
@@ -72,7 +72,7 @@ class AllProjects extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: primaryColor,
                       border: Border.all(
-                        color: textColorPurple,
+                        color: accentColor,
                         width: 2,
                       ),
                     ),
@@ -89,7 +89,7 @@ class AllProjects extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: primaryColor,
                       border: Border.all(
-                        color: textColorPurple,
+                        color: accentColor,
                         width: 2,
                       ),
                     ),
@@ -106,7 +106,7 @@ class AllProjects extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: primaryColor,
                       border: Border.all(
-                        color: textColorPurple,
+                        color: accentColor,
                         width: 2,
                       ),
                     ),
@@ -180,7 +180,7 @@ class AllProjects extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: primaryColor,
                       border: Border.all(
-                        color: textColorPurple,
+                        color: accentColor,
                         width: 2,
                       ),
                     ),

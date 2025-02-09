@@ -48,7 +48,7 @@ class HeaderBanner extends StatelessWidget {
                     ),
                   )
                 ),
-                Positioned( top: 50,right: 50, child: Opacity( opacity: 0.3, child: SvgPicture.asset(Assets.svgsRectangleDesign,color: textColorPurple,))),
+                Positioned( top: 50,right: 50, child: Opacity( opacity: 0.3, child: SvgPicture.asset(Assets.svgsRectangleDesign,color: accentColor,))),
                  Positioned(
                   bottom: 0,
                   child: IntrinsicWidth(
@@ -57,7 +57,7 @@ class HeaderBanner extends StatelessWidget {
                       style: AppThemes.firaCodeStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: textColorPurple,
+                        color: accentColor,
                       ),
                     ),
                   ),
@@ -85,7 +85,7 @@ class HeaderBanner extends StatelessWidget {
                     style: AppThemes.firaCodeStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: textColorPurple,
+                    color: accentColor,
                   ),
                   ),
                   textSpanText("and a"),
@@ -95,7 +95,7 @@ class HeaderBanner extends StatelessWidget {
                     style: AppThemes.firaCodeStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: textColorPurple,
+                      color: accentColor,
                     ),
                   ),
                 ]
@@ -108,7 +108,7 @@ class HeaderBanner extends StatelessWidget {
                 ),
               ),
               verticalSpace(50),
-                    const ProjectButton(borderColor: textColorPurple, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',),
+                    const ProjectButton(borderColor: accentColor, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',),
             ],
           ),
         ),

@@ -11,7 +11,7 @@ class AnimatedSquare extends StatefulWidget {
 }
 
 class _AnimatedSquareState extends State<AnimatedSquare> {
-  Color _color = textColorGray;
+  Color _color = grayColor;
   late Timer _timer;
 
   @override
@@ -19,7 +19,7 @@ class _AnimatedSquareState extends State<AnimatedSquare> {
     super.initState();
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
       setState(() {
-        _color = _color == textColorGray ? textColorPurple : textColorGray;
+        _color = _color == grayColor ? accentColor : grayColor;
       });
     });
   }

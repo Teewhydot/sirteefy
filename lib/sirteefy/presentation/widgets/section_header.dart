@@ -30,7 +30,7 @@ class SectionHeader extends StatelessWidget {
                       ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
                   ? 100
                   : 300,
-              color: textColorPurple,
+              color: accentColor,
             )
           ],
         ),

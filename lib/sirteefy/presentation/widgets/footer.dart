@@ -17,15 +17,15 @@ class Footer extends StatelessWidget {
          Row(
           mainAxisAlignment: desktop? MainAxisAlignment.center: MainAxisAlignment.spaceEvenly,
           children: [
-            const Icon(Ionicons.logo_github, color: textColorGray),
+            const Icon(Ionicons.logo_github, color: grayColor),
             if(desktop) horizontalSpace(20),
-            const Icon(Ionicons.logo_twitter, color: textColorGray),
-            if(desktop) horizontalSpace(20),
-
-            const Icon(Ionicons.logo_instagram, color: textColorGray),
+            const Icon(Ionicons.logo_twitter, color: grayColor),
             if(desktop) horizontalSpace(20),
 
-            const Icon(Ionicons.logo_linkedin, color: textColorGray),
+            const Icon(Ionicons.logo_instagram, color: grayColor),
+            if(desktop) horizontalSpace(20),
+
+            const Icon(Ionicons.logo_linkedin, color: grayColor),
           ],
         ),
         verticalSpace(20),

@@ -40,11 +40,11 @@ class _ThemeModeWidgetState extends State<ThemeModeWidget>
 
   void _handleTap() {
     Get.changeTheme(Get.isDarkMode? ThemeData.light(): ThemeData.dark());
-    if (_controller.isCompleted) {
-      _controller.reverse();
-    } else {
-      _controller.forward();
-    }
+    // if (_controller.isCompleted) {
+    //   _controller.reverse();
+    // } else {
+    //   _controller.forward();
+    // }
   }
 
   @override
@@ -64,7 +64,7 @@ class _ThemeModeWidgetState extends State<ThemeModeWidget>
             width: 30,
             height: 10,
             decoration: const BoxDecoration(
-              color: textColorGray,
+              color: grayColor,
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20)),
@@ -117,7 +117,7 @@ class _ThemeModeWidgetState extends State<ThemeModeWidget>
                   child: Transform.rotate(
                     angle: -math.pi / 1,
                     child: const Icon(Ionicons.bulb_outline,
-                        color: textColorGray, size: 30),
+                        color: grayColor, size: 30),
                   ),
                 ),
               ),

@@ -8,7 +8,7 @@ Widget buildNavItem(String title) {
     children: [
       const Icon(
         Icons.arrow_forward_ios,
-        color: textColorPurple,
+        color: accentColor,
         size: 16,
       ),
       Text(

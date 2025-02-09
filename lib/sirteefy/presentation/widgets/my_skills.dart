@@ -44,7 +44,7 @@ class MySkills extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: primaryColor,
                     border: Border.all(
-                      color: textColorPurple,
+                      color: accentColor,
                       width: 2,
                     ),
                   ),
@@ -78,7 +78,7 @@ class MySkills extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: primaryColor,
                     border: Border.all(
-                      color: textColorPurple,
+                      color: accentColor,
                       width: 2,
                     ),
                   ),
@@ -155,7 +155,7 @@ TextSpan textSpanText(String text) {
     style: AppThemes.firaCodeStyle(
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: Get.isDarkMode ? textColorGray: textColorBlack,
+      color: Get.isDarkMode ? grayColor: blackColor,
     ),
   );
 }

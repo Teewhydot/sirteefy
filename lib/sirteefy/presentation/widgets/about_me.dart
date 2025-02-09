@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import '../../../utils/color_palette/colors.dart';
@@ -22,31 +23,31 @@ class AboutMe extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
                 children: [
-              const TextSpan(text: "Hi, I'm Issa, a self taught"),
+              textSpanText("Hi, I'm Issa, a self taught"),
               TextSpan(
                 text: " software developer ",
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: textColorPurple,
+                  color: accentColor,
                 ),
               ),
-              const TextSpan(text: "with specialty in"),
+              textSpanText("with specialty in"),
               TextSpan(
                 text: " Flutter",
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: textColorPurple,
+                  color: accentColor,
                 ),
               ),
-              const TextSpan(text: " and"),
+              textSpanText(" and"),
               TextSpan(
                 text: " Jetpack Compose ",
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: textColorPurple,
+                  color: accentColor,
                 ),
               ),
             ])),
@@ -56,12 +57,11 @@ class AboutMe extends StatelessWidget {
           style: AppThemes.firaCodeStyle(
             fontSize: 16,
             fontWeight: FontWeight.normal,
-
           ),
         ),
         verticalSpace(20),
         const ProjectButton(
-            borderColor: textColorPurple,
+            borderColor: accentColor,
             icon: Ionicons.document,
             text: 'Download Resume'),
       ],

@@ -29,7 +29,7 @@ class SkillCategoryCard extends StatelessWidget {
               style: AppThemes.firaCodeStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: textColorPurple,
+                color: accentColor,
               ),
             ),
           ),

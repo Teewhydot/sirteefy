@@ -28,7 +28,7 @@ const Header({super.key, this.isHome = false});
               child: const SizedBox(
                     height: 20,
                     width: 20,
-                    child: Icon(Ionicons.arrow_back, color: textColorWhite)
+                    child: Icon(Ionicons.arrow_back, color: whiteColor)
                 ),
             ),
               horizontalSpace(10),
@@ -50,7 +50,7 @@ const Header({super.key, this.isHome = false});
           // Navigation items on the right
         if (isHome) ResponsiveVisibility(
             replacement: IconButton(
-              icon: const Icon(Icons.menu, color: textColorWhite),
+              icon: const Icon(Icons.menu, color: whiteColor),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },

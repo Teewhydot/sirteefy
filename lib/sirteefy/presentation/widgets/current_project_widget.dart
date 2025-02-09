@@ -69,7 +69,7 @@ class _ScrollingTextState extends State<ScrollingText>
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: textColorPurple,
+          color: accentColor,
           width: 2,
         ),
         borderRadius: BorderRadius.circular(borderWidthRadius),

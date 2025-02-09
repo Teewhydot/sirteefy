@@ -21,10 +21,10 @@ class AppThemes {
   static ThemeData lightTheme({double scaleFactor = 1.0}) {
     return ThemeData(
       useMaterial3: true,
-      scaffoldBackgroundColor: textColorWhite,
+      scaffoldBackgroundColor: whiteColor.withOpacity(0.85),
       brightness: Brightness.light,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: textColorWhite,
+        seedColor: whiteColor,
         brightness: Brightness.light,
       ),
       // textTheme: TextTheme(

@@ -41,7 +41,7 @@ class StupidQuote extends StatelessWidget {
                       height: 25,
                       width: 25,
                       color: primaryColor,
-                      child: const Icon(Icons.format_quote, color: textColorGray))),
+                      child: const Icon(Icons.format_quote, color: grayColor))),
               Positioned(
                   bottom: -10,
                   right: 10,
@@ -49,7 +49,7 @@ class StupidQuote extends StatelessWidget {
                       height: 25,
                       width: 25,
                       color: primaryColor,
-                      child: const Icon(Icons.format_quote, color: textColorGray))),
+                      child: const Icon(Icons.format_quote, color: grayColor))),
             ],
           ),
           IntrinsicWidth(

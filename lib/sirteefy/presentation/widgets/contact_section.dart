@@ -43,7 +43,7 @@ class Contact extends StatelessWidget {
           rowFlex: 1,
           child: Container(
             decoration: BoxDecoration(
-                border: Border.all(color: textColorPurple, width: 2),
+                border: Border.all(color: accentColor, width: 2),
                 borderRadius:
                     const BorderRadius.all(Radius.circular(borderWidthRadius))),
             child:Stack(
@@ -87,7 +87,7 @@ class Contact extends StatelessWidget {
                     verticalSpace(20),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: ProjectButton(borderColor: textColorPurple, icon: Icons.send, text: "Send"),
+                      child: ProjectButton(borderColor: accentColor, icon: Icons.send, text: "Send"),
                     )
                   ],
                 ),
