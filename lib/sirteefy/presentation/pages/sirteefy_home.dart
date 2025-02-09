@@ -3,6 +3,7 @@ import 'package:sirteefy/sirteefy/presentation/widgets/header_banner.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/projects.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/section_header.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
+import 'package:sirteefy/sirteefy/presentation/widgets/thememode_widget.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import '../widgets/about_me.dart';
 import '../widgets/contact_section.dart';
@@ -21,6 +22,7 @@ class SirteefyHome extends StatefulWidget {
 class _SirteefyHomeState extends State<SirteefyHome> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -78,6 +80,7 @@ class _SirteefyHomeState extends State<SirteefyHome> {
               ),
             ),
             const Positioned(top: 0,left: 0,right: 0, child: Header(isHome: true,)),
+            Positioned(top: 50,left: size.width*0.65, child: ThemeModeWidget(),)
           ],
         ),
       ),
