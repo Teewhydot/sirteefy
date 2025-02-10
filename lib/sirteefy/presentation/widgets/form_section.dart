@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
-class FormSection extends StatefulWidget {
+import '../../../utils/theme/theme_provider.dart';
+
+class FormSection extends ConsumerStatefulWidget {
   final String formLabel;
   final TextInputType typeOfKeyboard;
   final double? height;
@@ -16,10 +19,10 @@ class FormSection extends StatefulWidget {
       super.key});
 
   @override
-  State<FormSection> createState() => _FormSectionState();
+  ConsumerState<FormSection> createState() => _FormSectionState();
 }
 
-class _FormSectionState extends State<FormSection> {
+class _FormSectionState extends ConsumerState<FormSection> {
   @override
   void dispose() {
     super.dispose();
@@ -29,6 +32,7 @@ class _FormSectionState extends State<FormSection> {
   final controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final themeProvider = ref.watch(themeProviderController);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -41,7 +45,7 @@ class _FormSectionState extends State<FormSection> {
           Container(
             height: widget.height,
             decoration: BoxDecoration(
-                border: Border.all(width: 1)),
+                border: Border.all(width: 2, color: themeProvider.isDarkMode?grayColor:blackColor),),
             child: TextField(
               controller: controller,
               keyboardType: widget.typeOfKeyboard,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
@@ -6,14 +7,16 @@ import 'package:sirteefy/utils/color_palette/colors.dart';
 
 import '../../../generated/assets.dart';
 import '../../../utils/theme/sirteefy_themes.dart';
+import '../../../utils/theme/theme_provider.dart';
 import 'nav_item.dart';
 
-class Header extends StatelessWidget {
+class Header extends ConsumerWidget {
 final bool isHome;
 
 const Header({super.key, this.isHome = false});
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeProvider = ref.watch(themeProviderController);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
@@ -25,10 +28,10 @@ const Header({super.key, this.isHome = false});
               onTap: () {
                 Navigator.of(context).pop();
               },
-              child:  SizedBox(
+              child:   SizedBox(
                     height: 20,
                     width: 20,
-                    child: Icon(Ionicons.arrow_back, color: grayColor)
+                    child: Icon(Ionicons.arrow_back, color: themeProvider.isDarkMode?grayColor:blackColor),
                 ),
             ),
               horizontalSpace(10),
@@ -49,7 +52,7 @@ const Header({super.key, this.isHome = false});
           // Navigation items on the right
         if (isHome) ResponsiveVisibility(
             replacement: IconButton(
-              icon:  Icon(Icons.menu, color: grayColor),
+              icon:  const Icon(Icons.menu, color: grayColor),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },
