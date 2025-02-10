@@ -20,11 +20,22 @@ class SirteefyHome extends ConsumerStatefulWidget {
 }
 
 class _SirteefyHomeState extends ConsumerState<SirteefyHome> {
+  final GlobalKey contactKey = GlobalKey();
+  final GlobalKey aboutKey = GlobalKey();
+  final GlobalKey servicesKey = GlobalKey();
+  final GlobalKey homeKey = GlobalKey();
+  final GlobalKey projectsKey = GlobalKey();
+  final GlobalKey skillsKey = GlobalKey();
+  final ScrollController scrollController = ScrollController();
+  @override
+  void dispose() {
+    super.dispose();
+    scrollController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final themeProvider  = ref.watch(themeProviderController);
-
-    final size = MediaQuery.of(context).size;
+    final themeProvider = ref.watch(themeProviderController);
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -34,36 +45,41 @@ class _SirteefyHomeState extends ConsumerState<SirteefyHome> {
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                 child: Column(
                   children: [
-                    verticalSpace(100),
+                    KeyedSubtree(key: homeKey, child: verticalSpace(100)),
                     const HeaderBanner(),
                     verticalSpace(100),
-                    GestureDetector( onTap: (){
-                      themeProvider.toggleTheme();
-                    }, child: const StupidQuote()),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: verticalSpace(100),
+                    GestureDetector(
+                        onTap: () {
+                          themeProvider.toggleTheme();
+                        },
+                        child: const StupidQuote()),
+                    KeyedSubtree(
+                      key: projectsKey,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: verticalSpace(100),
+                      ),
                     ),
                     const SectionHeader(
                       title: 'Projects',
                     ),
                     verticalSpace(30),
                     const Projects(),
-                    verticalSpace(100),
+                    KeyedSubtree(key: skillsKey,  child: verticalSpace(100)),
                     const SectionHeader(
                       title: 'Skills',
                       rightSection: false,
                     ),
                     verticalSpace(30),
                     const MySkills(),
-                    verticalSpace(100),
+                    KeyedSubtree(key: aboutKey, child: verticalSpace(100)),
                     const SectionHeader(
                       title: 'About Me',
                       rightSection: false,
                     ),
                     verticalSpace(30),
                     const AboutMe(),
-                    verticalSpace(100),
+                    KeyedSubtree(key: contactKey, child: verticalSpace(100)),
                     const SectionHeader(
                       title: 'Contact',
                       rightSection: false,
@@ -72,7 +88,7 @@ class _SirteefyHomeState extends ConsumerState<SirteefyHome> {
                     const Contact(),
                     verticalSpace(100),
                     const Divider(
-                          height: 4,
+                      height: 4,
                     ),
                     verticalSpace(30),
                     const Footer(),
@@ -81,7 +97,19 @@ class _SirteefyHomeState extends ConsumerState<SirteefyHome> {
                 ),
               ),
             ),
-            const Positioned(top: 0,left: 0,right: 0, child: Header(isHome: true,)),
+            Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: Header(
+                  isHome: true,
+                  homeKey: homeKey,
+                  aboutKey: aboutKey,
+                  servicesKey: servicesKey,
+                  contactKey: contactKey,
+                  projectsKey: projectsKey,
+                  skillsKey: skillsKey,
+                )),
           ],
         ),
       ),

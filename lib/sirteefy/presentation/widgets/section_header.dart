@@ -22,7 +22,7 @@ class SectionHeader extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buildNavItem(title),
+            buildNavItem(title, null),
             horizontalSpace(10),
             Container(
               height: 2,

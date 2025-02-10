@@ -9,78 +9,169 @@ import '../../../utils/theme/sirteefy_themes.dart';
 import '../../../utils/theme/theme_provider.dart';
 import 'nav_item.dart';
 
-class Header extends ConsumerWidget {
+class Header extends ConsumerStatefulWidget {
   final bool isHome;
+  final GlobalKey? homeKey;
+  final GlobalKey? aboutKey;
+  final GlobalKey? servicesKey;
+  final GlobalKey? contactKey;
+  final GlobalKey? projectsKey;
+  final GlobalKey? skillsKey;
 
-  const Header({super.key, this.isHome = false});
+
+  const Header({super.key, this.isHome = false,this.homeKey,  this.aboutKey, this.servicesKey,  this.contactKey,  this.projectsKey,  this.skillsKey});
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _HeaderState createState() => _HeaderState();
+}
+
+class _HeaderState extends ConsumerState<Header>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  bool _isPanelVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+  void scrollToSection(GlobalKey key) {
+    final context = key.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: const Duration(seconds: 1),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+  void _togglePanel() {
+    setState(() {
+      _isPanelVisible = !_isPanelVisible;
+      if (_isPanelVisible) {
+        _controller.forward();
+      } else {
+        _controller.reverse();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final themeProvider = ref.watch(themeProviderController);
-    return Container(
-      color: themeProvider.isDarkModeActive ? darkModeBGColor : grayColor,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          // Logo on the left
-          Row(
+    return Column(
+      children: [
+        Container(
+          color: themeProvider.isDarkModeActive ? darkModeBGColor : grayColor,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (!isHome)
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: SizedBox(
-                    height: 20,
-                    width: 20,
-                    child: Icon(Ionicons.arrow_back,
-                        color:
-                            themeProvider.isDarkModeActive ? grayColor : blackColor),
+              // Logo on the left
+              Row(
+                children: [
+                  if (!widget.isHome)
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: Icon(Ionicons.arrow_back,
+                            color: themeProvider.isDarkModeActive
+                                ? grayColor
+                                : blackColor),
+                      ),
+                    ),
+                  horizontalSpace(10),
+                  Image.asset(
+                    Assets.pngsLogo,
+                    height: 30,
+                  ),
+                  horizontalSpace(20),
+                  Text(
+                    'Sirteefy Apps',
+                    style: AppThemes.firaCodeStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              // Navigation items on the right
+              if (widget.isHome)
+                ResponsiveVisibility(
+                  replacement: IconButton(
+                    icon: Icon(
+                        _controller.isCompleted ? Icons.close : Icons.menu,
+                        color: themeProvider.isDarkModeActive
+                            ? grayColor
+                            : blackColor),
+                    onPressed: _togglePanel,
+                  ),
+                  hiddenConditions: const [
+                    Condition.smallerThan(name: TABLET),
+                    Condition.equals(name: TABLET),
+                    Condition.smallerThan(name: MOBILE)
+                  ],
+                  child: Row(
+                    children: [
+                      buildNavItem('Home', () => scrollToSection(widget.homeKey??GlobalKey())),
+                      const SizedBox(width: 20),
+                      buildNavItem('About', () => scrollToSection(widget.aboutKey??GlobalKey())),
+                      const SizedBox(width: 20),
+                      buildNavItem('Projects', () => scrollToSection(widget.projectsKey??GlobalKey())),
+                      const SizedBox(width: 20),
+                      buildNavItem('Skills', () => scrollToSection(widget.skillsKey??GlobalKey())),
+                      const SizedBox(width: 20),
+                      buildNavItem('Contact', () => scrollToSection(widget.contactKey??GlobalKey())),
+                    ],
                   ),
                 ),
-              horizontalSpace(10),
-              Image.asset(
-                Assets.pngsLogo,
-                height: 30,
-              ),
-              horizontalSpace(20),
-              Text(
-                'Sirteefy Apps',
-                style: AppThemes.firaCodeStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
             ],
           ),
-          // Navigation items on the right
-          if (isHome)
-            ResponsiveVisibility(
-              replacement: IconButton(
-                icon: const Icon(Icons.menu, color: grayColor),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizeTransition(
+            sizeFactor: _animation,
+            axisAlignment: -1.0,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(
+                color: themeProvider.isDarkModeActive
+                    ? darkModeBGColor
+                    : grayColor,
+                border: Border.all(color: accentColor),
               ),
-              hiddenConditions: const [
-                Condition.smallerThan(name: TABLET),
-                Condition.equals(name: TABLET),
-                Condition.smallerThan(name: MOBILE)
-              ],
-              child: Row(
+              child: Column(
                 children: [
-                  buildNavItem('Home'),
-                  const SizedBox(width: 20),
-                  buildNavItem('About'),
-                  const SizedBox(width: 20),
-                  buildNavItem('Services'),
-                  const SizedBox(width: 20),
-                  buildNavItem('Contact'),
+                  buildNavItem('Home', () => scrollToSection(widget.homeKey??GlobalKey())),
+                  buildNavItem('About', () => scrollToSection(widget.aboutKey??GlobalKey())),
+                  buildNavItem('Projects', () => scrollToSection(widget.projectsKey??GlobalKey())),
+                  buildNavItem('Skills', () => scrollToSection(widget.skillsKey??GlobalKey())),
+                  buildNavItem('Contact', () => scrollToSection(widget.contactKey??GlobalKey())),
                 ],
               ),
             ),
-        ],
-      ),
+          ),
+        ),
+      ],
     );
   }
 }
