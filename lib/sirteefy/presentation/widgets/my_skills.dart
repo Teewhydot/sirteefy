@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_common/get_reset.dart';
@@ -10,6 +11,7 @@ import 'package:sirteefy/utils/color_palette/colors.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
 import '../../../generated/assets.dart';
+import '../../../utils/theme/theme_provider.dart';
 
 class MySkills extends StatelessWidget {
   const MySkills({super.key});
@@ -42,7 +44,7 @@ class MySkills extends StatelessWidget {
                   height: 90,
                   width: 90,
                   decoration: BoxDecoration(
-                    color: primaryColor,
+                    color: darkModeBGColor,
                     border: Border.all(
                       color: accentColor,
                       width: 2,
@@ -76,7 +78,7 @@ class MySkills extends StatelessWidget {
                   height: 50,
                   width: 50,
                   decoration: BoxDecoration(
-                    color: primaryColor,
+                    color: darkModeBGColor,
                     border: Border.all(
                       color: accentColor,
                       width: 2,
@@ -139,7 +141,6 @@ Widget firacodeStyleText(String text, {double fontSize = 16,FontWeight fontWeigh
     padding:applyPadding? const EdgeInsets.only(left: 10.0,right: 10.0,top: 8.0):EdgeInsets.zero,
     child: Text(
       text,
-
       style: AppThemes.firaCodeStyle(
         fontSize: fontSize,
         fontWeight: fontWeight,
@@ -149,13 +150,14 @@ Widget firacodeStyleText(String text, {double fontSize = 16,FontWeight fontWeigh
 }
 
 
-TextSpan textSpanText(String text) {
+TextSpan textSpanText(String text,WidgetRef ref) {
+  final themeProvider  = ref.watch(themeProviderController);
   return TextSpan(
     text: text,
     style: AppThemes.firaCodeStyle(
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: Get.isDarkMode ? grayColor: blackColor,
+      color: themeProvider.isDarkMode ? grayColor: blackColor,
     ),
   );
 }

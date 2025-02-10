@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
@@ -6,20 +7,20 @@ import 'package:sirteefy/sirteefy/presentation/widgets/section_header.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import '../../../generated/assets.dart';
 import '../../../utils/color_palette/colors.dart';
+import '../../../utils/theme/theme_provider.dart';
 import '../widgets/header.dart';
 import '../widgets/matrix_dot widget.dart';
 
-class AllProjects extends StatelessWidget {
+class AllProjects extends ConsumerWidget {
   const AllProjects({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     final childAspectRatio = screenWidth / screenHeight;
-
+    final themeProvider = ref.watch(themeProviderController);
     return Scaffold(
-       
         body: SafeArea(
           child: Stack(children: [
             const Positioned(
@@ -53,7 +54,7 @@ class AllProjects extends StatelessWidget {
                     height: 90,
                     width: 90,
                     decoration: BoxDecoration(
-                      color: primaryColor,
+                      color: darkModeBGColor,
                       border: Border.all(
                         color: accentColor,
                         width: 2,
@@ -70,7 +71,7 @@ class AllProjects extends StatelessWidget {
                     height: 90,
                     width: 90,
                     decoration: BoxDecoration(
-                      color: primaryColor,
+                      color: darkModeBGColor,
                       border: Border.all(
                         color: accentColor,
                         width: 2,
@@ -87,7 +88,7 @@ class AllProjects extends StatelessWidget {
                     height: 90,
                     width: 90,
                     decoration: BoxDecoration(
-                      color: primaryColor,
+                      color: darkModeBGColor,
                       border: Border.all(
                         color: accentColor,
                         width: 2,
@@ -104,7 +105,7 @@ class AllProjects extends StatelessWidget {
                     height: 90,
                     width: 90,
                     decoration: BoxDecoration(
-                      color: primaryColor,
+                      color: darkModeBGColor,
                       border: Border.all(
                         color: accentColor,
                         width: 2,
@@ -178,7 +179,7 @@ class AllProjects extends StatelessWidget {
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
-                      color: primaryColor,
+                      color: darkModeBGColor,
                       border: Border.all(
                         color: accentColor,
                         width: 2,
@@ -193,20 +194,19 @@ class AllProjects extends StatelessWidget {
                   child: SectionHeader(title: "Projects", rightSection: false),
                 ),
                 verticalSpace(50),
-                ResponsiveGridView.builder(
-                  alignment: Alignment.center,
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: ResponsiveGridDelegate(
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15,
-                    crossAxisExtent: 350,
-                    childAspectRatio: childAspectRatio * 1.6,
-                  ),
-                  itemCount: 6,
-                  itemBuilder: (context, index) {
-                    return const ProjectCard();
-                  },
+                SizedBox(
+                  height: screenHeight,
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: screenWidth < 800 ? 1 : 2,
+                      childAspectRatio: childAspectRatio,
+                    ),
+                    itemCount: 4,
+                    itemBuilder: (context, index) {
+                      return ProjectCard(
+                      );
+                    },
+                  )
                 ),
               ]),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
@@ -6,11 +7,11 @@ import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import '../../../utils/color_palette/colors.dart';
 import '../../../utils/theme/sirteefy_themes.dart';
 
-class AboutMe extends StatelessWidget {
+class AboutMe extends ConsumerWidget {
   const AboutMe({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -23,7 +24,7 @@ class AboutMe extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
                 children: [
-              textSpanText("Hi, I'm Issa, a self taught"),
+              textSpanText("Hi, I'm Issa, a self taught",ref),
               TextSpan(
                 text: " software developer ",
                 style: AppThemes.firaCodeStyle(
@@ -32,7 +33,7 @@ class AboutMe extends StatelessWidget {
                   color: accentColor,
                 ),
               ),
-              textSpanText("with specialty in"),
+              textSpanText("with specialty in",ref),
               TextSpan(
                 text: " Flutter",
                 style: AppThemes.firaCodeStyle(
@@ -41,7 +42,7 @@ class AboutMe extends StatelessWidget {
                   color: accentColor,
                 ),
               ),
-              textSpanText(" and"),
+              textSpanText(" and",ref),
               TextSpan(
                 text: " Jetpack Compose ",
                 style: AppThemes.firaCodeStyle(

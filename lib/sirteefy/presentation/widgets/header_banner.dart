@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -12,11 +13,11 @@ import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
 import '../../../generated/assets.dart';
 
-class HeaderBanner extends StatelessWidget {
+class HeaderBanner extends ConsumerWidget {
   const HeaderBanner({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     return ResponsiveRowColumn(
       columnSpacing: 20,
       rowSpacing: 10,
@@ -79,7 +80,7 @@ class HeaderBanner extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
                 children: [
-                  textSpanText("Tunde is a"),
+                  textSpanText("Tunde is a",ref),
                   TextSpan(
                       text: " software developer ",
                     style: AppThemes.firaCodeStyle(
@@ -88,7 +89,7 @@ class HeaderBanner extends StatelessWidget {
                     color: accentColor,
                   ),
                   ),
-                  textSpanText("and a"),
+                  textSpanText("and a",ref),
 
                   TextSpan(
                     text: " tech enthusiast ",

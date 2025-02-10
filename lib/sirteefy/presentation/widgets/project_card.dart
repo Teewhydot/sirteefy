@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import '../../../generated/assets.dart';
 import '../../../utils/other/misc.dart';
+import '../../../utils/theme/theme_provider.dart';
 
-class ProjectCard extends StatelessWidget {
+class ProjectCard extends ConsumerWidget {
   const ProjectCard({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeProvider  = ref.watch(themeProviderController);
     return Container(
       width: 350,
       decoration: BoxDecoration(
@@ -26,17 +29,18 @@ class ProjectCard extends StatelessWidget {
           Container(
             width: 350,
             height: 200,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
                   width: 2,
+                  color: themeProvider.isDarkMode?grayColor:blackColor
                 ),
               ),
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(borderWidthRadius),
                 topRight: Radius.circular(borderWidthRadius),
               ),
-              image: DecorationImage(
+              image: const DecorationImage(
                 image: AssetImage(Assets.pngsMe),
                 fit: BoxFit.cover,
               ),

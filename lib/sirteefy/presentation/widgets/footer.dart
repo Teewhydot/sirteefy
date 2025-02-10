@@ -1,31 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 
 import '../../../utils/color_palette/colors.dart';
+import '../../../utils/theme/theme_provider.dart';
 
-class Footer extends StatelessWidget {
+class Footer extends ConsumerWidget {
   const Footer({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
+    final themeProvider = ref.watch(themeProviderController);
+
     bool desktop =  ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET);
     return Column(
       children: [
          Row(
           mainAxisAlignment: desktop? MainAxisAlignment.center: MainAxisAlignment.spaceEvenly,
           children: [
-            const Icon(Ionicons.logo_github, color: grayColor),
+            Icon(Ionicons.logo_github,        color: themeProvider.isDarkMode?grayColor:blackColor,
+            ),
             if(desktop) horizontalSpace(20),
-            const Icon(Ionicons.logo_twitter, color: grayColor),
+             Icon(Ionicons.logo_twitter,        color: themeProvider.isDarkMode?grayColor:blackColor,
+            ),
             if(desktop) horizontalSpace(20),
 
-            const Icon(Ionicons.logo_instagram, color: grayColor),
+             Icon(Ionicons.logo_instagram,        color: themeProvider.isDarkMode?grayColor:blackColor,
+            ),
             if(desktop) horizontalSpace(20),
 
-            const Icon(Ionicons.logo_linkedin, color: grayColor),
+             Icon(Ionicons.logo_linkedin,     color: themeProvider.isDarkMode?grayColor:blackColor,
+            ),
           ],
         ),
         verticalSpace(20),

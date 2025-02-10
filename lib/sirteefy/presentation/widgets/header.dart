@@ -25,14 +25,13 @@ const Header({super.key, this.isHome = false});
               onTap: () {
                 Navigator.of(context).pop();
               },
-              child: const SizedBox(
+              child:  SizedBox(
                     height: 20,
                     width: 20,
-                    child: Icon(Ionicons.arrow_back, color: whiteColor)
+                    child: Icon(Ionicons.arrow_back, color: grayColor)
                 ),
             ),
               horizontalSpace(10),
-
               Image.asset(
               Assets.pngsLogo,
                 height: 30,
@@ -50,7 +49,7 @@ const Header({super.key, this.isHome = false});
           // Navigation items on the right
         if (isHome) ResponsiveVisibility(
             replacement: IconButton(
-              icon: const Icon(Icons.menu, color: whiteColor),
+              icon:  Icon(Icons.menu, color: grayColor),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },

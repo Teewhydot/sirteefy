@@ -21,10 +21,10 @@ class AppThemes {
   static ThemeData lightTheme({double scaleFactor = 1.0}) {
     return ThemeData(
       useMaterial3: true,
-      scaffoldBackgroundColor: whiteColor.withOpacity(0.85),
+      scaffoldBackgroundColor: grayColor,
       brightness: Brightness.light,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: whiteColor,
+        seedColor: grayColor,
         brightness: Brightness.light,
       ),
       // textTheme: TextTheme(
@@ -99,10 +99,10 @@ class AppThemes {
   static ThemeData darkTheme({double scaleFactor = 1.0}) {
     return ThemeData(
       useMaterial3: true,
-      scaffoldBackgroundColor: primaryColor,
+      scaffoldBackgroundColor: darkModeBGColor,
 brightness: Brightness.dark,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: primaryColor,
+        seedColor: darkModeBGColor,
         brightness: Brightness.dark,
       ),
     );
