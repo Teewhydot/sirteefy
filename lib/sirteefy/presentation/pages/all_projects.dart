@@ -23,7 +23,7 @@ class AllProjects extends ConsumerWidget {
                 flexibleSpace: const Header(
                   isHome: false,
                 ),
-                backgroundColor: themeProvider.isDarkMode?darkModeBGColor:grayColor,
+                backgroundColor: themeProvider.isDarkModeActive?darkModeBGColor:grayColor,
               ),
               SliverList(delegate: SliverChildListDelegate([
                 Stack(children: [

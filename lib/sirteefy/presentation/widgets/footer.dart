@@ -21,18 +21,18 @@ class Footer extends ConsumerWidget {
          Row(
           mainAxisAlignment: desktop? MainAxisAlignment.center: MainAxisAlignment.spaceEvenly,
           children: [
-            Icon(Ionicons.logo_github,        color: themeProvider.isDarkMode?grayColor:blackColor,
+            Icon(Ionicons.logo_github,        color: themeProvider.isDarkModeActive?grayColor:blackColor,
             ),
             if(desktop) horizontalSpace(20),
-             Icon(Ionicons.logo_twitter,        color: themeProvider.isDarkMode?grayColor:blackColor,
-            ),
-            if(desktop) horizontalSpace(20),
-
-             Icon(Ionicons.logo_instagram,        color: themeProvider.isDarkMode?grayColor:blackColor,
+             Icon(Ionicons.logo_twitter,        color: themeProvider.isDarkModeActive?grayColor:blackColor,
             ),
             if(desktop) horizontalSpace(20),
 
-             Icon(Ionicons.logo_linkedin,     color: themeProvider.isDarkMode?grayColor:blackColor,
+             Icon(Ionicons.logo_instagram,        color: themeProvider.isDarkModeActive?grayColor:blackColor,
+            ),
+            if(desktop) horizontalSpace(20),
+
+             Icon(Ionicons.logo_linkedin,     color: themeProvider.isDarkModeActive?grayColor:blackColor,
             ),
           ],
         ),

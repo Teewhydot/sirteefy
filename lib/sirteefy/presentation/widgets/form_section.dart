@@ -45,7 +45,7 @@ class _FormSectionState extends ConsumerState<FormSection> {
           Container(
             height: widget.height,
             decoration: BoxDecoration(
-                border: Border.all(width: 2, color: themeProvider.isDarkMode?grayColor:blackColor),),
+                border: Border.all(width: 2, color: themeProvider.isDarkModeActive?grayColor:blackColor),),
             child: TextField(
               controller: controller,
               keyboardType: widget.typeOfKeyboard,

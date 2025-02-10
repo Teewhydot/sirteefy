@@ -25,17 +25,17 @@ final themeProviderController = ChangeNotifierProvider<ThemeProvider>((ref) {
 class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.light;
 
-  bool get isDarkMode => themeMode == ThemeMode.dark;
+  bool get isDarkModeActive => themeMode == ThemeMode.dark;
 
   ThemeProvider(bool isDarkMode) {
     themeMode = isDarkMode ? ThemeMode.dark : ThemeMode.light;
   }
 
-  void toggleTheme(bool isOn) async {
+  void toggleTheme() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    themeMode = isOn ? ThemeMode.light
+    themeMode = themeMode == ThemeMode.dark ? ThemeMode.light
         : ThemeMode.dark;
-    sharedPreferences.setBool('darkMode', isOn);
+    sharedPreferences.setBool('darkMode', isDarkModeActive);
     notifyListeners();
   }
 }

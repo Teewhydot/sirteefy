@@ -38,7 +38,7 @@ class _SirteefyHomeState extends ConsumerState<SirteefyHome> {
                     const HeaderBanner(),
                     verticalSpace(100),
                     GestureDetector( onTap: (){
-                      themeProvider.toggleTheme(themeProvider.isDarkMode);
+                      themeProvider.toggleTheme();
                     }, child: const StupidQuote()),
                     Padding(
                       padding: const EdgeInsets.all(10.0),

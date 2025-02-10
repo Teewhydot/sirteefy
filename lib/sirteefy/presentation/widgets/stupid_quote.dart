@@ -26,7 +26,7 @@ class StupidQuote extends ConsumerWidget {
                   decoration: BoxDecoration(
                     border: Border.all(
                           width: 1,
-                          color: themeProvider.isDarkMode?grayColor:blackColor
+                          color: themeProvider.isDarkModeActive?grayColor:blackColor
                     ),
                     borderRadius: BorderRadius.circular(borderWidthRadius),
                   ),
@@ -45,7 +45,7 @@ class StupidQuote extends ConsumerWidget {
                   child: Container(
                       height: 25,
                       width: 25,
-                      color: themeProvider.isDarkMode?darkModeBGColor:grayColor,
+                      color: themeProvider.isDarkModeActive?darkModeBGColor:grayColor,
                       child: Icon(Icons.format_quote, color: Colors.green.shade100))),
               Positioned(
                   bottom: -10,
@@ -53,7 +53,7 @@ class StupidQuote extends ConsumerWidget {
                   child: Container(
                       height: 25,
                       width: 25,
-                      color: themeProvider.isDarkMode?darkModeBGColor:grayColor,
+                      color: themeProvider.isDarkModeActive?darkModeBGColor:grayColor,
                       child:  Icon(Icons.format_quote, color:Colors.green.shade100))),
             ],
           ),
@@ -64,15 +64,15 @@ class StupidQuote extends ConsumerWidget {
                 border: Border(
                   left: BorderSide(
                     width: 1,
-                    color: themeProvider.isDarkMode?grayColor:blackColor
+                    color: themeProvider.isDarkModeActive?grayColor:blackColor
                   ),
                   right: BorderSide(
                     width: 1,
-                    color: themeProvider.isDarkMode?grayColor:blackColor
+                    color: themeProvider.isDarkModeActive?grayColor:blackColor
                   ),
                   bottom: BorderSide(
                     width: 1,
-                    color: themeProvider.isDarkMode?grayColor:blackColor
+                    color: themeProvider.isDarkModeActive?grayColor:blackColor
                   ),
                 ),
                 borderRadius: BorderRadius.circular(borderWidthRadius),

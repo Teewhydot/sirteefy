@@ -157,7 +157,7 @@ TextSpan textSpanText(String text,WidgetRef ref) {
     style: AppThemes.firaCodeStyle(
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: themeProvider.isDarkMode ? grayColor: blackColor,
+      color: themeProvider.isDarkModeActive ? grayColor: blackColor,
     ),
   );
 }

@@ -23,7 +23,7 @@ class SkillCategoryCard extends ConsumerWidget {
       decoration: BoxDecoration(
         border: Border.all(
           width: 2.0,
-          color: themeProvider.isDarkMode ? grayColor : blackColor,
+          color: themeProvider.isDarkModeActive ? grayColor : blackColor,
         ),
         borderRadius: BorderRadius.circular(borderWidthRadius),
       ),

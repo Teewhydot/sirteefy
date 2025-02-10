@@ -20,7 +20,7 @@ class ProjectCard extends ConsumerWidget {
         borderRadius: BorderRadius.circular(borderWidthRadius),
         border: Border.all(
           width: 2,
-          color: themeProvider.isDarkMode?grayColor:blackColor
+          color: themeProvider.isDarkModeActive?grayColor:blackColor
         ),
       ),
       child: Column(
@@ -34,7 +34,7 @@ class ProjectCard extends ConsumerWidget {
               border: Border(
                 bottom: BorderSide(
                   width: 2,
-                  color: themeProvider.isDarkMode?grayColor:blackColor
+                  color: themeProvider.isDarkModeActive?grayColor:blackColor
                 ),
               ),
               borderRadius: const BorderRadius.only(
