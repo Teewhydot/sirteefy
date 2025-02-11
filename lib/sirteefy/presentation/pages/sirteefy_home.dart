@@ -48,7 +48,9 @@ class _SirteefyHomeState extends ConsumerState<SirteefyHome> {
                 child: Column(
                   children: [
                     KeyedSubtree(key: homeKey, child: verticalSpace(100)),
-                    const HeaderBanner(),
+                    HeaderBanner(
+                      contactKey: contactKey,
+                    ),
                     verticalSpace(100),
                     GestureDetector(
                         onTap: () {

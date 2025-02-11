@@ -14,8 +14,20 @@ import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 import '../../../generated/assets.dart';
 
 class HeaderBanner extends ConsumerWidget {
-  const HeaderBanner({super.key});
 
+  final GlobalKey? contactKey;
+
+  const HeaderBanner({super.key, this.contactKey});
+  void scrollToSection(GlobalKey key) {
+    final context = key.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: const Duration(seconds: 1),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
   @override
   Widget build(BuildContext context,WidgetRef ref) {
     return ResponsiveRowColumn(
@@ -109,7 +121,9 @@ class HeaderBanner extends ConsumerWidget {
                 ),
               ),
               verticalSpace(50),
-                     ProjectButton(borderColor: accentColor, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',onTap: (){},),
+                     ProjectButton(borderColor: accentColor, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',onTap: (){
+                       scrollToSection(contactKey??GlobalKey());
+                     },),
             ],
           ),
         ),
