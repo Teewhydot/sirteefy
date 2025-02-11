@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:get/get_common/get_reset.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:sirteefy/sirteefy/presentation/manager/skills/skills_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/matrix_dot%20widget.dart';
+import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/skill_category_card.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../generated/assets.dart';
 import '../../../utils/theme/theme_provider.dart';
@@ -86,48 +87,84 @@ class MySkills extends StatelessWidget {
                   ),
                 ),
               )),
-          ResponsiveRowColumn(
-            rowMainAxisAlignment: MainAxisAlignment.center,
-            rowCrossAxisAlignment: CrossAxisAlignment.center,
-            layout: ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
-                ? ResponsiveRowColumnType.COLUMN
-                : ResponsiveRowColumnType.ROW,
-            children: [
-              ResponsiveRowColumnItem(
-                rowFlex: 1,
-                child: SkillCategoryCard(
-                    title: "Tools",
-                    content: Column(
-                      children: [
-                        firacodeStyleText("Dart, Python, Java, C++"),
-                        firacodeStyleText("Dart, Python, Java, C++"),
-                      ],
-                    )),
-              ),
-              ResponsiveRowColumnItem(
-                rowFlex: 1,
-                child: SkillCategoryCard(
-                    title: "Tools",
-                    content: Column(
-                      children: [
-                        firacodeStyleText("Dart, Python, Java, C++"),
-                        firacodeStyleText("Dart, Python, Java, C++"),
-                      ],
-                    )),
-              ),
-              ResponsiveRowColumnItem(
-                rowFlex: 1,
-                child: SkillCategoryCard(
-                    title: "Tools",
-                    content: Column(
-                      children: [
-                        firacodeStyleText("Dart, Python, Java, C++"),
-                        firacodeStyleText("Dart, Python, Java, C++"),
-                      ],
-                    )),
-              ),
-            ],
+          BlocBuilder<SkillsBloc,SkillsState>(
+            builder: (context, state) {
+              if (state is SkillsLoading) {
+                return ResponsiveRowColumn(
+                  rowMainAxisAlignment: MainAxisAlignment.center,
+                  rowCrossAxisAlignment: CrossAxisAlignment.center,
+                  layout: ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
+                      ? ResponsiveRowColumnType.COLUMN
+                      : ResponsiveRowColumnType.ROW,
+                  children: [
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: Skeletonizer(
+                        child: SkillCategoryCard(
+                            title: "Tools",
+                            content: Column(
+                              children: [
+                                firacodeStyleText("Dart, Python, Java, C++"),
+                                firacodeStyleText("Dart, Python, Java, C++"),
+                              ],
+                            )),
+                      ),
+                    ),
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: Skeletonizer(
+                        child: SkillCategoryCard(
+                            title: "Tools",
+                            content: Column(
+                              children: [
+                                firacodeStyleText("Dart, Python, Java, C++"),
+                                firacodeStyleText("Dart, Python, Java, C++"),
+                              ],
+                            )),
+                      ),
+                    ),
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: Skeletonizer(
+                        child: SkillCategoryCard(
+                            title: "Tools",
+                            content: Column(
+                              children: [
+                                firacodeStyleText("Dart, Python, Java, C++"),
+                                firacodeStyleText("Dart, Python, Java, C++"),
+                              ],
+                            )),
+                      ),
+                    ),
+                  ],
+                );
+              } else if(state is SkillsInitial){
+                context.read<SkillsBloc>().add(GetSkills());
+                return Container();
+              }else if (state is SkillsLoaded) {
+                return Container();
+              } else if (state is SkillsError) {
+                return Center(
+                  child: Column(
+                    children: [
+                      const Text("Error"),
+                      ProjectButton(
+                        text: "Retry",
+                        borderColor: accentColor,
+                        icon: Icons.refresh,
+                        onTap: () {
+                          context.read<SkillsBloc>().add(GetSkills());
+                        },
+                      ),
+                    ],
+                  ),
+                );
+                } else {
+                return const Text("Error");
+              }
+            },
           ),
+
         ],
       ),
     );
