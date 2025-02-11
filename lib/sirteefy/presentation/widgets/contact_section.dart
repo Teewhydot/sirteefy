@@ -85,9 +85,9 @@ class Contact extends StatelessWidget {
                       isExpand: true,
                     ),
                     verticalSpace(20),
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: ProjectButton(borderColor: accentColor, icon: Icons.send, text: "Send"),
+                      child: ProjectButton(borderColor: accentColor, icon: Icons.send, text: "Send",onTap: (){},),
                     )
                   ],
                 ),

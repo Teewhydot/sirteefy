@@ -27,6 +27,8 @@ class _SirteefyHomeState extends ConsumerState<SirteefyHome> {
   final GlobalKey projectsKey = GlobalKey();
   final GlobalKey skillsKey = GlobalKey();
   final ScrollController scrollController = ScrollController();
+
+
   @override
   void dispose() {
     super.dispose();

@@ -109,7 +109,7 @@ class HeaderBanner extends ConsumerWidget {
                 ),
               ),
               verticalSpace(50),
-                    const ProjectButton(borderColor: accentColor, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',),
+                     ProjectButton(borderColor: accentColor, icon: Ionicons.phone_portrait_outline, text: 'Get in touch',onTap: (){},),
             ],
           ),
         ),

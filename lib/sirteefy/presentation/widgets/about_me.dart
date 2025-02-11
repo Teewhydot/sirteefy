@@ -61,9 +61,10 @@ class AboutMe extends ConsumerWidget {
           ),
         ),
         verticalSpace(20),
-        const ProjectButton(
+         ProjectButton(
             borderColor: accentColor,
             icon: Ionicons.document,
+            onTap: (){},
             text: 'Download Resume'),
       ],
     );
