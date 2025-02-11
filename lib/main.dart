@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:sirteefy/sirteefy/presentation/manager/projects/projects_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/pages/sirteefy_home.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 import 'package:sirteefy/utils/theme/theme_provider.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(ProviderScope(
+      child: MultiBlocProvider(providers: [
+    BlocProvider<ProjectsBloc>(
+      create: (context) => ProjectsBloc(),
+    ),
+  ], child: const MyApp())));
 }
 
 class MyApp extends ConsumerWidget {
@@ -14,9 +21,9 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-final themeProvider  = ref.watch(themeProviderController);
+    final themeProvider = ref.watch(themeProviderController);
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         home: const SirteefyHome(),
         theme: AppThemes.lightTheme(),
         darkTheme: AppThemes.darkTheme(),

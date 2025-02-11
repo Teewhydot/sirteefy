@@ -17,9 +17,10 @@ class Header extends ConsumerStatefulWidget {
   final GlobalKey? contactKey;
   final GlobalKey? projectsKey;
   final GlobalKey? skillsKey;
+  final bool? showNav;
 
 
-  const Header({super.key, this.isHome = false,this.homeKey,  this.aboutKey, this.servicesKey,  this.contactKey,  this.projectsKey,  this.skillsKey});
+  const Header({super.key,this.showNav=true, this.isHome = false,this.homeKey,  this.aboutKey, this.servicesKey,  this.contactKey,  this.projectsKey,  this.skillsKey});
 
   @override
   _HeaderState createState() => _HeaderState();
@@ -146,7 +147,7 @@ class _HeaderState extends ConsumerState<Header>
             ],
           ),
         ),
-        Padding(
+      if(widget.showNav==true)Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizeTransition(
             sizeFactor: _animation,

@@ -11,67 +11,53 @@ class AllProjects extends ConsumerWidget {
   const AllProjects({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final themeProvider = ref.watch(themeProviderController);
     return Scaffold(
         body: SafeArea(
-          child: CustomScrollView(
-            slivers: [
-               SliverAppBar(
-                pinned: true,
-                automaticallyImplyLeading: false,
-                flexibleSpace: const Header(
-                  isHome: false,
-                ),
-                backgroundColor: themeProvider.isDarkModeActive?darkModeBGColor:grayColor,
-              ),
-              SliverList(delegate: SliverChildListDelegate([
-                Stack(children: [
-                    SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        verticalSpace(20),
+            child: CustomScrollView(
+      slivers: [
+        const SliverAppBar(
+          pinned: true,
+          automaticallyImplyLeading: false,
+          flexibleSpace: Header(
+            isHome: false,
+            showNav: false,
+          ),
 
-                        const SectionHeader(
-                          title: 'All Projects',
-                          rightSection: false,
-                        ),
-                        verticalSpace(20),
-                       const Center(
-                         child: Wrap(
-                           direction: Axis.horizontal,
-                           spacing: 20,
-                           crossAxisAlignment: WrapCrossAlignment.center,
-                           // alignment: WrapAlignment.center,
-                           // runAlignment: WrapAlignment.center,
-                           runSpacing: 20,
-                           children: [
-                             ProjectCard(),
-                              ProjectCard(),
-                              ProjectCard(),
-                              ProjectCard(),
-                              ProjectCard(),
-                             ProjectCard(),
-                             ProjectCard(),
-                             ProjectCard(),
-                             ProjectCard(),
-                             ProjectCard(),
-                             ProjectCard(),
-                             ProjectCard(),
-                             ProjectCard(),
-                             ProjectCard(),
-                             ProjectCard(),
-                           ],
-                         ),
-                       ),
-                        verticalSpace(20),
-                      ],
-                    ),
-                  ),
-                ]),
-              ]))
-            ],
-          )
-        ));
+        ),
+        SliverList(
+            delegate: SliverChildListDelegate([
+          verticalSpace(20),
+          const SectionHeader(
+            title: 'All Projects',
+            rightSection: false,
+          ),
+          verticalSpace(20),
+          const Center(
+            child: Wrap(
+              direction: Axis.horizontal,
+              spacing: 20,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              alignment: WrapAlignment.center,
+              runAlignment: WrapAlignment.center,
+              runSpacing: 20,
+              children: [
+                ProjectCard(),
+                ProjectCard(),
+                ProjectCard(),
+                ProjectCard(),
+                ProjectCard(),
+                ProjectCard(),
+                ProjectCard(),
+                ProjectCard(),
+                ProjectCard(),
+              ],
+            ),
+          ),
+          verticalSpace(20),
+        ]))
+      ],
+    )));
   }
 }
