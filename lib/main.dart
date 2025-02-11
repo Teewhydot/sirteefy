@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/projects/projects_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/skills/skills_bloc.dart';
+import 'package:sirteefy/sirteefy/presentation/manager/social_media/get_sm_links_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/pages/sirteefy_home.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 import 'package:sirteefy/utils/theme/theme_provider.dart';
@@ -16,6 +17,12 @@ void main() {
     ),
         BlocProvider<SkillsBloc>(
           create: (context) => SkillsBloc(),
+        ),
+        BlocProvider<SkillsBloc>(
+          create: (context) => SkillsBloc(),
+        ),
+        BlocProvider<GetSmLinksBloc>(
+          create: (context) => GetSmLinksBloc(),
         ),
   ], child: const MyApp())));
 }
