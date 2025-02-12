@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/animated_square.dart';
+import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 
@@ -8,10 +9,12 @@ import '../../../utils/other/misc.dart';
 class ScrollingText extends StatefulWidget {
   final String project;
   final TextStyle style;
+  final TextStyle projectStyle;
 
   const ScrollingText({
     required this.project,
     this.style = const TextStyle(),
+    this.projectStyle = const TextStyle(),
     super.key,
   });
 
@@ -30,8 +33,7 @@ class _ScrollingTextState extends State<ScrollingText>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 20),
-    )..repeat(
-    );
+    )..repeat();
     _animation = Tween<double>(
       begin: 0,
       end: 0,
@@ -39,8 +41,13 @@ class _ScrollingTextState extends State<ScrollingText>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final textPainter = TextPainter(
         text: TextSpan(
-            text: "Currently working on ${widget.project}",
-            style: widget.style),
+            text: "Currently working on",
+            children: [
+              TextSpan(
+                text: " ${widget.project}",
+                style: widget.projectStyle,
+              )
+            ]),
         maxLines: 1,
         textDirection: TextDirection.ltr,
       )..layout();
@@ -67,43 +74,44 @@ class _ScrollingTextState extends State<ScrollingText>
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: accentColor,
-          width: 2,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: accentColor,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(borderWidthRadius),
         ),
-        borderRadius: BorderRadius.circular(borderWidthRadius),
-      ),
-      height: 50,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            const AnimatedSquare(),
-            horizontalSpace(10),
-            ClipRect(
-              child: AnimatedBuilder(
-                animation: _animation,
-                builder: (context, child) {
-                  return Transform.translate(
-                    offset: Offset(-_animation.value, 0),
-                    child: child,
-                  );
-                },
-                child: Center(
-                  child: Text(
-                    "Currently working on ${widget.project}",
-                    style: widget.style,
-                    maxLines: 1,
-                    softWrap: false,
-                    overflow: TextOverflow.visible,
-                  ),
+        height: 50,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              const AnimatedSquare(),
+              horizontalSpace(10),
+              ClipRect(
+                child: AnimatedBuilder(
+                  animation: _animation,
+                  builder: (context, child) {
+                    return Transform.translate(
+                      offset: Offset(-_animation.value, 0),
+                      child: child,
+                    );
+                  },
+                  child: Center(
+                    child: Text.rich( TextSpan(
+                        text: "Currently working on",
+                        children: [
+                          TextSpan(
+                            text: " ${widget.project}",
+                            style: widget.projectStyle,
+                          )
+                        ]),
+                    ),
+                  )
                 ),
               ),
-            ),
-          ],
-        ),
-      )
-    );
+            ],
+          ),
+        ));
   }
 }

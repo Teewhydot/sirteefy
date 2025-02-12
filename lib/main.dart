@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:sirteefy/sirteefy/presentation/manager/current_project/current_project_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/projects/projects_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/skills/skills_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/social_media/get_sm_links_bloc.dart';
@@ -16,18 +17,20 @@ void main() {
     BlocProvider<ProjectsBloc>(
       create: (context) => ProjectsBloc(),
     ),
-        BlocProvider<SkillsBloc>(
-          create: (context) => SkillsBloc(),
-        ),
-        BlocProvider<SkillsBloc>(
-          create: (context) => SkillsBloc(),
-        ),
-        BlocProvider<GetSmLinksBloc>(
-          create: (context) => GetSmLinksBloc(),
-        ),
-        BlocProvider<GetStupidQuoteBloc>(
-          create: (context) => GetStupidQuoteBloc(),
-        ),
+    BlocProvider<SkillsBloc>(
+      create: (context) => SkillsBloc(),
+    ),
+    BlocProvider<SkillsBloc>(
+      create: (context) => SkillsBloc(),
+    ),
+    BlocProvider<GetSmLinksBloc>(
+      create: (context) => GetSmLinksBloc(),
+    ),
+    BlocProvider<GetStupidQuoteBloc>(
+      create: (context) => GetStupidQuoteBloc(),
+    ),
+    BlocProvider<CurrentProjectBloc>(
+        create: (context) => CurrentProjectBloc())
   ], child: const MyApp())));
 }
 
