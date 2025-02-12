@@ -5,6 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/projects/projects_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/skills/skills_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/social_media/get_sm_links_bloc.dart';
+import 'package:sirteefy/sirteefy/presentation/manager/stupid_quote/get_stupid_quote_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/pages/sirteefy_home.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 import 'package:sirteefy/utils/theme/theme_provider.dart';
@@ -23,6 +24,9 @@ void main() {
         ),
         BlocProvider<GetSmLinksBloc>(
           create: (context) => GetSmLinksBloc(),
+        ),
+        BlocProvider<GetStupidQuoteBloc>(
+          create: (context) => GetStupidQuoteBloc(),
         ),
   ], child: const MyApp())));
 }

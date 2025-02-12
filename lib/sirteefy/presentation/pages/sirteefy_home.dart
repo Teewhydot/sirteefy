@@ -52,11 +52,7 @@ class _SirteefyHomeState extends ConsumerState<SirteefyHome> {
                       contactKey: contactKey,
                     ),
                     verticalSpace(100),
-                    GestureDetector(
-                        onTap: () {
-                          themeProvider.toggleTheme();
-                        },
-                        child: const StupidQuote()),
+                    const StupidQuote(),
                     KeyedSubtree(
                       key: projectsKey,
                       child: Padding(
