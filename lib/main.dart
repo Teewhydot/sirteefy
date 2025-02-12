@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:sirteefy/sirteefy/presentation/manager/contact/send_message_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/current_project/current_project_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/projects/projects_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/skills/skills_bloc.dart';
@@ -17,6 +18,9 @@ void main() {
     BlocProvider<ProjectsBloc>(
       create: (context) => ProjectsBloc(),
     ),
+        BlocProvider<SendMessageBloc>(
+          create: (context) => SendMessageBloc(),
+        ),
     BlocProvider<SkillsBloc>(
       create: (context) => SkillsBloc(),
     ),

@@ -10,12 +10,14 @@ class FormSection extends ConsumerStatefulWidget {
   final TextInputType typeOfKeyboard;
   final double? height;
   final bool? isExpand;
+  final TextEditingController textEditingController;
 
   const FormSection(
       {this.height,
       this.isExpand,
       this.formLabel = '',
       this.typeOfKeyboard = TextInputType.text,
+        required this.textEditingController,
       super.key});
 
   @override
@@ -23,13 +25,8 @@ class FormSection extends ConsumerStatefulWidget {
 }
 
 class _FormSectionState extends ConsumerState<FormSection> {
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
-  }
 
-  final controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = ref.watch(themeProviderController);
@@ -47,7 +44,7 @@ class _FormSectionState extends ConsumerState<FormSection> {
             decoration: BoxDecoration(
                 border: Border.all(width: 2, color: themeProvider.isDarkModeActive?grayColor:blackColor),),
             child: TextField(
-              controller: controller,
+              controller: widget.textEditingController,
               keyboardType: widget.typeOfKeyboard,
               expands: widget.isExpand ?? false,
               minLines: null,
