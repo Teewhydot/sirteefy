@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
+import 'package:sirteefy/sirteefy/url_launcher.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import '../../../generated/assets.dart';
 import '../../../utils/other/misc.dart';
 import '../../../utils/theme/theme_provider.dart';
 
 class ProjectCard extends ConsumerWidget {
-  const ProjectCard({super.key});
+final String? projectName;
+final String? projectDescription;
+final String? projectGithubLink;
+final String? projectLiveLink;
+final List<String>? projectTechStack;
+
+
+  const ProjectCard({super.key,  this.projectName,  this.projectDescription,  this.projectGithubLink,  this.projectLiveLink, this.projectTechStack});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,18 +56,18 @@ class ProjectCard extends ConsumerWidget {
               ),
             ),
           ),
-          firacodeStyleText("Flutter,Dart,Firebase Github",
+          firacodeStyleText(projectTechStack?.join(', ')??'Tech Stack',
               fontWeight: FontWeight.normal, fontSize: 16),
           const Divider(
 
             thickness: 2,
           ),
           verticalSpace(10),
-          firacodeStyleText("Spoteefy",
+          firacodeStyleText(projectName??'Project Name',
               fontWeight: FontWeight.bold, fontSize: 16),
           verticalSpace(10),
           firacodeStyleText(
-              "A music player app built with flutter and firebase and some state management package",
+              projectDescription??'Project Description',
               fontWeight: FontWeight.normal,
               fontSize: 16),
           verticalSpace(10),
@@ -70,14 +79,27 @@ class ProjectCard extends ConsumerWidget {
                   icon: Ionicons.logo_github,
                   text: "Code",
                   borderColor: accentColor,
-                   onTap: (){},
+                   onTap: (){
+                    if(projectGithubLink!=null){
+                      launchWebsiteUrl(projectGithubLink!);
+                    } else {
+                      showToast('No Github link');
+
+                    }
+                   },
                 ),
                 horizontalSpace(10),
                  ProjectButton(
                   borderColor: accentColor,
                   icon: Ionicons.play,
                   text: "Live",
-                  onTap: (){},
+                  onTap: (){
+                    if(projectLiveLink!=null){
+                      launchWebsiteUrl(projectLiveLink!);
+                    } else {
+                      showToast('No Live link');
+                    }
+                  },
                 ),
               ],
             ),

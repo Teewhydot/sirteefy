@@ -57,13 +57,34 @@ class Projects extends StatelessWidget {
                 ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
                 ? ResponsiveRowColumnType.COLUMN
                 : ResponsiveRowColumnType.ROW,
-            children: const [
+            children: [
               ResponsiveRowColumnItem(
-                  rowFlex: 1, child: ProjectCard()),
+                  rowFlex: 1, child: ProjectCard(
+                projectName: state.projects[0].name,
+                projectDescription: state.projects[0].description,
+                projectGithubLink: state.projects[0].githubLink,
+                projectLiveLink: state.projects[0].projectUrl,
+                projectTechStack: state.projects[0].technologies,
+
+              )),
               ResponsiveRowColumnItem(
-                  rowFlex: 1, child: ProjectCard()),
+                  rowFlex: 1, child: ProjectCard(
+                projectName: state.projects[1].name,
+                projectDescription: state.projects[1].description,
+                projectGithubLink: state.projects[1].githubLink,
+                projectLiveLink: state.projects[1].projectUrl,
+                projectTechStack: state.projects[1].technologies,
+
+              )),
               ResponsiveRowColumnItem(
-                  rowFlex: 1, child: ProjectCard()),
+                  rowFlex: 1, child: ProjectCard(
+                projectName: state.projects[2].name,
+                projectDescription: state.projects[2].description,
+                projectGithubLink: state.projects[2].githubLink,
+                projectLiveLink: state.projects[2].projectUrl,
+                projectTechStack: state.projects[2].technologies,
+
+              )),
             ],
           );
         }

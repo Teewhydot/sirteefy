@@ -56,7 +56,7 @@ class _ScrollingTextState extends State<ScrollingText>
         _textWidth = textPainter.width;
         _animation = Tween<double>(
           begin: 0,
-          end: _textWidth,
+          end: _textWidth/3,
         ).animate(CurvedAnimation(
           parent: _controller,
           curve: Curves.linear,
@@ -100,6 +100,7 @@ class _ScrollingTextState extends State<ScrollingText>
                   child: Center(
                     child: Text.rich( TextSpan(
                         text: "Currently working on",
+                        style: widget.style,
                         children: [
                           TextSpan(
                             text: " ${widget.project}",
