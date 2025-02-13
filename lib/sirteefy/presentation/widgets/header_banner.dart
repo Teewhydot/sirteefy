@@ -99,7 +99,7 @@ class HeaderBanner extends ConsumerWidget {
                       } else if (state is CurrentProjectLoaded){
                         return IntrinsicWidth(
                           child: ScrollingText(
-                            project: state.project,
+                            project: state.currentProject,
                             style: AppThemes.firaCodeStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,

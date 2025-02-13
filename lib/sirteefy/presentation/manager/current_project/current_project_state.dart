@@ -8,13 +8,13 @@ final class CurrentProjectInitial extends CurrentProjectState {}
 final class CurrentProjectLoading extends CurrentProjectState {}
 
 final class CurrentProjectLoaded extends CurrentProjectState {
-  final String project;
+  final String currentProject;
 
-  CurrentProjectLoaded(this.project);
+  CurrentProjectLoaded({required this.currentProject});
 }
 
 final class CurrentProjectError extends CurrentProjectState {
   final String message;
 
-  CurrentProjectError(this.message);
+  CurrentProjectError({required this.message});
 }
