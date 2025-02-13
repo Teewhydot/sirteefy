@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../domain/entities/project_entity.dart';
 
-abstract class ProjectDataSource {
+abstract class ProjectsDataSource {
   Future<List<ProjectEntity>> getProjects();
 }
 
 
-class ProjectsFireBaseDataSource implements ProjectDataSource {
+class ProjectsFireBaseDataSource implements ProjectsDataSource {
   final fireStore = FirebaseFirestore.instance;
 
 
@@ -22,6 +22,8 @@ class ProjectsFireBaseDataSource implements ProjectDataSource {
           projectUrl: element['web'],
           githubLink: element['github'],
           technologies: List<String>.from(element['technologies']),
+          images: List<String>.from(element['images']),
+          imageUrl: element['image'],
         ));
       }
     });

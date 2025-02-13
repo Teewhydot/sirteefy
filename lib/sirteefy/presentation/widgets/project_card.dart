@@ -16,9 +16,11 @@ final String? projectDescription;
 final String? projectGithubLink;
 final String? projectLiveLink;
 final List<String>? projectTechStack;
+final List<String>? projectImages;
+final String? projectImageUrl;
 
 
-  const ProjectCard({super.key,  this.projectName,  this.projectDescription,  this.projectGithubLink,  this.projectLiveLink, this.projectTechStack});
+  const ProjectCard({super.key,  this.projectName,  this.projectDescription,  this.projectGithubLink,  this.projectLiveLink, this.projectTechStack, this.projectImages, this.projectImageUrl});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -50,8 +52,8 @@ final List<String>? projectTechStack;
                 topLeft: Radius.circular(borderWidthRadius),
                 topRight: Radius.circular(borderWidthRadius),
               ),
-              image: const DecorationImage(
-                image: AssetImage(Assets.pngsMe),
+              image:  DecorationImage(
+                image: AssetImage(projectImageUrl??Assets.pngsMe),
                 fit: BoxFit.cover,
               ),
             ),

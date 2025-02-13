@@ -13,7 +13,7 @@ class ProjectsBloc extends Bloc<ProjectsEvent, ProjectsState> {
       emit(ProjectsLoading());
      await getProjectsUseCase.getProjects().then((projects) {
         projects.fold((failure) {
-          emit(ProjectsError(message: failure.toString()));
+          emit(ProjectsError(message: failure.message));
         }, (projects) {
           emit(ProjectsLoaded(projects: projects));
         });

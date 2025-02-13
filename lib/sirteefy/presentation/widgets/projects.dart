@@ -38,13 +38,19 @@ class Projects extends StatelessWidget {
             ],
           );
         } else if (state is ProjectsError) {
-          return Center(child: Column(
+          return Center(
+              child: Column(
             children: [
               Text(state.message),
               verticalSpace(20),
-               ProjectButton(borderColor: accentColor, icon: Ionicons.reload, text: 'Retry',onTap: (){
-                context.read<ProjectsBloc>().add(GetProjectsEvent());
-               },)
+              ProjectButton(
+                borderColor: accentColor,
+                icon: Ionicons.reload,
+                text: 'Retry',
+                onTap: () {
+                  context.read<ProjectsBloc>().add(GetProjectsEvent());
+                },
+              )
             ],
           ));
         } else if (state is ProjectsLoaded) {
@@ -59,32 +65,32 @@ class Projects extends StatelessWidget {
                 : ResponsiveRowColumnType.ROW,
             children: [
               ResponsiveRowColumnItem(
-                  rowFlex: 1, child: ProjectCard(
-                projectName: state.projects[0].name,
-                projectDescription: state.projects[0].description,
-                projectGithubLink: state.projects[0].githubLink,
-                projectLiveLink: state.projects[0].projectUrl,
-                projectTechStack: state.projects[0].technologies,
-
-              )),
+                  rowFlex: 1,
+                  child: ProjectCard(
+                    projectName: state.projects[0].name,
+                    projectDescription: state.projects[0].description,
+                    projectGithubLink: state.projects[0].githubLink,
+                    projectLiveLink: state.projects[0].projectUrl,
+                    projectTechStack: state.projects[0].technologies,
+                  )),
               ResponsiveRowColumnItem(
-                  rowFlex: 1, child: ProjectCard(
-                projectName: state.projects[1].name,
-                projectDescription: state.projects[1].description,
-                projectGithubLink: state.projects[1].githubLink,
-                projectLiveLink: state.projects[1].projectUrl,
-                projectTechStack: state.projects[1].technologies,
-
-              )),
+                  rowFlex: 1,
+                  child: ProjectCard(
+                    projectName: state.projects[1].name,
+                    projectDescription: state.projects[1].description,
+                    projectGithubLink: state.projects[1].githubLink,
+                    projectLiveLink: state.projects[1].projectUrl,
+                    projectTechStack: state.projects[1].technologies,
+                  )),
               ResponsiveRowColumnItem(
-                  rowFlex: 1, child: ProjectCard(
-                projectName: state.projects[2].name,
-                projectDescription: state.projects[2].description,
-                projectGithubLink: state.projects[2].githubLink,
-                projectLiveLink: state.projects[2].projectUrl,
-                projectTechStack: state.projects[2].technologies,
-
-              )),
+                  rowFlex: 1,
+                  child: ProjectCard(
+                    projectName: state.projects[2].name,
+                    projectDescription: state.projects[2].description,
+                    projectGithubLink: state.projects[2].githubLink,
+                    projectLiveLink: state.projects[2].projectUrl,
+                    projectTechStack: state.projects[2].technologies,
+                  )),
             ],
           );
         }

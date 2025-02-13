@@ -138,11 +138,50 @@ class MySkills extends StatelessWidget {
                     ),
                   ],
                 );
-              } else if(state is SkillsInitial){
+              }
+              else if(state is SkillsInitial){
                 context.read<SkillsBloc>().add(GetSkills());
                 return Container();
               }else if (state is SkillsLoaded) {
-                return Container();
+                return  ResponsiveRowColumn(
+                  rowMainAxisAlignment: MainAxisAlignment.center,
+                  rowCrossAxisAlignment: CrossAxisAlignment.center,
+                  layout: ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
+                      ? ResponsiveRowColumnType.COLUMN
+                      : ResponsiveRowColumnType.ROW,
+                  children: [
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: SkillCategoryCard(
+                          title: "Tools",
+                          content: Column(
+                            children: [
+                              firacodeStyleText(state.skills.tools?.join(', ')??''),
+                            ],
+                          )),
+                    ),
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: SkillCategoryCard(
+                          title: "Frameworks",
+                          content: Column(
+                            children: [
+                              firacodeStyleText(state.skills.frameworks?.join(', ')??''),
+                            ],
+                          )),
+                    ),
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: SkillCategoryCard(
+                          title: "Languages",
+                          content: Column(
+                            children: [
+                              firacodeStyleText(state.skills.languages?.join(', ')??''),
+                            ],
+                          )),
+                    ),
+                  ],
+                );
               } else if (state is SkillsError) {
                 return Center(
                   child: Column(

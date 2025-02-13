@@ -1,89 +1,13 @@
 {
   "project_info": {
-    "project_number": "421586403717",
-    "project_id": "porrrrtf",
-    "storage_bucket": "porrrrtf.appspot.com"
+    "project_number": "250836487682",
+    "project_id": "sirteefy-f3980",
+    "storage_bucket": "sirteefy-f3980.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:421586403717:android:0f130ce3a71a7c23a344ec",
-        "android_client_info": {
-          "package_name": "com.example.admin_portf"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDTG1fFOw9du-3rKtqa1wuqpdFmz3SLlhQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:421586403717:android:5a5dceae71b57e2fa344ec",
-        "android_client_info": {
-          "package_name": "com.example.adminportf"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDTG1fFOw9du-3rKtqa1wuqpdFmz3SLlhQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:421586403717:android:2cc4a65542c73d21a344ec",
-        "android_client_info": {
-          "package_name": "com.example.portfolio"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDTG1fFOw9du-3rKtqa1wuqpdFmz3SLlhQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:421586403717:android:d6df5368a0388ca1a344ec",
-        "android_client_info": {
-          "package_name": "com.example.portfolio_firebase"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDTG1fFOw9du-3rKtqa1wuqpdFmz3SLlhQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:421586403717:android:15f247116f3da507a344ec",
+        "mobilesdk_app_id": "1:250836487682:android:9789f0ebf0efa9c907211b",
         "android_client_info": {
           "package_name": "com.example.sirteefy"
         }
@@ -91,26 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDTG1fFOw9du-3rKtqa1wuqpdFmz3SLlhQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:421586403717:android:40909062fac45a7ba344ec",
-        "android_client_info": {
-          "package_name": "com.sirteefyapps.portfolio_android_ios"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDTG1fFOw9du-3rKtqa1wuqpdFmz3SLlhQ"
+          "current_key": "AIzaSyCxE3uGoEdPzufXCmu7gCjBsmoz3ZSO96Y"
         }
       ],
       "services": {

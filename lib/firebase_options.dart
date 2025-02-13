@@ -44,29 +44,28 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAqqeeCTDzv4kRXfv4MnZGjX0qWBhwf0CI',
-    appId: '1:421586403717:web:e4b72eea869f9104a344ec',
-    messagingSenderId: '421586403717',
-    projectId: 'porrrrtf',
-    authDomain: 'porrrrtf.firebaseapp.com',
-    storageBucket: 'porrrrtf.appspot.com',
-    measurementId: 'G-FQHFV2ZY0K',
+    apiKey: 'AIzaSyD-0_tWckdIhgg0dpPqUwCOVnB9_RWuD-4',
+    appId: '1:250836487682:web:5477dd56f040d9b507211b',
+    messagingSenderId: '250836487682',
+    projectId: 'sirteefy-f3980',
+    authDomain: 'sirteefy-f3980.firebaseapp.com',
+    storageBucket: 'sirteefy-f3980.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDTG1fFOw9du-3rKtqa1wuqpdFmz3SLlhQ',
-    appId: '1:421586403717:android:15f247116f3da507a344ec',
-    messagingSenderId: '421586403717',
-    projectId: 'porrrrtf',
-    storageBucket: 'porrrrtf.appspot.com',
+    apiKey: 'AIzaSyCxE3uGoEdPzufXCmu7gCjBsmoz3ZSO96Y',
+    appId: '1:250836487682:android:9789f0ebf0efa9c907211b',
+    messagingSenderId: '250836487682',
+    projectId: 'sirteefy-f3980',
+    storageBucket: 'sirteefy-f3980.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAnfTXiFPvHHuW_4_KYOH-vE45oQLan4lA',
-    appId: '1:421586403717:ios:eec305cff32aa828a344ec',
-    messagingSenderId: '421586403717',
-    projectId: 'porrrrtf',
-    storageBucket: 'porrrrtf.appspot.com',
+    apiKey: 'AIzaSyBpU_poZJeripqqKDRsZrsEBZ_4KmXULOg',
+    appId: '1:250836487682:ios:39eb2c52ddee432007211b',
+    messagingSenderId: '250836487682',
+    projectId: 'sirteefy-f3980',
+    storageBucket: 'sirteefy-f3980.firebasestorage.app',
     iosBundleId: 'com.example.sirteefy',
   );
 
