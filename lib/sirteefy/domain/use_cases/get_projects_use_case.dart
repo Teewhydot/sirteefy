@@ -5,7 +5,7 @@ import '../../data/repositories/projects_repo_impl.dart';
 import '../failures/failures.dart';
 
 class GetProjectsUseCase {
-  final projectRepo = ProjectRepoImplementation();
+  final projectRepo = SirteefyRepositoryImpl();
   Future<Either<Failure, List<ProjectEntity>>> getProjects() async {
     return await projectRepo.getProjectsFromDataSource();
   }

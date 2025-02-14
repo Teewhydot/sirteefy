@@ -23,9 +23,9 @@ class SendMessageFirebaseImplementation implements SendMessageRemoteDataSource {
         throw TimeoutException;
       });
       return MessageSentSuccess();
-    } on SocketException catch (e) {
+    } on SocketException catch (_) {
       throw NoInternetException;
-    } on FirebaseException catch (e) {
+    } on FirebaseException catch (_) {
       throw ServerException;
     } catch (e) {
       throw UnknownException;

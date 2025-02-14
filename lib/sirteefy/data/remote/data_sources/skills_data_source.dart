@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,10 +23,10 @@ class SkillsFireBaseDataSource implements SkillsDataSource {
       }).timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException();
       });
-    }  on SocketException catch (e) {
+    }  on SocketException catch (_) {
       throw NoInternetException();
     }
-    on FirebaseException catch (e) {
+    on FirebaseException catch (_) {
       throw ServerException();
     } catch (e) {
       throw UnknownException();

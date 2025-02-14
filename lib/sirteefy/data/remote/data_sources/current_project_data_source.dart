@@ -22,12 +22,12 @@ class CurrentProjectFireBaseDataSource implements CurrentProjectDataSource {
         currentProject = value['name'];
       }).timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException();
-      });;
+      });
       return currentProject;
-    }  on SocketException catch (e) {
+    }  on SocketException catch (_) {
       throw NoInternetException();
     }
-    on FirebaseException catch (e) {
+    on FirebaseException catch (_) {
       throw ServerException();
     } catch (e) {
       throw UnknownException();

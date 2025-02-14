@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../domain/failures/failures.dart';
 import '../../../domain/use_cases/send_message_usecase.dart';
 
 part 'send_message_event.dart';

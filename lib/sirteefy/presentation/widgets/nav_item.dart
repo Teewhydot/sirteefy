@@ -7,7 +7,6 @@ Widget buildNavItem(String title,Function? onTap) {
   return GestureDetector(
     onTap: (){
       if(onTap!=null){
-        print("Nav item tapped");
         onTap();
       }
     },

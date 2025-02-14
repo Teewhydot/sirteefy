@@ -5,7 +5,7 @@ import '../../data/repositories/projects_repo_impl.dart';
 import '../failures/failures.dart';
 
 class GetSkillsUseCase {
-  final skillsRepo = ProjectRepoImplementation();
+  final skillsRepo = SirteefyRepositoryImpl();
   Future<Either<Failure, SkillModel>> getSkills() async {
     return await skillsRepo.getSkills();
   }

@@ -1,100 +1,61 @@
-import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:sirteefy/sirteefy/data/remote/models/skill_model.dart';
+import 'package:sirteefy/sirteefy/data/remote/models/social_media_links.dart';
 import 'package:sirteefy/sirteefy/domain/entities/project_entity.dart';
-import 'package:sirteefy/sirteefy/domain/exceptions/custom_exceptions.dart';
 import 'package:sirteefy/sirteefy/domain/failures/failures.dart';
 import 'package:sirteefy/sirteefy/domain/repositories/project/projects_repo.dart';
+import 'package:sirteefy/utils/functions/handle_exceptions.dart';
 
 import '../remote/data_sources/current_project_data_source.dart';
 import '../remote/data_sources/projects_data_source.dart';
 import '../remote/data_sources/send_message_data_source.dart';
 import '../remote/data_sources/skills_data_source.dart';
+import '../remote/data_sources/social_media_links_data_source.dart';
 
-class ProjectRepoImplementation implements ProjectsRepo {
+class SirteefyRepositoryImpl implements ProjectsRepo {
   final getProjectsFirebaseImpl = ProjectsFireBaseDataSource();
   final getCurrentProjectFirebaseImpl = CurrentProjectFireBaseDataSource();
   final getSkillsFirebaseImpl = SkillsFireBaseDataSource();
   final sendMessagesFirebaseImpl = SendMessageFirebaseImplementation();
+  final getSocialMediaLinksFirebaseImpl =
+  SocialMediaLinksFirebaseImplementation();
 
   @override
   Future<Either<Failure, String>> getCurrentProject() async {
-    try {
-      final result = await getCurrentProjectFirebaseImpl.getCurrentProject();
-      return Right(result);
-    } on ServerException catch (_) {
-      return Left(ServerFailure(message: 'Server Failure'));
-
-    }  on TimeoutException catch (_) {
-      return Left(TimeoutFailure(message: 'Request Timed Out'));
-    }
-
-    on SocketException catch (e) {
-      return Left(NoInternetFailure(message: 'No Internet ${e.toString()}'));
-    } catch (e) {
-      return Left(UnknownFailure(message: e.toString()));
-    }
+    return handleExceptions(() async {
+      return await getCurrentProjectFirebaseImpl.getCurrentProject();
+    });
   }
 
   @override
   Future<Either<Failure, List<ProjectEntity>>>
-      getProjectsFromDataSource() async {
-    try {
-      final result = await getProjectsFirebaseImpl.getProjects();
-      return Right(result);
-    } on ServerException catch (_) {
-      return Left(ServerFailure(message: 'Server Failure'));
-    }  on TimeoutException catch (_) {
-      return Left(TimeoutFailure(message: 'Request Timed Out'));
-    }
-
-    on SocketException catch (_) {
-      return Left(NoInternetFailure(message: 'No Internet'));
-    } catch (e) {
-      return Left(UnknownFailure(message: e.toString()));
-    }
+  getProjectsFromDataSource() async {
+    return handleExceptions(() async {
+      return await getProjectsFirebaseImpl.getProjects();
+    });
   }
 
   @override
   Future<Either<Failure, SkillModel>> getSkills() async {
-    try {
-      final result = await getSkillsFirebaseImpl.getSkills();
-      return Right(result);
-    } on ServerException catch (_) {
-      return Left(ServerFailure(message: 'Server Failure'));
-    } on TimeoutException catch (_) {
-      return Left(TimeoutFailure(message: 'Request Timed Out'));
-    }
-
-    on SocketException catch (_) {
-      return Left(NoInternetFailure(message: 'No Internet'));
-    } catch (e) {
-      return Left(UnknownFailure(message: e.toString()));
-    }
+    return handleExceptions(() async {
+      return await getSkillsFirebaseImpl.getSkills();
+    });
   }
 
   @override
-  Future<Either<Failure, String>> getSocialMediaLinks() {
-    // TODO: implement getSocialMediaLinks
-    throw UnimplementedError();
+  Future<Either<Failure, SocialMediaLinks>> getSocialMediaLinks() async {
+    return handleExceptions(() async {
+      return await getSocialMediaLinksFirebaseImpl.getSocialMediaLinks();
+    });
   }
 
   @override
-  Future<Either<Failure, Success>> sendMessageToServer(String email,fullName,message) async {
-    try {
-      final result = await sendMessagesFirebaseImpl.sendMessage(
+  Future<Either<Failure, Success>> sendMessageToServer(String email, fullName,
+      message) async {
+    return handleExceptions(() async {
+      return await sendMessagesFirebaseImpl.sendMessage(
           email, fullName, message);
-      return Right(result);
-    } on ServerException catch (_) {
-      return Left(ServerFailure(message: 'Server Failure'));
-    } on TimeoutException catch (_) {
-      return Left(TimeoutFailure(message: 'Request Timed Out'));
-    }
-    on SocketException catch (_) {
-      return Left(NoInternetFailure(message: 'No Internet'));
-    } catch (e) {
-      return Left(UnknownFailure(message: "Unknown Error: ${e.toString()}"));
-    }
+    });
   }
 }

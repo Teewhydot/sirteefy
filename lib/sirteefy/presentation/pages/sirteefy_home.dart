@@ -4,7 +4,6 @@ import 'package:sirteefy/sirteefy/presentation/widgets/header_banner.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/projects.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/section_header.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
-import '../../../utils/theme/theme_provider.dart';
 import '../widgets/about_me.dart';
 import '../widgets/contact_section.dart';
 import '../widgets/footer.dart';
@@ -37,7 +36,6 @@ class _SirteefyHomeState extends ConsumerState<SirteefyHome> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = ref.watch(themeProviderController);
     return Scaffold(
       body: SafeArea(
         child: Stack(

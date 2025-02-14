@@ -33,9 +33,9 @@ class ProjectsFireBaseDataSource implements ProjectsDataSource {
       }).timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException();
       });
-    }  on SocketException catch (e) {
+    }  on SocketException catch (_) {
       throw NoInternetException();
-    } on FirebaseException catch (e) {
+    } on FirebaseException catch (_) {
       throw ServerException();
     } catch (e) {
       throw UnknownException();

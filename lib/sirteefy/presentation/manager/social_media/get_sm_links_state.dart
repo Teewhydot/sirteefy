@@ -8,7 +8,7 @@ final class GetSmLinksInitial extends GetSmLinksState {}
 final class GetSmLinksLoading extends GetSmLinksState {}
 
 final class GetSmLinksLoaded extends GetSmLinksState {
-  final List<String> socialMediaLinks;
+  final SocialMediaLinks socialMediaLinks;
 
   GetSmLinksLoaded(this.socialMediaLinks);
 }

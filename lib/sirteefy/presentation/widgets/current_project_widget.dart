@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/animated_square.dart';
-import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 

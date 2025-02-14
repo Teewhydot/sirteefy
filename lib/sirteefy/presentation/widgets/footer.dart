@@ -5,6 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/social_media/get_sm_links_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
+import 'package:sirteefy/sirteefy/url_launcher.dart';
 import 'package:sirteefy/utils/theme/sirteefy_themes.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -29,26 +30,58 @@ class Footer extends ConsumerWidget {
                     ? MainAxisAlignment.center
                     : MainAxisAlignment.spaceEvenly,
                 children: [
-                  Icon(
-                    Ionicons.logo_github,
+                  IconButton(
+                    onPressed: () {
+                      launchWebsiteUrl(state.socialMediaLinks.github??'');
+                    },
+                    icon: Icon(
+                      Ionicons.logo_github,
+                      color: themeProvider.isDarkModeActive
+                          ? grayColor
+                          : blackColor,
+                    ),
                     color:
                         themeProvider.isDarkModeActive ? grayColor : blackColor,
                   ),
                   if (desktop) horizontalSpace(20),
-                  Icon(
-                    Ionicons.logo_twitter,
+                  IconButton(
+                    onPressed: () {
+                      launchWebsiteUrl(state.socialMediaLinks.twitter??'');
+                    },
+                    icon: Icon(
+                      Ionicons.logo_twitter,
+                      color: themeProvider.isDarkModeActive
+                          ? grayColor
+                          : blackColor,
+                    ),
                     color:
                         themeProvider.isDarkModeActive ? grayColor : blackColor,
                   ),
                   if (desktop) horizontalSpace(20),
-                  Icon(
-                    Ionicons.logo_instagram,
+                  IconButton(
+                    onPressed: () {
+                      launchWebsiteUrl(state.socialMediaLinks.instagram??'');
+                    },
+                    icon: Icon(
+                      Ionicons.logo_instagram,
+                      color: themeProvider.isDarkModeActive
+                          ? grayColor
+                          : blackColor,
+                    ),
                     color:
                         themeProvider.isDarkModeActive ? grayColor : blackColor,
                   ),
                   if (desktop) horizontalSpace(20),
-                  Icon(
-                    Ionicons.logo_linkedin,
+                  IconButton(
+                    onPressed: () {
+                      launchWebsiteUrl(state.socialMediaLinks.linkedin??'');
+                    },
+                    icon: Icon(
+                      Ionicons.logo_linkedin,
+                      color: themeProvider.isDarkModeActive
+                          ? grayColor
+                          : blackColor,
+                    ),
                     color:
                         themeProvider.isDarkModeActive ? grayColor : blackColor,
                   ),
