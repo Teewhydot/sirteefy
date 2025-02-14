@@ -9,12 +9,14 @@ import 'package:sirteefy/sirteefy/domain/repositories/project/projects_repo.dart
 
 import '../remote/data_sources/current_project_data_source.dart';
 import '../remote/data_sources/projects_data_source.dart';
+import '../remote/data_sources/send_message_data_source.dart';
 import '../remote/data_sources/skills_data_source.dart';
 
 class ProjectRepoImplementation implements ProjectsRepo {
   final getProjectsFirebaseImpl = ProjectsFireBaseDataSource();
   final getCurrentProjectFirebaseImpl = CurrentProjectFireBaseDataSource();
   final getSkillsFirebaseImpl = SkillsFireBaseDataSource();
+  final sendMessagesFirebaseImpl = SendMessageFirebaseImplementation();
 
   @override
   Future<Either<Failure, String>> getCurrentProject() async {
@@ -23,7 +25,12 @@ class ProjectRepoImplementation implements ProjectsRepo {
       return Right(result);
     } on ServerException catch (_) {
       return Left(ServerFailure(message: 'Server Failure'));
-    } on SocketException catch (e) {
+
+    }  on TimeoutException catch (_) {
+      return Left(TimeoutFailure(message: 'Request Timed Out'));
+    }
+
+    on SocketException catch (e) {
       return Left(NoInternetFailure(message: 'No Internet ${e.toString()}'));
     } catch (e) {
       return Left(UnknownFailure(message: e.toString()));
@@ -38,7 +45,11 @@ class ProjectRepoImplementation implements ProjectsRepo {
       return Right(result);
     } on ServerException catch (_) {
       return Left(ServerFailure(message: 'Server Failure'));
-    } on SocketException catch (_) {
+    }  on TimeoutException catch (_) {
+      return Left(TimeoutFailure(message: 'Request Timed Out'));
+    }
+
+    on SocketException catch (_) {
       return Left(NoInternetFailure(message: 'No Internet'));
     } catch (e) {
       return Left(UnknownFailure(message: e.toString()));
@@ -52,7 +63,11 @@ class ProjectRepoImplementation implements ProjectsRepo {
       return Right(result);
     } on ServerException catch (_) {
       return Left(ServerFailure(message: 'Server Failure'));
-    } on SocketException catch (_) {
+    } on TimeoutException catch (_) {
+      return Left(TimeoutFailure(message: 'Request Timed Out'));
+    }
+
+    on SocketException catch (_) {
       return Left(NoInternetFailure(message: 'No Internet'));
     } catch (e) {
       return Left(UnknownFailure(message: e.toString()));
@@ -66,8 +81,20 @@ class ProjectRepoImplementation implements ProjectsRepo {
   }
 
   @override
-  Future<Either<Failure, Success>> sendMessageToServer() {
-    // TODO: implement sendMessageToServer
-    throw UnimplementedError();
+  Future<Either<Failure, Success>> sendMessageToServer(String email,fullName,message) async {
+    try {
+      final result = await sendMessagesFirebaseImpl.sendMessage(
+          email, fullName, message);
+      return Right(result);
+    } on ServerException catch (_) {
+      return Left(ServerFailure(message: 'Server Failure'));
+    } on TimeoutException catch (_) {
+      return Left(TimeoutFailure(message: 'Request Timed Out'));
+    }
+    on SocketException catch (_) {
+      return Left(NoInternetFailure(message: 'No Internet'));
+    } catch (e) {
+      return Left(UnknownFailure(message: "Unknown Error: ${e.toString()}"));
+    }
   }
 }

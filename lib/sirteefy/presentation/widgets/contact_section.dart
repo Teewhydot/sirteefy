@@ -128,8 +128,8 @@ class _ContactState extends State<Contact> {
                               );
                             } else if (state is SendMessageError) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Failed to send message'),
+                                SnackBar(
+                                  content: Text(state.message),
                                   backgroundColor: Colors.red,
                                 ),
                               );
@@ -141,7 +141,6 @@ class _ContactState extends State<Contact> {
                               buttonText = 'Sending...';
                             } else if (state is SendMessageLoaded) {
                               buttonText = 'Sent';
-
                             } else if (state is SendMessageError) {
                               buttonText = 'Failed';
                             } else if (state is SendMessageInitial){

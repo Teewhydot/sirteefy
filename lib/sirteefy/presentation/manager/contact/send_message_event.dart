@@ -14,5 +14,3 @@ final class SendMessageRequested extends SendMessageEvent {
     required this.message,
   });
 }
-
-final class SendMessageCompleted extends SendMessageEvent {}

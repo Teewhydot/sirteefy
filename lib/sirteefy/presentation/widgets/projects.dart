@@ -54,45 +54,50 @@ class Projects extends StatelessWidget {
             ],
           ));
         } else if (state is ProjectsLoaded) {
-          return ResponsiveRowColumn(
-            columnSpacing: 20,
-            rowSpacing: 20,
-            rowMainAxisAlignment: MainAxisAlignment.center,
-            rowCrossAxisAlignment: CrossAxisAlignment.center,
-            layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET) ||
-                ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
-                ? ResponsiveRowColumnType.COLUMN
-                : ResponsiveRowColumnType.ROW,
-            children: [
-              ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: ProjectCard(
-                    projectName: state.projects[0].name,
-                    projectDescription: state.projects[0].description,
-                    projectGithubLink: state.projects[0].githubLink,
-                    projectLiveLink: state.projects[0].projectUrl,
-                    projectTechStack: state.projects[0].technologies,
-                  )),
-              ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: ProjectCard(
-                    projectName: state.projects[1].name,
-                    projectDescription: state.projects[1].description,
-                    projectGithubLink: state.projects[1].githubLink,
-                    projectLiveLink: state.projects[1].projectUrl,
-                    projectTechStack: state.projects[1].technologies,
-                  )),
-              ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: ProjectCard(
-                    projectName: state.projects[2].name,
-                    projectDescription: state.projects[2].description,
-                    projectGithubLink: state.projects[2].githubLink,
-                    projectLiveLink: state.projects[2].projectUrl,
-                    projectTechStack: state.projects[2].technologies,
-                  )),
-            ],
-          );
+          if(state.projects.isEmpty){
+            return const Center(child: Text('No projects available'));
+          } else {
+            return ResponsiveRowColumn(
+              columnSpacing: 20,
+              rowSpacing: 20,
+              rowMainAxisAlignment: MainAxisAlignment.center,
+              rowCrossAxisAlignment: CrossAxisAlignment.start,
+              layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET) ||
+                  ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
+                  ? ResponsiveRowColumnType.COLUMN
+                  : ResponsiveRowColumnType.ROW,
+              children: [
+                ResponsiveRowColumnItem(
+                    rowFlex: 1,
+                    child: ProjectCard(
+                      projectName: state.projects[0].name,
+                      projectDescription: state.projects[0].description,
+                      projectGithubLink: state.projects[0].githubLink,
+                      projectLiveLink: state.projects[0].projectUrl,
+                      projectTechStack: state.projects[0].technologies,
+                    )),
+                ResponsiveRowColumnItem(
+                    rowFlex: 1,
+                    child: ProjectCard(
+                      projectName: state.projects[1].name,
+                      projectDescription: state.projects[1].description,
+                      projectGithubLink: state.projects[1].githubLink,
+                      projectLiveLink: state.projects[1].projectUrl,
+                      projectTechStack: state.projects[1].technologies,
+                    )),
+                ResponsiveRowColumnItem(
+                    rowFlex: 1,
+                    child: ProjectCard(
+                      projectName: state.projects[2].name,
+                      projectDescription: state.projects[2].description,
+                      projectGithubLink: state.projects[2].githubLink,
+                      projectLiveLink: state.projects[2].projectUrl,
+                      projectTechStack: state.projects[2].technologies,
+                    )),
+              ],
+            );
+
+          }
         }
         return const Center(child: Text('Error'));
       },

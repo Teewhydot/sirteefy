@@ -145,7 +145,7 @@ class MySkills extends StatelessWidget {
               }else if (state is SkillsLoaded) {
                 return  ResponsiveRowColumn(
                   rowMainAxisAlignment: MainAxisAlignment.center,
-                  rowCrossAxisAlignment: CrossAxisAlignment.center,
+                  rowCrossAxisAlignment: CrossAxisAlignment.start,
                   layout: ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
                       ? ResponsiveRowColumnType.COLUMN
                       : ResponsiveRowColumnType.ROW,

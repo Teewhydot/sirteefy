@@ -1,7 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sirteefy/sirteefy/data/remote/models/skill_model.dart';
+
+import '../../../domain/exceptions/custom_exceptions.dart';
 
 abstract class SkillsDataSource {
   Future<SkillModel> getSkills();
@@ -13,11 +16,22 @@ class SkillsFireBaseDataSource implements SkillsDataSource {
 
   @override
   Future<SkillModel> getSkills()async {
-    Map<String, dynamic> skills = {};
-    return await fireStore.collection('Skills').doc('skills').get().then((value) {
-      skills = value.data()!;
-      return SkillModel.fromJson(skills);
-    });
+    try {
+      Map<String, dynamic> skills = {};
+      return await fireStore.collection('Skills').doc('skills').get().then((value) {
+        skills = value.data()!;
+        return SkillModel.fromJson(skills);
+      }).timeout(const Duration(seconds: 10), onTimeout: () {
+        throw TimeoutException();
+      });
+    }  on SocketException catch (e) {
+      throw NoInternetException();
+    }
+    on FirebaseException catch (e) {
+      throw ServerException();
+    } catch (e) {
+      throw UnknownException();
+    }
   }
 
 }

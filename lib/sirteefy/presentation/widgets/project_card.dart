@@ -86,7 +86,6 @@ final String? projectImageUrl;
                       launchWebsiteUrl(projectGithubLink!);
                     } else {
                       showToast('No Github link');
-
                     }
                    },
                 ),
