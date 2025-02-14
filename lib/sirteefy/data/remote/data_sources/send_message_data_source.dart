@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sirteefy/sirteefy/domain/failures/failures.dart';
@@ -13,22 +12,15 @@ class SendMessageFirebaseImplementation implements SendMessageRemoteDataSource {
   @override
   Future<Success> sendMessage(String email, fullName, message) async {
     final firestore = FirebaseFirestore.instance;
-    try {
       await firestore.collection('messages').add({
         'email': email,
         'fullName': fullName,
         'message': message,
         'time': DateTime.now().toIso8601String()
       }).timeout(const Duration(seconds: 10), onTimeout: () {
-        throw TimeoutException;
+        throw TimeoutException(
+        );
       });
       return MessageSentSuccess();
-    } on SocketException catch (_) {
-      throw NoInternetException;
-    } on FirebaseException catch (_) {
-      throw ServerException;
-    } catch (e) {
-      throw UnknownException;
-    }
   }
 }

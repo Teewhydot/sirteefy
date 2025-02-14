@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-
 import '../../../domain/use_cases/send_message_usecase.dart';
 
 part 'send_message_event.dart';
@@ -13,7 +12,7 @@ class SendMessageBloc extends Bloc<SendMessageEvent, SendMessageState> {
       emit(SendMessageLoading());
       final result = await sendMessageUseCase.sendMessage(event.email, event.name, event.message);
       result.fold((failure) {
-        emit(SendMessageError(message: failure.message));
+        emit(SendMessageError(message: failure.failureMessage));
         emit(SendMessageInitial());
       }, (success) {
         emit(SendMessageLoaded());

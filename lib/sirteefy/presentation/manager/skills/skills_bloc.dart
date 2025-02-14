@@ -13,7 +13,7 @@ class SkillsBloc extends Bloc<SkillsEvent, SkillsState> {
       emit(SkillsLoading());
       final failureOrSkills = await getSkillsUseCase.getSkills();
       failureOrSkills.fold((failure) {
-        emit(SkillsError(message: failure.message));
+        emit(SkillsError(message: failure.failureMessage));
       }, (skills) {
         emit(SkillsLoaded(skills: skills));
       });

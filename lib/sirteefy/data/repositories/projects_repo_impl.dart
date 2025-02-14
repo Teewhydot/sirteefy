@@ -2,6 +2,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:sirteefy/sirteefy/data/remote/models/skill_model.dart';
 import 'package:sirteefy/sirteefy/data/remote/models/social_media_links.dart';
+import 'package:sirteefy/sirteefy/data/remote/models/stupid_quote_model.dart';
 import 'package:sirteefy/sirteefy/domain/entities/project_entity.dart';
 import 'package:sirteefy/sirteefy/domain/failures/failures.dart';
 import 'package:sirteefy/sirteefy/domain/repositories/project/projects_repo.dart';
@@ -12,6 +13,7 @@ import '../remote/data_sources/projects_data_source.dart';
 import '../remote/data_sources/send_message_data_source.dart';
 import '../remote/data_sources/skills_data_source.dart';
 import '../remote/data_sources/social_media_links_data_source.dart';
+import '../remote/data_sources/stupid_quote_datasource.dart';
 
 class SirteefyRepositoryImpl implements ProjectsRepo {
   final getProjectsFirebaseImpl = ProjectsFireBaseDataSource();
@@ -20,6 +22,7 @@ class SirteefyRepositoryImpl implements ProjectsRepo {
   final sendMessagesFirebaseImpl = SendMessageFirebaseImplementation();
   final getSocialMediaLinksFirebaseImpl =
   SocialMediaLinksFirebaseImplementation();
+  final getStupidQuoteAPIImpl = StupidQuoteAPIImpl();
 
   @override
   Future<Either<Failure, String>> getCurrentProject() async {
@@ -56,6 +59,13 @@ class SirteefyRepositoryImpl implements ProjectsRepo {
     return handleExceptions(() async {
       return await sendMessagesFirebaseImpl.sendMessage(
           email, fullName, message);
+    });
+  }
+
+  @override
+  Future<Either<Failure, AdviceModel>> getStupidQuote() {
+    return handleExceptions(() async {
+      return await getStupidQuoteAPIImpl.getStupidQuote();
     });
   }
 }

@@ -10,12 +10,15 @@ Future<Either<Failure, T>> handleExceptions<T>(Future<T> Function() function) as
     final result = await function();
     return Right(result);
   } on ServerException catch (_) {
-    return Left(ServerFailure(message: 'Server Failure'));
+    return Left(ServerFailure(failureMessage: 'Server Failure'));
   } on TimeoutException catch (_) {
-    return Left(TimeoutFailure(message: 'Request Timed Out'));
+    return Left(TimeoutFailure(failureMessage: 'Request Timed Out'));
   } on SocketException catch (_) {
-    return Left(NoInternetFailure(message: 'No Internet'));
-  } catch (e) {
-    return Left(UnknownFailure(message: e.toString()));
+    return Left(NoInternetFailure(failureMessage: 'No Internet'));
+  } on UnknownException catch (e){
+    return Left(UnknownFailure(failureMessage: e.toString()));
+  }
+  catch (e) {
+    return Left(UnknownFailure(failureMessage: e.toString()));
   }
 }

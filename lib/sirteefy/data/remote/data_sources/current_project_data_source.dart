@@ -12,7 +12,6 @@ class CurrentProjectFireBaseDataSource implements CurrentProjectDataSource {
   @override
   Future<String> getCurrentProject() async {
     String currentProject = '';
-    try {
       final fireStore = FirebaseFirestore.instance;
       await fireStore
           .collection('CurrentProject')
@@ -24,13 +23,6 @@ class CurrentProjectFireBaseDataSource implements CurrentProjectDataSource {
         throw TimeoutException();
       });
       return currentProject;
-    }  on SocketException catch (_) {
-      throw NoInternetException();
-    }
-    on FirebaseException catch (_) {
-      throw ServerException();
-    } catch (e) {
-      throw UnknownException();
-    }
+
   }
 }

@@ -32,7 +32,7 @@ class Footer extends ConsumerWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      launchWebsiteUrl(state.socialMediaLinks.github??'');
+                      launchWebsiteUrl(state.socialMediaLinks.github ?? '');
                     },
                     icon: Icon(
                       Ionicons.logo_github,
@@ -46,7 +46,7 @@ class Footer extends ConsumerWidget {
                   if (desktop) horizontalSpace(20),
                   IconButton(
                     onPressed: () {
-                      launchWebsiteUrl(state.socialMediaLinks.twitter??'');
+                      launchWebsiteUrl(state.socialMediaLinks.twitter ?? '');
                     },
                     icon: Icon(
                       Ionicons.logo_twitter,
@@ -60,7 +60,7 @@ class Footer extends ConsumerWidget {
                   if (desktop) horizontalSpace(20),
                   IconButton(
                     onPressed: () {
-                      launchWebsiteUrl(state.socialMediaLinks.instagram??'');
+                      launchWebsiteUrl(state.socialMediaLinks.instagram ?? '');
                     },
                     icon: Icon(
                       Ionicons.logo_instagram,
@@ -74,7 +74,7 @@ class Footer extends ConsumerWidget {
                   if (desktop) horizontalSpace(20),
                   IconButton(
                     onPressed: () {
-                      launchWebsiteUrl(state.socialMediaLinks.linkedin??'');
+                      launchWebsiteUrl(state.socialMediaLinks.linkedin ?? '');
                     },
                     icon: Icon(
                       Ionicons.logo_linkedin,

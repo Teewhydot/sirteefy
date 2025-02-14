@@ -8,7 +8,7 @@ final class GetStupidQuoteInitial extends GetStupidQuoteState {}
 final class GetStupidQuoteLoading extends GetStupidQuoteState {}
 
 final class GetStupidQuoteLoaded extends GetStupidQuoteState {
-  final Map<String, dynamic> stupidQuote;
+  final AdviceModel stupidQuote;
 
   GetStupidQuoteLoaded({required this.stupidQuote});
 }

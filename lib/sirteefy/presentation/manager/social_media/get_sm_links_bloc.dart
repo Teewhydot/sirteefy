@@ -13,7 +13,7 @@ class GetSmLinksBloc extends Bloc<GetSmLinksEvent, GetSmLinksState> {
       emit(GetSmLinksLoading());
     final result = await socialMediaLinksUseCase.getSocialMediaLinks();
     result.fold(
-      (failure) => emit(GetSmLinksError(failure.message)),
+      (failure) => emit(GetSmLinksError(failure.failureMessage)),
       (socialLinks) => emit(GetSmLinksLoaded(socialLinks)),
     );
     });

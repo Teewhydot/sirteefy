@@ -17,7 +17,6 @@ class ProjectsFireBaseDataSource implements ProjectsDataSource {
   @override
   Future<List<ProjectEntity>> getProjects() async {
     List<ProjectEntity> projects = [];
-    try {
       await fireStore.collection('Projects').get().then((querySnapshot) {
         for (var element in querySnapshot.docs) {
           projects.add(ProjectEntity(
@@ -33,13 +32,6 @@ class ProjectsFireBaseDataSource implements ProjectsDataSource {
       }).timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException();
       });
-    }  on SocketException catch (_) {
-      throw NoInternetException();
-    } on FirebaseException catch (_) {
-      throw ServerException();
-    } catch (e) {
-      throw UnknownException();
-    }
     return projects;
   }
 }

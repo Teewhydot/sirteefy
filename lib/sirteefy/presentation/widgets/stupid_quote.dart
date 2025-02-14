@@ -130,7 +130,7 @@ class StupidQuote extends ConsumerWidget {
                           borderRadius:
                               BorderRadius.circular(borderWidthRadius),
                         ),
-                        child: Text(state.stupidQuote.values.first,
+                        child: Text(state.stupidQuote.slip?.advice ?? 'Nothing for now',
                             style: AppThemes.firaCodeStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
@@ -184,7 +184,7 @@ class StupidQuote extends ConsumerWidget {
                       ),
                       borderRadius: BorderRadius.circular(borderWidthRadius),
                     ),
-                    child: Text(state.stupidQuote.keys.first,
+                    child: Text(state.stupidQuote.slip?.id.toString() ?? '0',
                         style: AppThemes.firaCodeStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
@@ -199,9 +199,9 @@ class StupidQuote extends ConsumerWidget {
             child: Column(
               children: [
                 Text(
-                  'An error occurred',
+                  state.message,
                   style: AppThemes.firaCodeStyle(
-                    fontSize: 20.0,
+                    fontSize: 10.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -209,7 +209,9 @@ class StupidQuote extends ConsumerWidget {
                     borderColor: accentColor,
                     icon: Icons.refresh,
                     text: "Retry",
-                    onTap: () {})
+                    onTap: () {
+                      context.read<GetStupidQuoteBloc>().add(GetStupidQuote());
+                    })
               ],
             ),
           );
