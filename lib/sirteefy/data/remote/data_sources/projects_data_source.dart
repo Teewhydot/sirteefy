@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sirteefy/utils/other/misc.dart';
 
 import '../../../domain/entities/project_entity.dart';
 import '../../../domain/exceptions/custom_exceptions.dart';
@@ -29,7 +30,7 @@ class ProjectsFireBaseDataSource implements ProjectsDataSource {
             imageUrl: element['image'],
           ));
         }
-      }).timeout(const Duration(seconds: 10), onTimeout: () {
+      }).timeout(apiTImeOut, onTimeout: () {
         throw TimeoutException();
       });
     return projects;

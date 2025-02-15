@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sirteefy/utils/other/misc.dart';
 
 import '../../../domain/exceptions/custom_exceptions.dart';
 
@@ -19,7 +20,7 @@ class CurrentProjectFireBaseDataSource implements CurrentProjectDataSource {
           .get()
           .then((value) {
         currentProject = value['name'];
-      }).timeout(const Duration(seconds: 10), onTimeout: () {
+      }).timeout(apiTImeOut, onTimeout: () {
         throw TimeoutException();
       });
       return currentProject;

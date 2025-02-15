@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sirteefy/sirteefy/data/remote/models/social_media_links.dart';
+import 'package:sirteefy/utils/other/misc.dart';
 
 
 abstract class SocialMediaLinksRemoteDataSource {
@@ -14,7 +15,7 @@ class SocialMediaLinksFirebaseImplementation
 
   @override
   Future<SocialMediaLinks> getSocialMediaLinks() async {
-    final querySnapshot = await firestore.collection('Social').get();
+    final querySnapshot = await firestore.collection('Social').get().timeout(apiTImeOut);
     for (var doc in querySnapshot.docs) {
       // Access the fields of each document
       String facebook = doc.data()['facebook'];

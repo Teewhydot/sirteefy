@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sirteefy/sirteefy/data/remote/models/skill_model.dart';
+import 'package:sirteefy/utils/other/misc.dart';
 
 import '../../../domain/exceptions/custom_exceptions.dart';
 
@@ -18,7 +19,7 @@ class SkillsFireBaseDataSource implements SkillsDataSource {
       return await fireStore.collection('Skills').doc('skills').get().then((value) {
         skills = value.data()!;
         return SkillModel.fromJson(skills);
-      }).timeout(const Duration(seconds: 10), onTimeout: () {
+      }).timeout(apiTImeOut, onTimeout: () {
         throw TimeoutException();
       });
   }
