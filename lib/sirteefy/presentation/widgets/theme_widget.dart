@@ -31,8 +31,11 @@ class _ThemeWidgetState extends ConsumerState<ThemeWidget> {
       clipBehavior: Clip.none,
       alignment: Alignment.center,
       children: [
-        ThemeBackground(
-          themeProvider: themeProvider,
+        GestureDetector(
+          onTap: _togglePosition,
+          child: ThemeBackground(
+            themeProvider: themeProvider,
+          ),
         ),
         AnimatedPositioned(
           duration: const Duration(milliseconds: 300),

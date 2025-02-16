@@ -8,6 +8,7 @@ import 'package:sirteefy/utils/color_palette/colors.dart';
 import '../../../generated/assets.dart';
 import '../../../utils/theme/sirteefy_themes.dart';
 import '../../../utils/theme/theme_provider.dart';
+import '../manager/nav_manager/nav.dart';
 import 'nav_item.dart';
 
 class Header extends ConsumerStatefulWidget {
@@ -39,7 +40,6 @@ class _HeaderState extends ConsumerState<Header>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
-  bool _isPanelVisible = false;
 
   @override
   void initState() {
@@ -62,19 +62,24 @@ class _HeaderState extends ConsumerState<Header>
 
   void scrollToSection(GlobalKey key) {
     final context = key.currentContext;
+    final navManager = ref.read(navManagerProvider.notifier);
     if (context != null) {
       Scrollable.ensureVisible(
         context,
         duration: const Duration(seconds: 1),
         curve: Curves.easeInOut,
       );
+      _controller.reverse();
+      navManager.toggleNav();
     }
   }
 
   void _togglePanel() {
+    final navManager = ref.read(navManagerProvider.notifier);
+    final isNavOpen = ref.watch(navManagerProvider);
+    navManager.toggleNav();
     setState(() {
-      _isPanelVisible = !_isPanelVisible;
-      if (_isPanelVisible) {
+      if (!isNavOpen) {
         _controller.forward();
       } else {
         _controller.reverse();
@@ -84,98 +89,105 @@ class _HeaderState extends ConsumerState<Header>
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     final themeProvider = ref.watch(themeProviderController);
+    final isNavOpen = ref.watch(navManagerProvider);
     return Column(
       children: [
-        Container(
-          color: themeProvider.isDarkModeActive ? darkModeBGColor : grayColor,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // Logo on the left
-              Row(
+        Stack(
+          children: [
+            Container(
+              color: themeProvider.isDarkModeActive ? darkModeBGColor : grayColor,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // Logo on the left
                   Row(
                     children: [
-                      if (!widget.isHome)
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: SizedBox(
-                            height: 20,
-                            width: 20,
-                            child: Icon(Ionicons.arrow_back,
-                                color: themeProvider.isDarkModeActive
-                                    ? grayColor
-                                    : blackColor),
+                      Row(
+                        children: [
+                          if (!widget.isHome)
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: Icon(Ionicons.arrow_back,
+                                    color: themeProvider.isDarkModeActive
+                                        ? grayColor
+                                        : blackColor),
+                              ),
+                            ),
+                          horizontalSpace(10),
+                          Image.asset(
+                            Assets.pngsLogo,
+                            height: 30,
                           ),
-                        ),
-                      horizontalSpace(10),
-                      Image.asset(
-                        Assets.pngsLogo,
-                        height: 30,
+                          horizontalSpace(20),
+                          Text(
+                            'Sirteefy Apps',
+                            style: AppThemes.firaCodeStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          horizontalSpace(20),
+                        ],
                       ),
-                      horizontalSpace(20),
-                      Text(
-                        'Sirteefy Apps',
-                        style: AppThemes.firaCodeStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      horizontalSpace(20),
-ThemeWidget(),
                     ],
                   ),
+                  // Navigation items on the right
+                  if (widget.isHome)
+                    ResponsiveVisibility(
+                      replacement: IconButton(
+                        icon: Icon(
+                            isNavOpen ? Icons.close : Icons.menu,
+                            color: themeProvider.isDarkModeActive
+                                ? grayColor
+                                : blackColor),
+                        onPressed: _togglePanel,
+                      ),
+                      hiddenConditions: const [
+                        Condition.smallerThan(name: TABLET),
+                        Condition.equals(name: TABLET),
+                        Condition.smallerThan(name: MOBILE)
+                      ],
+                      child: Row(
+                        children: [
+                          buildNavItem('Home',
+                              () => scrollToSection(widget.homeKey ?? GlobalKey())),
+                          const SizedBox(width: 20),
+                          buildNavItem(
+                              'About',
+                              () =>
+                                  scrollToSection(widget.aboutKey ?? GlobalKey())),
+                          const SizedBox(width: 20),
+                          buildNavItem(
+                              'Projects',
+                              () => scrollToSection(
+                                  widget.projectsKey ?? GlobalKey())),
+                          const SizedBox(width: 20),
+                          buildNavItem(
+                              'Skills',
+                              () =>
+                                  scrollToSection(widget.skillsKey ?? GlobalKey())),
+                          const SizedBox(width: 20),
+                          buildNavItem(
+                              'Contact',
+                              () => scrollToSection(
+                                  widget.contactKey ?? GlobalKey())),
+                        ],
+                      ),
+                    ),
                 ],
               ),
-              // Navigation items on the right
-              if (widget.isHome)
-                ResponsiveVisibility(
-                  replacement: IconButton(
-                    icon: Icon(
-                        _controller.isCompleted ? Icons.close : Icons.menu,
-                        color: themeProvider.isDarkModeActive
-                            ? grayColor
-                            : blackColor),
-                    onPressed: _togglePanel,
-                  ),
-                  hiddenConditions: const [
-                    Condition.smallerThan(name: TABLET),
-                    Condition.equals(name: TABLET),
-                    Condition.smallerThan(name: MOBILE)
-                  ],
-                  child: Row(
-                    children: [
-                      buildNavItem('Home',
-                          () => scrollToSection(widget.homeKey ?? GlobalKey())),
-                      const SizedBox(width: 20),
-                      buildNavItem(
-                          'About',
-                          () =>
-                              scrollToSection(widget.aboutKey ?? GlobalKey())),
-                      const SizedBox(width: 20),
-                      buildNavItem(
-                          'Projects',
-                          () => scrollToSection(
-                              widget.projectsKey ?? GlobalKey())),
-                      const SizedBox(width: 20),
-                      buildNavItem(
-                          'Skills',
-                          () =>
-                              scrollToSection(widget.skillsKey ?? GlobalKey())),
-                      const SizedBox(width: 20),
-                      buildNavItem(
-                          'Contact',
-                          () => scrollToSection(
-                              widget.contactKey ?? GlobalKey())),
-                    ],
-                  ),
-                ),
-            ],
-          ),
+            ),
+             Positioned(bottom: 0,left: width*0.6, child: ThemeWidget()),
+
+          ],
         ),
         if (widget.showNav == true)
           Padding(
