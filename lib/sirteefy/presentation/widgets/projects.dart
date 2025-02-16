@@ -75,6 +75,8 @@ class Projects extends StatelessWidget {
                       projectGithubLink: state.projects[0].githubLink,
                       projectLiveLink: state.projects[0].projectUrl,
                       projectTechStack: state.projects[0].technologies,
+                      projectImageUrl: state.projects[0].imageUrl,
+                      projectImages: state.projects[0].images,
                     )),
                 ResponsiveRowColumnItem(
                     rowFlex: 1,
@@ -84,6 +86,8 @@ class Projects extends StatelessWidget {
                       projectGithubLink: state.projects[1].githubLink,
                       projectLiveLink: state.projects[1].projectUrl,
                       projectTechStack: state.projects[1].technologies,
+                      projectImageUrl: state.projects[1].imageUrl,
+                      projectImages: state.projects[1].images,
                     )),
                 ResponsiveRowColumnItem(
                     rowFlex: 1,
@@ -93,6 +97,8 @@ class Projects extends StatelessWidget {
                       projectGithubLink: state.projects[2].githubLink,
                       projectLiveLink: state.projects[2].projectUrl,
                       projectTechStack: state.projects[2].technologies,
+                      projectImageUrl: state.projects[2].imageUrl,
+                      projectImages: state.projects[2].images,
                     )),
               ],
             );

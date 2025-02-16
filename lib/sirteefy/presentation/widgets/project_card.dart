@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:oktoast/oktoast.dart';
@@ -11,28 +13,34 @@ import '../../../utils/other/misc.dart';
 import '../../../utils/theme/theme_provider.dart';
 
 class ProjectCard extends ConsumerWidget {
-final String? projectName;
-final String? projectDescription;
-final String? projectGithubLink;
-final String? projectLiveLink;
-final List<String>? projectTechStack;
-final List<String>? projectImages;
-final String? projectImageUrl;
+  final String? projectName;
+  final String? projectDescription;
+  final String? projectGithubLink;
+  final String? projectLiveLink;
+  final List<String>? projectTechStack;
+  final List<String>? projectImages;
+  final String? projectImageUrl;
 
-
-  const ProjectCard({super.key,  this.projectName,  this.projectDescription,  this.projectGithubLink,  this.projectLiveLink, this.projectTechStack, this.projectImages, this.projectImageUrl});
+  const ProjectCard(
+      {super.key,
+      this.projectName,
+      this.projectDescription,
+      this.projectGithubLink,
+      this.projectLiveLink,
+      this.projectTechStack,
+      this.projectImages,
+      this.projectImageUrl});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeProvider  = ref.watch(themeProviderController);
+    final themeProvider = ref.watch(themeProviderController);
     return Container(
       width: 350,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderWidthRadius),
         border: Border.all(
-          width: 2,
-          color: themeProvider.isDarkModeActive?grayColor:blackColor
-        ),
+            width: 2,
+            color: themeProvider.isDarkModeActive ? grayColor : blackColor),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -44,58 +52,72 @@ final String? projectImageUrl;
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  width: 2,
-                  color: themeProvider.isDarkModeActive?grayColor:blackColor
-                ),
+                    width: 2,
+                    color: themeProvider.isDarkModeActive
+                        ? grayColor
+                        : blackColor),
               ),
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(borderWidthRadius),
                 topRight: Radius.circular(borderWidthRadius),
               ),
-              image:  DecorationImage(
-                image: AssetImage(projectImageUrl??Assets.pngsMe),
-                fit: BoxFit.cover,
+            ),
+            child: FlutterCarousel(
+              items: projectImages!
+                  .map((e) => CachedNetworkImage(
+                        imageUrl: e,
+                        width: 350,
+                        height: 200,
+                fit: BoxFit.fill,
+                      ))
+                  .toList(),
+              options: FlutterCarouselOptions(
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 5),
+                enlargeCenterPage: true,
+                viewportFraction: 1,
+                pauseAutoPlayOnManualNavigate: true,
+                showIndicator: false,
+                physics: const BouncingScrollPhysics(),
+                pauseAutoPlayOnTouch: true,
               ),
             ),
           ),
-          firacodeStyleText(projectTechStack?.join(', ')??'Tech Stack',
+          firacodeStyleText(projectTechStack?.join(', ') ?? 'Tech Stack',
               fontWeight: FontWeight.normal, fontSize: 16),
           const Divider(
-
             thickness: 2,
           ),
           verticalSpace(10),
-          firacodeStyleText(projectName??'Project Name',
+          firacodeStyleText(projectName ?? 'Project Name',
               fontWeight: FontWeight.bold, fontSize: 16),
           verticalSpace(10),
-          firacodeStyleText(
-              projectDescription??'Project Description',
-              fontWeight: FontWeight.normal,
-              fontSize: 16),
+          firacodeStyleText(projectDescription ?? 'Project Description',
+              fontWeight: FontWeight.normal, fontSize: 16),
           verticalSpace(10),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
-                 ProjectButton(
+                ProjectButton(
                   icon: Ionicons.logo_github,
                   text: "Code",
                   borderColor: accentColor,
-                   onTap: (){
-                    if(projectGithubLink!=null){
+                  onTap: () {
+                    if (projectGithubLink != null) {
                       launchWebsiteUrl(projectGithubLink!);
                     } else {
                       showToast('No Github link');
                     }
-                   },
+                  },
                 ),
                 horizontalSpace(10),
-                 ProjectButton(
+                ProjectButton(
                   borderColor: accentColor,
                   icon: Ionicons.play,
                   text: "Live",
-                  onTap: (){
-                    if(projectLiveLink!=null){
+                  onTap: () {
+                    if (projectLiveLink != null) {
                       launchWebsiteUrl(projectLiveLink!);
                     } else {
                       showToast('No Live link');
@@ -117,8 +139,13 @@ class ProjectButton extends StatelessWidget {
   final String text;
   final Function() onTap;
 
-  const ProjectButton(
-      {super.key, required this.borderColor, required this.icon, required this.text, required this.onTap, });
+  const ProjectButton({
+    super.key,
+    required this.borderColor,
+    required this.icon,
+    required this.text,
+    required this.onTap,
+  });
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -139,9 +166,17 @@ class ProjectButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                firacodeStyleText(text, fontWeight: FontWeight.normal, fontSize: 16,applyPadding: false),
+                firacodeStyleText(text,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 16,
+                    applyPadding: false),
                 horizontalSpace(10),
-                Align(alignment: Alignment.center,  child: Icon(icon,color: borderColor,))
+                Align(
+                    alignment: Alignment.center,
+                    child: Icon(
+                      icon,
+                      color: borderColor,
+                    ))
               ],
             ),
           ),

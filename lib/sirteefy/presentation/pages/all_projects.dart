@@ -80,6 +80,7 @@ class AllProjects extends ConsumerWidget {
                                 projectLiveLink: e.projectUrl,
                                 projectTechStack: e.technologies,
                                 projectImageUrl: e.imageUrl,
+                        projectImages: e.images,
                               ))
                           .toList()),
                 );
