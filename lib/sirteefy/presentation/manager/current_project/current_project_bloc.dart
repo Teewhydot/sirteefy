@@ -12,7 +12,7 @@ class CurrentProjectBloc extends Bloc<CurrentProjectEvent, CurrentProjectState> 
       emit(CurrentProjectLoading());
       final failureOrCurrentProject = await currentProjectUseCase.getCurrentProject();
       failureOrCurrentProject.fold((failure) {
-        emit(CurrentProjectError(message: failure.toString()));
+        emit(CurrentProjectError(message: failure.failureMessage));
       }, (currentProject) {
         emit(CurrentProjectLoaded(currentProject: currentProject));
       });

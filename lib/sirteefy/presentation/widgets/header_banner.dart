@@ -115,9 +115,11 @@ class HeaderBanner extends ConsumerWidget {
                         return Center(
                           child: Column(
                             children: [
-                              const Text('Error'),
+                               Text(state.message),
                               verticalSpace(10),
-                              ProjectButton(borderColor: accentColor, icon: Icons.refresh, text: 'Retry', onTap: (){})
+                              ProjectButton(borderColor: accentColor, icon: Icons.refresh, text: 'Retry', onTap: (){
+                                context.read<CurrentProjectBloc>().add(FetchCurrentProject());
+                              })
                             ],
                           ),
                         );

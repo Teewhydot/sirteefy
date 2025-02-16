@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
+import 'package:sirteefy/sirteefy/presentation/widgets/theme_widget.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import '../../../generated/assets.dart';
 import '../../../utils/theme/sirteefy_themes.dart';
@@ -19,8 +20,16 @@ class Header extends ConsumerStatefulWidget {
   final GlobalKey? skillsKey;
   final bool? showNav;
 
-
-  const Header({super.key,this.showNav=true, this.isHome = false,this.homeKey,  this.aboutKey, this.servicesKey,  this.contactKey,  this.projectsKey,  this.skillsKey});
+  const Header(
+      {super.key,
+      this.showNav = true,
+      this.isHome = false,
+      this.homeKey,
+      this.aboutKey,
+      this.servicesKey,
+      this.contactKey,
+      this.projectsKey,
+      this.skillsKey});
 
   @override
   _HeaderState createState() => _HeaderState();
@@ -50,6 +59,7 @@ class _HeaderState extends ConsumerState<Header>
     _controller.dispose();
     super.dispose();
   }
+
   void scrollToSection(GlobalKey key) {
     final context = key.currentContext;
     if (context != null) {
@@ -60,6 +70,7 @@ class _HeaderState extends ConsumerState<Header>
       );
     }
   }
+
   void _togglePanel() {
     setState(() {
       _isPanelVisible = !_isPanelVisible;
@@ -85,32 +96,38 @@ class _HeaderState extends ConsumerState<Header>
               // Logo on the left
               Row(
                 children: [
-                  if (!widget.isHome)
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: SizedBox(
-                        height: 20,
-                        width: 20,
-                        child: Icon(Ionicons.arrow_back,
-                            color: themeProvider.isDarkModeActive
-                                ? grayColor
-                                : blackColor),
+                  Row(
+                    children: [
+                      if (!widget.isHome)
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: Icon(Ionicons.arrow_back,
+                                color: themeProvider.isDarkModeActive
+                                    ? grayColor
+                                    : blackColor),
+                          ),
+                        ),
+                      horizontalSpace(10),
+                      Image.asset(
+                        Assets.pngsLogo,
+                        height: 30,
                       ),
-                    ),
-                  horizontalSpace(10),
-                  Image.asset(
-                    Assets.pngsLogo,
-                    height: 30,
-                  ),
-                  horizontalSpace(20),
-                  Text(
-                    'Sirteefy Apps',
-                    style: AppThemes.firaCodeStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
+                      horizontalSpace(20),
+                      Text(
+                        'Sirteefy Apps',
+                        style: AppThemes.firaCodeStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      horizontalSpace(20),
+ThemeWidget(),
+                    ],
                   ),
                 ],
               ),
@@ -132,46 +149,70 @@ class _HeaderState extends ConsumerState<Header>
                   ],
                   child: Row(
                     children: [
-                      buildNavItem('Home', () => scrollToSection(widget.homeKey??GlobalKey())),
+                      buildNavItem('Home',
+                          () => scrollToSection(widget.homeKey ?? GlobalKey())),
                       const SizedBox(width: 20),
-                      buildNavItem('About', () => scrollToSection(widget.aboutKey??GlobalKey())),
+                      buildNavItem(
+                          'About',
+                          () =>
+                              scrollToSection(widget.aboutKey ?? GlobalKey())),
                       const SizedBox(width: 20),
-                      buildNavItem('Projects', () => scrollToSection(widget.projectsKey??GlobalKey())),
+                      buildNavItem(
+                          'Projects',
+                          () => scrollToSection(
+                              widget.projectsKey ?? GlobalKey())),
                       const SizedBox(width: 20),
-                      buildNavItem('Skills', () => scrollToSection(widget.skillsKey??GlobalKey())),
+                      buildNavItem(
+                          'Skills',
+                          () =>
+                              scrollToSection(widget.skillsKey ?? GlobalKey())),
                       const SizedBox(width: 20),
-                      buildNavItem('Contact', () => scrollToSection(widget.contactKey??GlobalKey())),
+                      buildNavItem(
+                          'Contact',
+                          () => scrollToSection(
+                              widget.contactKey ?? GlobalKey())),
                     ],
                   ),
                 ),
             ],
           ),
         ),
-      if(widget.showNav==true)Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizeTransition(
-            sizeFactor: _animation,
-            axisAlignment: -1.0,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: BoxDecoration(
-                color: themeProvider.isDarkModeActive
-                    ? darkModeBGColor
-                    : grayColor,
-                border: Border.all(color: accentColor),
-              ),
-              child: Column(
-                children: [
-                  buildNavItem('Home', () => scrollToSection(widget.homeKey??GlobalKey())),
-                  buildNavItem('About', () => scrollToSection(widget.aboutKey??GlobalKey())),
-                  buildNavItem('Projects', () => scrollToSection(widget.projectsKey??GlobalKey())),
-                  buildNavItem('Skills', () => scrollToSection(widget.skillsKey??GlobalKey())),
-                  buildNavItem('Contact', () => scrollToSection(widget.contactKey??GlobalKey())),
-                ],
+        if (widget.showNav == true)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizeTransition(
+              sizeFactor: _animation,
+              axisAlignment: -1.0,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                  color: themeProvider.isDarkModeActive
+                      ? darkModeBGColor
+                      : grayColor,
+                  border: Border.all(color: accentColor),
+                ),
+                child: Column(
+                  children: [
+                    buildNavItem('Home',
+                        () => scrollToSection(widget.homeKey ?? GlobalKey())),
+                    buildNavItem('About',
+                        () => scrollToSection(widget.aboutKey ?? GlobalKey())),
+                    buildNavItem(
+                        'Projects',
+                        () =>
+                            scrollToSection(widget.projectsKey ?? GlobalKey())),
+                    buildNavItem('Skills',
+                        () => scrollToSection(widget.skillsKey ?? GlobalKey())),
+                    buildNavItem(
+                        'Contact',
+                        () =>
+                            scrollToSection(widget.contactKey ?? GlobalKey())),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
       ],
     );
   }

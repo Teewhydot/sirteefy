@@ -5,6 +5,7 @@ abstract class Failure {
 abstract class Success {}
 
 class MessageSentSuccess extends Success {}
+class DownloadSuccess extends Success {}
 
 class ServerFailure extends Failure {
   ServerFailure({required super.failureMessage});

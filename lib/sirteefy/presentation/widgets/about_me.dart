@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:sirteefy/sirteefy/presentation/manager/download_cv/download_cv_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
@@ -11,7 +12,7 @@ class AboutMe extends ConsumerWidget {
   const AboutMe({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,7 +25,7 @@ class AboutMe extends ConsumerWidget {
                   fontWeight: FontWeight.bold,
                 ),
                 children: [
-              textSpanText("Hi, I'm Issa, a self taught",ref),
+              textSpanText("Hi, I'm Issa, a self taught", ref),
               TextSpan(
                 text: " software developer ",
                 style: AppThemes.firaCodeStyle(
@@ -33,7 +34,7 @@ class AboutMe extends ConsumerWidget {
                   color: accentColor,
                 ),
               ),
-              textSpanText("with specialty in",ref),
+              textSpanText("with specialty in", ref),
               TextSpan(
                 text: " Flutter",
                 style: AppThemes.firaCodeStyle(
@@ -42,7 +43,7 @@ class AboutMe extends ConsumerWidget {
                   color: accentColor,
                 ),
               ),
-              textSpanText(" and",ref),
+              textSpanText(" and", ref),
               TextSpan(
                 text: " Jetpack Compose ",
                 style: AppThemes.firaCodeStyle(
@@ -61,11 +62,34 @@ class AboutMe extends ConsumerWidget {
           ),
         ),
         verticalSpace(20),
-         ProjectButton(
-            borderColor: accentColor,
-            icon: Ionicons.document,
-            onTap: (){},
-            text: 'Download Resume'),
+        BlocBuilder<DownloadCvBloc, DownloadCvState>(
+          builder: (context, state) {
+            String buttonText = 'Download CV';
+            IconData icon =  Icons.send;
+            if (state is DownloadCvInProgress) {
+              buttonText = 'Downloading...${state.percentage}%';
+              icon = Icons.cloud_download;
+            } else if (state is DownloadCvSuccess) {
+              buttonText = 'Downloaded';
+              icon = Icons.check_circle;
+            } else if (state is DownloadCvFailure) {
+              buttonText = 'Download failed';
+              icon = Icons.error;
+            } else if (state is DownloadCvInitial) {
+              buttonText = 'Download CV';
+            }
+            return  ProjectButton(
+              borderColor: accentColor,
+              icon: icon,
+              text: buttonText,
+              onTap: () {
+                context.read<DownloadCvBloc>().add(
+                      DownloadCv(),
+                    );
+              },
+            );
+          },
+        ),
       ],
     );
   }
