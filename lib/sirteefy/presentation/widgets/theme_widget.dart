@@ -1,6 +1,6 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 
 import '../../../utils/theme/theme_provider.dart';
@@ -110,55 +110,12 @@ class LightModeWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeProvider = ref.watch(themeProviderController);
 
-    return CustomPaint(
-      size: const Size(20, 20),
-      painter: LightModePainter(
-        color: themeProvider.isDarkModeActive ? Colors.white : grayColor,
-      ),
+    return Center(
+      child: Icon(Ionicons.sunny_outline,
+      size: 20,
+      color: themeProvider.isDarkModeActive ? Colors.white : grayColor ,),
     );
   }
-}
-
-class LightModePainter extends CustomPainter {
-  final Color color;
-  LightModePainter({this.color = Colors.white});
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height / 2);
-    const circleRadius = 5.0;
-    const numberOfSticks = 12;
-    const stickLength = 5.0;
-    const stickThickness = 1.0;
-
-    // Draw central circle
-    final circlePaint = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
-    canvas.drawCircle(center, circleRadius, circlePaint);
-
-    // Draw radiating sticks
-    final stickPaint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = stickThickness;
-
-    for (int i = 0; i < numberOfSticks; i++) {
-      final angle = 2 * pi * i / numberOfSticks;
-      final stickStart = Offset(
-        center.dx + circleRadius * cos(angle),
-        center.dy + circleRadius * sin(angle),
-      );
-      final stickEnd = Offset(
-        center.dx + (circleRadius + stickLength) * cos(angle),
-        center.dy + (circleRadius + stickLength) * sin(angle),
-      );
-
-      canvas.drawLine(stickStart, stickEnd, stickPaint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
 class CrescentMoonWidget extends StatelessWidget {
@@ -166,41 +123,10 @@ class CrescentMoonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Transform.rotate(
-      // TODO make the crescent moon rotate between -pi/5 and pi/5 perpetually
-      angle: -pi / 5,
-      child: CustomPaint(
-        size: const Size(20, 20), // Specify the size of the crescent moon
-        painter: CrescentMoonPainter(),
-      ),
+    return const Center(
+      child: Icon(Ionicons.moon_outline,
+        size: 20,
+        color: accentColor ,),
     );
   }
-}
-
-class CrescentMoonPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = accentColor
-      ..style = PaintingStyle.fill;
-
-    final path = Path()
-      ..moveTo(size.width * 0.5, size.height * 0.1)
-      ..arcToPoint(
-        Offset(size.width * 0.5, size.height * 0.9),
-        radius: Radius.circular(size.width * 0.6),
-        clockwise: false,
-      )
-      ..arcToPoint(
-        Offset(size.width * 0.5, size.height * 0.1),
-        radius: Radius.circular(size.width * 0.4),
-        clockwise: true,
-      )
-      ..close();
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

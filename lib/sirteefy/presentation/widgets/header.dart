@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
+import 'package:sirteefy/sirteefy/presentation/widgets/theme_widget.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import '../../../generated/assets.dart';
 import '../../../utils/theme/sirteefy_themes.dart';
@@ -95,7 +96,8 @@ class _HeaderState extends ConsumerState<Header>
         Stack(
           children: [
             Container(
-              color: themeProvider.isDarkModeActive ? darkModeBGColor : grayColor,
+              color:
+                  themeProvider.isDarkModeActive ? darkModeBGColor : grayColor,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -141,8 +143,7 @@ class _HeaderState extends ConsumerState<Header>
                   if (widget.isHome)
                     ResponsiveVisibility(
                       replacement: IconButton(
-                        icon: Icon(
-                            isNavOpen ? Icons.close : Icons.menu,
+                        icon: Icon(isNavOpen ? Icons.close : Icons.menu,
                             color: themeProvider.isDarkModeActive
                                 ? grayColor
                                 : blackColor),
@@ -155,35 +156,48 @@ class _HeaderState extends ConsumerState<Header>
                       ],
                       child: Row(
                         children: [
-                          buildNavItem('Home',
-                              () => scrollToSection(widget.homeKey ?? GlobalKey())),
-                          const SizedBox(width: 20),
-                          buildNavItem(
-                              'About',
-                              () =>
-                                  scrollToSection(widget.aboutKey ?? GlobalKey())),
-                          const SizedBox(width: 20),
-                          buildNavItem(
-                              'Projects',
-                              () => scrollToSection(
-                                  widget.projectsKey ?? GlobalKey())),
-                          const SizedBox(width: 20),
-                          buildNavItem(
-                              'Skills',
-                              () =>
-                                  scrollToSection(widget.skillsKey ?? GlobalKey())),
-                          const SizedBox(width: 20),
-                          buildNavItem(
-                              'Contact',
-                              () => scrollToSection(
-                                  widget.contactKey ?? GlobalKey())),
+                          NavItem(
+                            title: 'Home',
+                            onTap: () =>
+                                scrollToSection(widget.homeKey ?? GlobalKey()),
+                            hasAction: false,
+                          ),
+                          horizontalSpace(20),
+                          NavItem(
+                            title: 'About',
+                            onTap: () =>
+                                scrollToSection(widget.aboutKey ?? GlobalKey()),
+                            hasAction: false,
+                          ),
+                          horizontalSpace(20),
+                          NavItem(
+                            title: 'Projects',
+                            onTap: () =>
+                                scrollToSection(widget.projectsKey ?? GlobalKey()),
+                            hasAction: false,
+                          ),
+                          horizontalSpace(20),
+                          NavItem(
+                            title: 'Skills',
+                            onTap: () => scrollToSection(
+                                widget.skillsKey ?? GlobalKey()),
+                            hasAction: false,
+                          ),
+                          horizontalSpace(20),
+                          NavItem(
+                            title: 'Contact',
+                            onTap: () => scrollToSection(
+                                widget.contactKey ?? GlobalKey()),
+                            hasAction: false,
+                          ),
+                          horizontalSpace(20),
+                          const ThemeWidget(),
                         ],
                       ),
                     ),
                 ],
               ),
             ),
-
           ],
         ),
         if (widget.showNav == true)
@@ -203,20 +217,53 @@ class _HeaderState extends ConsumerState<Header>
                 ),
                 child: Column(
                   children: [
-                    buildNavItem('Home',
-                        () => scrollToSection(widget.homeKey ?? GlobalKey())),
-                    buildNavItem('About',
-                        () => scrollToSection(widget.aboutKey ?? GlobalKey())),
-                    buildNavItem(
-                        'Projects',
-                        () =>
-                            scrollToSection(widget.projectsKey ?? GlobalKey())),
-                    buildNavItem('Skills',
-                        () => scrollToSection(widget.skillsKey ?? GlobalKey())),
-                    buildNavItem(
-                        'Contact',
-                        () =>
-                            scrollToSection(widget.contactKey ?? GlobalKey())),
+                    NavItem(
+                      title: 'Home',
+                      onTap: () =>
+                          scrollToSection(widget.homeKey ?? GlobalKey()),
+                      hasAction: false,
+                    ),
+                    verticalSpace(10),
+                    NavItem(
+                      title: 'About',
+                      onTap: () =>
+                          scrollToSection(widget.aboutKey ?? GlobalKey()),
+                      hasAction: false,
+                    ),
+                    verticalSpace(10),
+                    NavItem(
+                      title: 'Projects',
+                      onTap: () =>
+                          scrollToSection(widget.projectsKey ?? GlobalKey()),
+                      hasAction: false,
+                    ),
+                    verticalSpace(10),
+                    NavItem(
+                      title: 'Skills',
+                      onTap: () =>
+                          scrollToSection(widget.skillsKey ?? GlobalKey()),
+                      hasAction: false,
+                    ),
+                    verticalSpace(10),
+                    NavItem(
+                      title: 'Contact',
+                      onTap: () =>
+                          scrollToSection(widget.contactKey ?? GlobalKey()),
+                      hasAction: false,
+                    ),
+                    verticalSpace(10),
+                    NavItem(
+                        title: 'Toggle Theme',
+                        onTap: () => themeProvider.toggleTheme(),
+                        hasAction: true,
+                        // actionWidget: Icon(
+                        //   themeProvider.isDarkModeActive
+                        //       ? Ionicons.sunny_outline
+                        //       : Ionicons.moon_outline,
+                        //   color: accentColor,
+                        // ),
+                      actionWidget: const ThemeWidget(),
+                    ),
                   ],
                 ),
               ),
