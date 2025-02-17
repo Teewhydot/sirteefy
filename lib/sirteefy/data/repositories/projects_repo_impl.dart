@@ -9,7 +9,6 @@ import 'package:sirteefy/sirteefy/domain/repositories/project/projects_repo.dart
 import 'package:sirteefy/utils/functions/handle_exceptions.dart';
 
 import '../remote/data_sources/current_project_data_source.dart';
-import '../remote/data_sources/download_cv_datasource.dart';
 import '../remote/data_sources/projects_data_source.dart';
 import '../remote/data_sources/send_message_data_source.dart';
 import '../remote/data_sources/skills_data_source.dart';
@@ -24,7 +23,6 @@ class SirteefyRepositoryImpl implements ProjectsRepo {
   final getSocialMediaLinksFirebaseImpl =
   SocialMediaLinksFirebaseImplementation();
   final getStupidQuoteAPIImpl = StupidQuoteAPIImpl();
-  final downloadCVDataSourceImpl = DownloadCVDataSourceImpl();
 
   @override
   Future<Either<Failure, String>> getCurrentProject() async {
@@ -68,13 +66,6 @@ class SirteefyRepositoryImpl implements ProjectsRepo {
   Future<Either<Failure, AdviceModel>> getStupidQuote() {
     return handleExceptions(() async {
       return await getStupidQuoteAPIImpl.getStupidQuote();
-    });
-  }
-
-  @override
-  Future<Either<Failure, Success>> downloadCV() {
-    return handleExceptions(() async {
-      return await downloadCVDataSourceImpl.downloadCV();
     });
   }
 }

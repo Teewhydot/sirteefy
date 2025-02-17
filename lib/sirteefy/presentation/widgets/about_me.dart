@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sirteefy/sirteefy/presentation/manager/download_cv/download_cv_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
+import 'package:sirteefy/sirteefy/url_launcher.dart';
 import '../../../utils/color_palette/colors.dart';
 import '../../../utils/theme/sirteefy_themes.dart';
 
@@ -62,32 +61,13 @@ class AboutMe extends ConsumerWidget {
           ),
         ),
         verticalSpace(20),
-        BlocBuilder<DownloadCvBloc, DownloadCvState>(
-          builder: (context, state) {
-            String buttonText = 'Download CV';
-            IconData icon =  Icons.send;
-            if (state is DownloadCvInProgress) {
-              buttonText = 'Downloading...${state.percentage}%';
-              icon = Icons.cloud_download;
-            } else if (state is DownloadCvSuccess) {
-              buttonText = 'Downloaded';
-              icon = Icons.check_circle;
-            } else if (state is DownloadCvFailure) {
-              buttonText = 'Download failed';
-              icon = Icons.error;
-            } else if (state is DownloadCvInitial) {
-              buttonText = 'Download CV';
-            }
-            return  ProjectButton(
-              borderColor: accentColor,
-              icon: icon,
-              text: buttonText,
-              onTap: () {
-                context.read<DownloadCvBloc>().add(
-                      DownloadCv(),
-                    );
-              },
-            );
+        ProjectButton(
+          borderColor: accentColor,
+          icon: Icons.cloud_circle_rounded,
+          text: "See Resume",
+          onTap: () {
+            launchWebsiteUrl(
+                "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf");
           },
         ),
       ],

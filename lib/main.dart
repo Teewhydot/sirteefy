@@ -7,7 +7,6 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/firebase_options.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/contact/send_message_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/current_project/current_project_bloc.dart';
-import 'package:sirteefy/sirteefy/presentation/manager/download_cv/download_cv_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/projects/projects_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/skills/skills_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/social_media/get_sm_links_bloc.dart';
@@ -23,9 +22,6 @@ void main() async {
   );
   runApp(ProviderScope(
       child: MultiBlocProvider(providers: [
-    BlocProvider<DownloadCvBloc>(
-      create: (context) => DownloadCvBloc(),
-    ),
     BlocProvider<ProjectsBloc>(
       create: (context) => ProjectsBloc(),
     ),

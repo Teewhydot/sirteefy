@@ -8,7 +8,6 @@ import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/sirteefy/url_launcher.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
-import '../../../generated/assets.dart';
 import '../../../utils/other/misc.dart';
 import '../../../utils/theme/theme_provider.dart';
 

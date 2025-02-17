@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:sirteefy/sirteefy/domain/failures/failures.dart';
 
-import '../../data/repositories/projects_repo_impl.dart';
 
 class DownLoadCvUseCase {
-  final downloadCvUseCase = SirteefyRepositoryImpl();
   Future<Either<Failure,Success>> downloadCv() async {
-    return await downloadCvUseCase.downloadCV();
+    for (int i = 0; i <= 100; i++) {
+      await Future.delayed(const Duration(milliseconds: 100));
+    }
+    return Right(DownloadSuccess());
   }
 }
