@@ -102,6 +102,7 @@ class ProjectCard extends ConsumerWidget {
                   icon: Ionicons.logo_github,
                   text: "Code",
                   borderColor: accentColor,
+                  opacity: projectGithubLink!.isEmpty ? 0.3 : 1.0,
                   onTap: () {
                     if (projectGithubLink != null) {
                       launchWebsiteUrl(projectGithubLink!);
@@ -114,6 +115,7 @@ class ProjectCard extends ConsumerWidget {
                 ProjectButton(
                   borderColor: accentColor,
                   icon: Ionicons.play,
+                  opacity: projectLiveLink!.isEmpty ? 0.3 : 1.0,
                   text: "Live",
                   onTap: () {
                     if (projectLiveLink != null) {
@@ -137,6 +139,7 @@ class ProjectButton extends StatelessWidget {
   final IconData icon;
   final String text;
   final Function() onTap;
+  final double opacity;
 
   const ProjectButton({
     super.key,
@@ -144,39 +147,43 @@ class ProjectButton extends StatelessWidget {
     required this.icon,
     required this.text,
     required this.onTap,
+    this.opacity = 1.0,
   });
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: IntrinsicWidth(
-        child: Container(
-          padding: const EdgeInsets.all(8.0),
-          height: 50,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(borderWidthRadius),
-            border: Border.all(
-              color: borderColor,
-              width: 2,
+        child: Opacity(
+          opacity: opacity,
+          child: Container(
+            padding: const EdgeInsets.all(8.0),
+            height: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(borderWidthRadius),
+              border: Border.all(
+                color: borderColor,
+                width: 2,
+              ),
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                firacodeStyleText(text,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 16,
-                    applyPadding: false),
-                horizontalSpace(10),
-                Align(
-                    alignment: Alignment.center,
-                    child: Icon(
-                      icon,
-                      color: borderColor,
-                    ))
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  firacodeStyleText(text,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16,
+                      applyPadding: false),
+                  horizontalSpace(10),
+                  Align(
+                      alignment: Alignment.center,
+                      child: Icon(
+                        icon,
+                        color: borderColor,
+                      ))
+                ],
+              ),
             ),
           ),
         ),
