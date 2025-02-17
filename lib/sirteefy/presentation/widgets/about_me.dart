@@ -67,7 +67,7 @@ class AboutMe extends ConsumerWidget {
           text: "See Resume",
           onTap: () {
             launchWebsiteUrl(
-                "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf");
+                "https://drive.google.com/file/d/1_7dB9HXfwDae0j4CEn_Qc-wZQ9xQ-zf_/view?usp=sharing");
           },
         ),
       ],
