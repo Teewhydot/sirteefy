@@ -26,7 +26,7 @@ class AboutMe extends ConsumerWidget {
                 children: [
               textSpanText("Hi, I'm Issa, a self taught", ref),
               TextSpan(
-                text: " software developer ",
+                text: " Software Developer ",
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

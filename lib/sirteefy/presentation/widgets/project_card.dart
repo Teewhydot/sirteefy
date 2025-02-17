@@ -12,22 +12,22 @@ import '../../../utils/other/misc.dart';
 import '../../../utils/theme/theme_provider.dart';
 
 class ProjectCard extends ConsumerWidget {
-  final String? projectName;
-  final String? projectDescription;
-  final String? projectGithubLink;
-  final String? projectLiveLink;
-  final List<String>? projectTechStack;
-  final List<String>? projectImages;
+  final String projectName;
+  final String projectDescription;
+  final String projectGithubLink;
+  final String projectLiveLink;
+  final List<String> projectTechStack;
+  final List<String> projectImages;
   final String? projectImageUrl;
 
   const ProjectCard(
       {super.key,
-      this.projectName,
-      this.projectDescription,
-      this.projectGithubLink,
-      this.projectLiveLink,
-      this.projectTechStack,
-      this.projectImages,
+      this.projectName = '',
+      this.projectDescription = '',
+      this.projectGithubLink = '',
+      this.projectLiveLink  = '',
+      this.projectTechStack = const [],
+      this.projectImages  = const [],
       this.projectImageUrl});
 
   @override
@@ -62,12 +62,12 @@ class ProjectCard extends ConsumerWidget {
               ),
             ),
             child: FlutterCarousel(
-              items: projectImages!
+              items: projectImages
                   .map((e) => CachedNetworkImage(
                         imageUrl: e,
                         width: 350,
                         height: 200,
-                fit: BoxFit.fill,
+                        fit: BoxFit.fill,
                       ))
                   .toList(),
               options: FlutterCarouselOptions(
@@ -82,16 +82,16 @@ class ProjectCard extends ConsumerWidget {
               ),
             ),
           ),
-          firacodeStyleText(projectTechStack?.join(', ') ?? 'Tech Stack',
+          firacodeStyleText(projectTechStack.join(', '),
               fontWeight: FontWeight.normal, fontSize: 16),
           const Divider(
             thickness: 2,
           ),
           verticalSpace(10),
-          firacodeStyleText(projectName ?? 'Project Name',
+          firacodeStyleText(projectName,
               fontWeight: FontWeight.bold, fontSize: 16),
           verticalSpace(10),
-          firacodeStyleText(projectDescription ?? 'Project Description',
+          firacodeStyleText(projectDescription,
               fontWeight: FontWeight.normal, fontSize: 16),
           verticalSpace(10),
           Padding(
@@ -102,10 +102,10 @@ class ProjectCard extends ConsumerWidget {
                   icon: Ionicons.logo_github,
                   text: "Code",
                   borderColor: accentColor,
-                  opacity: projectGithubLink!.isEmpty ? 0.3 : 1.0,
+                  opacity: projectGithubLink.isEmpty ? 0.3 : 1.0,
                   onTap: () {
-                    if (projectGithubLink != null) {
-                      launchWebsiteUrl(projectGithubLink!);
+                    if (projectGithubLink.isNotEmpty) {
+                      launchWebsiteUrl(projectGithubLink);
                     } else {
                       showToast('No Github link');
                     }
@@ -115,11 +115,11 @@ class ProjectCard extends ConsumerWidget {
                 ProjectButton(
                   borderColor: accentColor,
                   icon: Ionicons.play,
-                  opacity: projectLiveLink!.isEmpty ? 0.3 : 1.0,
+                  opacity: projectLiveLink.isEmpty ? 0.3 : 1.0,
                   text: "Live",
                   onTap: () {
-                    if (projectLiveLink != null) {
-                      launchWebsiteUrl(projectLiveLink!);
+                    if (projectLiveLink.isNotEmpty) {
+                      launchWebsiteUrl(projectLiveLink);
                     } else {
                       showToast('No Live link');
                     }

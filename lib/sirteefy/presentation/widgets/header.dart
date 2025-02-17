@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
-import 'package:sirteefy/sirteefy/presentation/widgets/theme_widget.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 import '../../../generated/assets.dart';
 import '../../../utils/theme/sirteefy_themes.dart';
@@ -89,7 +88,6 @@ class _HeaderState extends ConsumerState<Header>
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final themeProvider = ref.watch(themeProviderController);
     final isNavOpen = ref.watch(navManagerProvider);
     return Column(
