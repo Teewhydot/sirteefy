@@ -185,7 +185,6 @@ class _HeaderState extends ConsumerState<Header>
                 ],
               ),
             ),
-             Positioned(bottom: 0,left: width*0.6, child: ThemeWidget()),
 
           ],
         ),

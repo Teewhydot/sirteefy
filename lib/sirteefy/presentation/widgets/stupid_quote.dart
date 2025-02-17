@@ -98,11 +98,12 @@ class StupidQuote extends ConsumerWidget {
                         ),
                         borderRadius: BorderRadius.circular(borderWidthRadius),
                       ),
-                      child: Text('stupid.',
-                          style: AppThemes.firaCodeStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                          )),
+                      child: IconButton(
+                        icon: const Icon(Icons.refresh),
+                        color: accentColor,
+                        onPressed: () {
+                        },
+                      ),
                     ),
                   ),
                 ],
@@ -184,11 +185,13 @@ class StupidQuote extends ConsumerWidget {
                       ),
                       borderRadius: BorderRadius.circular(borderWidthRadius),
                     ),
-                    child: Text(state.stupidQuote.slip?.id.toString() ?? '0',
-                        style: AppThemes.firaCodeStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        )),
+                    child: IconButton(
+                      icon: const Icon(Icons.refresh),
+                      color: accentColor,
+                      onPressed: () {
+                        context.read<GetStupidQuoteBloc>().add(GetStupidQuote());
+                      },
+                    ),
                   ),
                 ),
               ],
