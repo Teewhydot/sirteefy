@@ -37,12 +37,12 @@ Widget buildNavItem(String title,Function? onTap,bool? hasAction, Widget? action
 
 
 class NavItem extends StatelessWidget {
-  String title;
-  Function? onTap;
-  bool? hasAction;
-  Widget? actionWidget;
+ final String title;
+ final  Function? onTap;
+ final bool? hasAction;
+ final Widget? actionWidget;
 
-  NavItem({required this.title, this.onTap, this.hasAction, this.actionWidget});
+  const NavItem({super.key, required this.title, this.onTap, this.hasAction, this.actionWidget});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
