@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:oktoast/oktoast.dart';
@@ -45,43 +43,43 @@ class ProjectCard extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 350,
-            height: 200,
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                    width: 2,
-                    color: themeProvider.isDarkModeActive
-                        ? grayColor
-                        : blackColor),
-              ),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(borderWidthRadius),
-                topRight: Radius.circular(borderWidthRadius),
-              ),
-            ),
-            child: FlutterCarousel(
-              items: projectImages
-                  .map((e) => CachedNetworkImage(
-                        imageUrl: e,
-                        width: 350,
-                        height: 200,
-                        fit: BoxFit.fill,
-                      ))
-                  .toList(),
-              options: FlutterCarouselOptions(
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 5),
-                enlargeCenterPage: true,
-                viewportFraction: 1,
-                pauseAutoPlayOnManualNavigate: true,
-                showIndicator: false,
-                physics: const BouncingScrollPhysics(),
-                pauseAutoPlayOnTouch: true,
-              ),
-            ),
-          ),
+          // Container(
+          //   width: 350,
+          //   height: 200,
+          //   decoration: BoxDecoration(
+          //     border: Border(
+          //       bottom: BorderSide(
+          //           width: 2,
+          //           color: themeProvider.isDarkModeActive
+          //               ? grayColor
+          //               : blackColor),
+          //     ),
+          //     borderRadius: const BorderRadius.only(
+          //       topLeft: Radius.circular(borderWidthRadius),
+          //       topRight: Radius.circular(borderWidthRadius),
+          //     ),
+          //   ),
+          //   child: FlutterCarousel(
+          //     items: projectImages
+          //         .map((e) => CachedNetworkImage(
+          //               imageUrl: e,
+          //               width: 350,
+          //               height: 200,
+          //               fit: BoxFit.fill,
+          //             ))
+          //         .toList(),
+          //     options: FlutterCarouselOptions(
+          //       autoPlay: true,
+          //       autoPlayInterval: const Duration(seconds: 5),
+          //       enlargeCenterPage: true,
+          //       viewportFraction: 1,
+          //       pauseAutoPlayOnManualNavigate: true,
+          //       showIndicator: false,
+          //       physics: const BouncingScrollPhysics(),
+          //       pauseAutoPlayOnTouch: true,
+          //     ),
+          //   ),
+          // ),
           firacodeStyleText(projectTechStack.join(', '),
               fontWeight: FontWeight.normal, fontSize: 16),
           const Divider(

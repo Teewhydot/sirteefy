@@ -256,12 +256,6 @@ class _HeaderState extends ConsumerState<Header>
                         title: 'Toggle Theme',
                         onTap: () => themeProvider.toggleTheme(),
                         hasAction: true,
-                        // actionWidget: Icon(
-                        //   themeProvider.isDarkModeActive
-                        //       ? Ionicons.sunny_outline
-                        //       : Ionicons.moon_outline,
-                        //   color: accentColor,
-                        // ),
                       actionWidget: const ThemeWidget(),
                     ),
                   ],
