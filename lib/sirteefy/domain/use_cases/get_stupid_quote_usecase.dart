@@ -6,7 +6,7 @@ import '../../data/repositories/projects_repo_impl.dart';
 
 class GetStupidQuoteUseCase {
 final _stupidQuoteRepository = SirteefyRepositoryImpl();
-  Future<Either<Failure, AdviceModel>> getQuote()async{
+  Future<Either<Failure, QuoteModel>> getQuote()async{
     return await _stupidQuoteRepository.getStupidQuote();
   }
 }

@@ -7,7 +7,7 @@ import 'package:dartz/dartz.dart';
 import '../../entities/project_entity.dart';
 
 abstract class ProjectsRepo {
-  Future<Either<Failure,AdviceModel>> getStupidQuote();
+  Future<Either<Failure,QuoteModel>> getStupidQuote();
   Future<Either<Failure, List<ProjectEntity>>> getProjectsFromDataSource();
   Future<Either<Failure, String>> getCurrentProject();
   Future<Either<Failure, SocialMediaLinks>> getSocialMediaLinks();

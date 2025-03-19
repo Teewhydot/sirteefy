@@ -63,7 +63,7 @@ class SirteefyRepositoryImpl implements ProjectsRepo {
   }
 
   @override
-  Future<Either<Failure, AdviceModel>> getStupidQuote() {
+  Future<Either<Failure, QuoteModel>> getStupidQuote() {
     return handleExceptions(() async {
       return await getStupidQuoteAPIImpl.getStupidQuote();
     });

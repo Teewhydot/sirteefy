@@ -1,12 +1,12 @@
 
-class AdviceModel {
+class QuoteModel {
   Slip? slip;
 
-  AdviceModel({
+  QuoteModel({
     this.slip,
   });
 
-  factory AdviceModel.fromJson(Map<String, dynamic> json) => AdviceModel(
+  factory QuoteModel.fromJson(Map<String, dynamic> json) => QuoteModel(
     slip: json["slip"] == null ? null : Slip.fromJson(json["slip"]),
   );
 
