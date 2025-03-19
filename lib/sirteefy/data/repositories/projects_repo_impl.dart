@@ -1,5 +1,6 @@
 
 import 'package:dartz/dartz.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sirteefy/sirteefy/data/remote/models/skill_model.dart';
 import 'package:sirteefy/sirteefy/data/remote/models/social_media_links.dart';
 import 'package:sirteefy/sirteefy/data/remote/models/stupid_quote_model.dart';
@@ -23,6 +24,7 @@ class SirteefyRepositoryImpl implements ProjectsRepo {
   final getSocialMediaLinksFirebaseImpl =
   SocialMediaLinksFirebaseImplementation();
   final getStupidQuoteAPIImpl = StupidQuoteAPIImpl();
+  final stupidQuoteService = GetIt.instance<StupidQuoteDataSource>();
 
   @override
   Future<Either<Failure, String>> getCurrentProject() async {
@@ -65,7 +67,7 @@ class SirteefyRepositoryImpl implements ProjectsRepo {
   @override
   Future<Either<Failure, QuoteModel>> getStupidQuote() {
     return handleExceptions(() async {
-      return await getStupidQuoteAPIImpl.getStupidQuote();
+      return await stupidQuoteService.getStupidQuoteFromDataSource();
     });
   }
 }

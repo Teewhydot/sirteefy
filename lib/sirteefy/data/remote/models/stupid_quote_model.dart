@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class QuoteModel {
   Slip? slip;
@@ -7,12 +8,18 @@ class QuoteModel {
   });
 
   factory QuoteModel.fromJson(Map<String, dynamic> json) => QuoteModel(
-    slip: json["slip"] == null ? null : Slip.fromJson(json["slip"]),
-  );
-
+        slip: json["slip"] == null ? null : Slip.fromJson(json["slip"]),
+      );
+  factory QuoteModel.fromFirebaseDoc(DocumentSnapshot doc) {
+    return QuoteModel(
+      slip: Slip(
+        advice: doc['quote'],
+      ),
+    );
+  }
   Map<String, dynamic> toJson() => {
-    "slip": slip?.toJson(),
-  };
+        "slip": slip?.toJson(),
+      };
 }
 
 class Slip {
@@ -25,12 +32,12 @@ class Slip {
   });
 
   factory Slip.fromJson(Map<String, dynamic> json) => Slip(
-    id: json["id"],
-    advice: json["advice"],
-  );
+        id: json["id"],
+        advice: json["advice"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "advice": advice,
-  };
+        "id": id,
+        "advice": advice,
+      };
 }
