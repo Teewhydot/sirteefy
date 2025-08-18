@@ -76,14 +76,32 @@ class HeaderBanner extends ConsumerWidget {
                     bottom: 0,
                     child: BlocBuilder<CurrentProjectBloc, CurrentProjectState>(
                       builder: (context, state) {
-                      if (state is CurrentProjectInitial){
-                        context.read<CurrentProjectBloc>().add(FetchCurrentProject());
-                        return const SizedBox.shrink();
-                      } else if (state is CurrentProjectLoading){
-                        return Skeletonizer(
-                          child: IntrinsicWidth(
+                        if (state is CurrentProjectInitial) {
+                          context
+                              .read<CurrentProjectBloc>()
+                              .add(FetchCurrentProject());
+                          return const SizedBox.shrink();
+                        } else if (state is CurrentProjectLoading) {
+                          return Skeletonizer(
+                            child: IntrinsicWidth(
+                              child: ScrollingText(
+                                project: "Sirteefy",
+                                style: AppThemes.firaCodeStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                projectStyle: AppThemes.firaCodeStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: accentColor,
+                                ),
+                              ),
+                            ),
+                          );
+                        } else if (state is CurrentProjectLoaded) {
+                          return IntrinsicWidth(
                             child: ScrollingText(
-                              project: "Sirteefy",
+                              project: state.currentProject,
                               style: AppThemes.firaCodeStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -94,37 +112,27 @@ class HeaderBanner extends ConsumerWidget {
                                 color: accentColor,
                               ),
                             ),
-                          ),
-                        );
-                      } else if (state is CurrentProjectLoaded){
-                        return IntrinsicWidth(
-                          child: ScrollingText(
-                            project: state.currentProject,
-                            style: AppThemes.firaCodeStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                          );
+                        } else if (state is CurrentProjectError) {
+                          return Center(
+                            child: Column(
+                              children: [
+                                Text(state.message),
+                                verticalSpace(10),
+                                ProjectButton(
+                                    borderColor: accentColor,
+                                    icon: Icons.refresh,
+                                    text: 'Retry',
+                                    onTap: () {
+                                      context
+                                          .read<CurrentProjectBloc>()
+                                          .add(FetchCurrentProject());
+                                    })
+                              ],
                             ),
-                            projectStyle: AppThemes.firaCodeStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: accentColor,
-                            ),
-                          ),
-                        );
-                      } else if (state is CurrentProjectError){
-                        return Center(
-                          child: Column(
-                            children: [
-                               Text(state.message),
-                              verticalSpace(10),
-                              ProjectButton(borderColor: accentColor, icon: Icons.refresh, text: 'Retry', onTap: (){
-                                context.read<CurrentProjectBloc>().add(FetchCurrentProject());
-                              })
-                            ],
-                          ),
-                        );
-                      }
-                      return const SizedBox.shrink();
+                          );
+                        }
+                        return const SizedBox.shrink();
                       },
                     ),
                   )
@@ -144,9 +152,9 @@ class HeaderBanner extends ConsumerWidget {
                         fontWeight: FontWeight.bold,
                       ),
                       children: [
-                    textSpanText("Tunde is a", ref),
+                    textSpanText("Abubakar Issa is a", ref),
                     TextSpan(
-                      text: " software developer ",
+                      text: "full stack mobile engineer ",
                       style: AppThemes.firaCodeStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -165,7 +173,7 @@ class HeaderBanner extends ConsumerWidget {
                   ])),
               verticalSpace(20),
               Text(
-                'Using his expertise with Flutter and Jetpack Compose, He crafts beautiful and functional web and mobile applications with a touch of elegance and simplicity. He is passionate about building software that solves real-world problems and makes life easier for people.',
+                'Using his expertise with Flutter and Golang, He crafts beautiful and functional web and mobile applications with a touch of elegance and simplicity. He is passionate about building software that solves real-world problems and makes life easier for people.',
                 style: AppThemes.firaCodeStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.normal,

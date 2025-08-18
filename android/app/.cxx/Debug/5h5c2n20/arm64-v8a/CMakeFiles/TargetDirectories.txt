@@ -1,0 +1,2 @@
+C:/Users/Hp/StudioProjects/sirteefy/android/app/.cxx/Debug/5h5c2n20/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/Hp/StudioProjects/sirteefy/android/app/.cxx/Debug/5h5c2n20/arm64-v8a/CMakeFiles/rebuild_cache.dir
