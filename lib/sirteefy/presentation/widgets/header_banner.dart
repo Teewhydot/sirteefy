@@ -152,9 +152,9 @@ class HeaderBanner extends ConsumerWidget {
                         fontWeight: FontWeight.bold,
                       ),
                       children: [
-                    textSpanText("Abubakar Issa is a", ref),
+                    textSpanText("Abubakar Issa is a ", ref),
                     TextSpan(
-                      text: "full stack mobile engineer ",
+                      text: "Full Stack Mobile Engineer ",
                       style: AppThemes.firaCodeStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -163,7 +163,7 @@ class HeaderBanner extends ConsumerWidget {
                     ),
                     textSpanText("and a", ref),
                     TextSpan(
-                      text: " tech enthusiast ",
+                      text: " Tech Enthusiast ",
                       style: AppThemes.firaCodeStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

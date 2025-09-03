@@ -4,6 +4,7 @@ import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/sirteefy/url_launcher.dart';
+
 import '../../../utils/color_palette/colors.dart';
 import '../../../utils/theme/sirteefy_themes.dart';
 
@@ -44,7 +45,7 @@ class AboutMe extends ConsumerWidget {
               ),
               textSpanText(" and", ref),
               TextSpan(
-                text: " Jetpack Compose ",
+                text: " Go ",
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -54,7 +55,7 @@ class AboutMe extends ConsumerWidget {
             ])),
         verticalSpace(50),
         Text(
-          'Using my expertise with Flutter and Jetpack Compose, I craft beautiful and functional web and mobile applications with great focus on performance, simplicity, and good coding practices. I am passionate about building software that solves real-world problems and makes life easier for people.',
+          'Using my expertise as a Full Stack Engineer, I craft beautiful and functional web and mobile applications with great focus on performance, simplicity, and good coding practices. I am passionate about building software that solves real-world problems and makes life easier for people.',
           style: AppThemes.firaCodeStyle(
             fontSize: 16,
             fontWeight: FontWeight.normal,
