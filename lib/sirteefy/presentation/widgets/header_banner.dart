@@ -114,21 +114,18 @@ class HeaderBanner extends ConsumerWidget {
                             ),
                           );
                         } else if (state is CurrentProjectError) {
-                          return Center(
-                            child: Column(
-                              children: [
-                                Text(state.message),
-                                verticalSpace(10),
-                                ProjectButton(
-                                    borderColor: accentColor,
-                                    icon: Icons.refresh,
-                                    text: 'Retry',
-                                    onTap: () {
-                                      context
-                                          .read<CurrentProjectBloc>()
-                                          .add(FetchCurrentProject());
-                                    })
-                              ],
+                          return IntrinsicWidth(
+                            child: ScrollingText(
+                              project: "a full stack mobile app",
+                              style: AppThemes.firaCodeStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              projectStyle: AppThemes.firaCodeStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: accentColor,
+                              ),
                             ),
                           );
                         }
