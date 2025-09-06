@@ -17,13 +17,13 @@ import '../remote/data_sources/social_media_links_data_source.dart';
 import '../remote/data_sources/stupid_quote_datasource.dart';
 
 class SirteefyRepositoryImpl implements ProjectsRepo {
-  final getProjectsFirebaseImpl = ProjectsFireBaseDataSource();
-  final getCurrentProjectFirebaseImpl = CurrentProjectFireBaseDataSource();
-  final getSkillsFirebaseImpl = SkillsFireBaseDataSource();
-  final sendMessagesFirebaseImpl = SendMessageFirebaseImplementation();
-  final getSocialMediaLinksFirebaseImpl =
+  late final getProjectsFirebaseImpl = ProjectsFireBaseDataSource();
+  late final getCurrentProjectFirebaseImpl = CurrentProjectFireBaseDataSource();
+  late final getSkillsFirebaseImpl = SkillsFireBaseDataSource();
+  late final sendMessagesFirebaseImpl = SendMessageFirebaseImplementation();
+  late final getSocialMediaLinksFirebaseImpl =
   SocialMediaLinksFirebaseImplementation();
-  final getStupidQuoteAPIImpl = StupidQuoteAPIImpl();
+  late final getStupidQuoteAPIImpl = StupidQuoteAPIImpl();
   final stupidQuoteService = GetIt.instance<StupidQuoteDataSource>();
 
   @override
@@ -38,6 +38,14 @@ class SirteefyRepositoryImpl implements ProjectsRepo {
   getProjectsFromDataSource() async {
     return handleExceptions(() async {
       return await getProjectsFirebaseImpl.getProjects();
+    });
+  }
+
+  @override
+  Future<Either<Failure, List<ProjectEntity>>>
+  getHomeProjectsFromDataSource() async {
+    return handleExceptions(() async {
+      return await getProjectsFirebaseImpl.getHomeProjects();
     });
   }
 

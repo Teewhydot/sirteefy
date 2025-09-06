@@ -9,6 +9,7 @@ import '../../entities/project_entity.dart';
 abstract class ProjectsRepo {
   Future<Either<Failure,QuoteModel>> getStupidQuote();
   Future<Either<Failure, List<ProjectEntity>>> getProjectsFromDataSource();
+  Future<Either<Failure, List<ProjectEntity>>> getHomeProjectsFromDataSource();
   Future<Either<Failure, String>> getCurrentProject();
   Future<Either<Failure, SocialMediaLinks>> getSocialMediaLinks();
   Future<Either<Failure, SkillModel>> getSkills();

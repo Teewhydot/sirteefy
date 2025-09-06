@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
@@ -6,6 +7,8 @@ import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/sirteefy/url_launcher.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+
 import '../../../utils/other/misc.dart';
 import '../../../utils/theme/theme_provider.dart';
 
@@ -23,10 +26,91 @@ class ProjectCard extends ConsumerWidget {
       this.projectName = '',
       this.projectDescription = '',
       this.projectGithubLink = '',
-      this.projectLiveLink  = '',
+      this.projectLiveLink = '',
       this.projectTechStack = const [],
-      this.projectImages  = const [],
+      this.projectImages = const [],
       this.projectImageUrl});
+
+  bool _isValidImageUrl(String? url) {
+    if (url == null || url.isEmpty) return false;
+
+    final trimmedUrl = url.trim();
+
+    // Enhanced validation for server-side issues
+    if (trimmedUrl.isEmpty ||
+        trimmedUrl == '""' ||
+        trimmedUrl == "''" ||
+        trimmedUrl == 'null' ||
+        trimmedUrl == 'undefined' ||
+        trimmedUrl.contains('%22%22') || // Double encoded quotes
+        trimmedUrl == '%22%22' || // Just encoded quotes
+        trimmedUrl.startsWith('%22') || // Starts with encoded quote
+        trimmedUrl.endsWith('%22') || // Ends with encoded quote
+        trimmedUrl.length < 10) {
+      return false; // Too short to be valid URL
+    }
+
+    try {
+      // Try to decode URL first
+      String decodedUrl = trimmedUrl;
+      try {
+        decodedUrl = Uri.decodeFull(trimmedUrl);
+      } catch (e) {
+        // If decode fails, continue with original
+      }
+
+      final uri = Uri.tryParse(decodedUrl);
+      return uri != null &&
+          uri.hasAbsolutePath &&
+          (uri.scheme == 'http' || uri.scheme == 'https') &&
+          uri.host.isNotEmpty &&
+          uri.host.contains('.'); // Must have a domain
+    } catch (e) {
+      print('URL validation error for: "$url" - ${e.toString()}');
+      return false;
+    }
+  }
+
+  Widget _buildSafeImage(String url) {
+    try {
+      return CachedNetworkImage(
+        imageUrl: url,
+        fit: BoxFit.cover,
+        width: 350,
+        height: 200,
+        placeholder: (context, url) => Center(
+          child: Skeletonizer(
+            child: Container(
+              width: 350,
+              height: 200,
+              color: Colors.grey,
+            ),
+          ),
+        ),
+        errorWidget: (context, url, error) => _buildErrorWidget(),
+      );
+    } catch (e) {
+      return _buildErrorWidget();
+    }
+  }
+
+  Widget _buildErrorWidget() {
+    return Container(
+      width: 350,
+      height: 200,
+      color: Colors.grey.withValues(alpha: 0.3),
+      child: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Ionicons.image_outline, size: 40),
+            SizedBox(height: 8),
+            Text('Image not available', style: TextStyle(fontSize: 12)),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -43,43 +127,31 @@ class ProjectCard extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Container(
-          //   width: 350,
-          //   height: 200,
-          //   decoration: BoxDecoration(
-          //     border: Border(
-          //       bottom: BorderSide(
-          //           width: 2,
-          //           color: themeProvider.isDarkModeActive
-          //               ? grayColor
-          //               : blackColor),
-          //     ),
-          //     borderRadius: const BorderRadius.only(
-          //       topLeft: Radius.circular(borderWidthRadius),
-          //       topRight: Radius.circular(borderWidthRadius),
-          //     ),
-          //   ),
-          //   child: FlutterCarousel(
-          //     items: projectImages
-          //         .map((e) => CachedNetworkImage(
-          //               imageUrl: e,
-          //               width: 350,
-          //               height: 200,
-          //               fit: BoxFit.fill,
-          //             ))
-          //         .toList(),
-          //     options: FlutterCarouselOptions(
-          //       autoPlay: true,
-          //       autoPlayInterval: const Duration(seconds: 5),
-          //       enlargeCenterPage: true,
-          //       viewportFraction: 1,
-          //       pauseAutoPlayOnManualNavigate: true,
-          //       showIndicator: false,
-          //       physics: const BouncingScrollPhysics(),
-          //       pauseAutoPlayOnTouch: true,
-          //     ),
-          //   ),
-          // ),
+          if (_isValidImageUrl(projectImageUrl))
+            Container(
+              width: 350,
+              height: 200,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                      width: 2,
+                      color: themeProvider.isDarkModeActive
+                          ? grayColor
+                          : blackColor),
+                ),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(borderWidthRadius),
+                  topRight: Radius.circular(borderWidthRadius),
+                ),
+              ),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(borderWidthRadius),
+                  topRight: Radius.circular(borderWidthRadius),
+                ),
+                child: _buildSafeImage(projectImageUrl!.trim()),
+              ),
+            ),
           firacodeStyleText(projectTechStack.join(', '),
               fontWeight: FontWeight.normal, fontSize: 16),
           const Divider(

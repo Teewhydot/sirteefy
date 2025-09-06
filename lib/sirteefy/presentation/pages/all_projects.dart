@@ -6,15 +6,14 @@ import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/section_header.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
 import '../widgets/header.dart';
-
-
 
 class AllProjects extends ConsumerWidget {
   const AllProjects({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -30,8 +29,12 @@ class AllProjects extends ConsumerWidget {
                   verticalSpace(20),
                   BlocBuilder<ProjectsBloc, ProjectsState>(
                     builder: (context, state) {
+                      if (state is ProjectsInitial) {
+                        context.read<ProjectsBloc>().add(GetProjectsEvent());
+                        return Container();
+                      }
                       if (state is ProjectsLoading) {
-                        return const Center(
+                        return Center(
                           child: Skeletonizer(
                             child: Wrap(
                               direction: Axis.horizontal,
@@ -40,14 +43,10 @@ class AllProjects extends ConsumerWidget {
                               alignment: WrapAlignment.center,
                               runAlignment: WrapAlignment.center,
                               runSpacing: 20,
-                              children: [
-                                ProjectCard(),
-                                ProjectCard(),
-                                ProjectCard(),
-                                ProjectCard(),
-                                ProjectCard(),
-                                ProjectCard(),
-                              ],
+                              children: List.generate(
+                                3,
+                                (index) => const ProjectCard(),
+                              ).toList(),
                             ),
                           ),
                         );
@@ -63,16 +62,20 @@ class AllProjects extends ConsumerWidget {
                               runSpacing: 20,
                               children: state.projects
                                   .map((e) => ProjectCard(
-                                projectName: e.name,
-                                projectDescription: e.description,
-                                projectGithubLink: e.githubLink,
-                                projectLiveLink: e.projectUrl,
-                                projectTechStack: e.technologies,
-                                projectImageUrl: e.imageUrl,
-                                projectImages: e.images,
-                              ))
+                                        projectName: e.name,
+                                        projectDescription: e.description,
+                                        projectGithubLink: e.githubLink,
+                                        projectLiveLink: e.projectUrl,
+                                        projectTechStack: e.technologies,
+                                        projectImageUrl: e.imageUrl,
+                                        projectImages: e.images,
+                                      ))
                                   .toList()),
                         );
+                      }
+                      if (state is ProjectsError) {
+                        return const Center(
+                            child: Text('Error loading projects:'));
                       }
                       return const Center(child: Text('Error'));
                     },
@@ -90,7 +93,6 @@ class AllProjects extends ConsumerWidget {
                 showNav: false,
               ),
             ),
-
           ],
         ),
       ),

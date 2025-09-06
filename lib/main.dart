@@ -8,6 +8,7 @@ import 'package:sirteefy/firebase_options.dart';
 import 'package:sirteefy/sirteefy/di/di_setup.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/contact/send_message_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/current_project/current_project_bloc.dart';
+import 'package:sirteefy/sirteefy/presentation/manager/home_projects/home_projects_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/projects/projects_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/skills/skills_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/social_media/get_sm_links_bloc.dart';
@@ -18,14 +19,17 @@ import 'package:sirteefy/utils/theme/theme_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupDIService();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  setupDIService();
   runApp(ProviderScope(
       child: MultiBlocProvider(providers: [
     BlocProvider<ProjectsBloc>(
       create: (context) => ProjectsBloc(),
+    ),
+    BlocProvider<HomeProjectsBloc>(
+      create: (context) => HomeProjectsBloc(),
     ),
     BlocProvider<SendMessageBloc>(
       create: (context) => SendMessageBloc(),

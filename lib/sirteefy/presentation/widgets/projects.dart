@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:sirteefy/sirteefy/presentation/manager/projects/projects_bloc.dart';
+import 'package:sirteefy/sirteefy/presentation/manager/home_projects/home_projects_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
@@ -13,31 +13,30 @@ class Projects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectsBloc, ProjectsState>(
+    return BlocBuilder<HomeProjectsBloc, HomeProjectsState>(
       builder: (context, state) {
-        if (state is ProjectsInitial) {
-          context.read<ProjectsBloc>().add(GetProjectsEvent());
+        if (state is HomeProjectsInitial) {
+          context.read<HomeProjectsBloc>().add(GetHomeProjectsEvent());
           return Container();
-        } else if (state is ProjectsLoading) {
+        } else if (state is HomeProjectsLoading) {
           return ResponsiveRowColumn(
-            columnSpacing: 20,
-            rowSpacing: 20,
-            rowMainAxisAlignment: MainAxisAlignment.center,
-            rowCrossAxisAlignment: CrossAxisAlignment.center,
-            layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET) ||
-                    ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
-                ? ResponsiveRowColumnType.COLUMN
-                : ResponsiveRowColumnType.ROW,
-            children: const [
-              ResponsiveRowColumnItem(
-                  rowFlex: 1, child: Skeletonizer(child: ProjectCard())),
-              ResponsiveRowColumnItem(
-                  rowFlex: 1, child: Skeletonizer(child: ProjectCard())),
-              ResponsiveRowColumnItem(
-                  rowFlex: 1, child: Skeletonizer(child: ProjectCard())),
-            ],
-          );
-        } else if (state is ProjectsError) {
+              columnSpacing: 20,
+              rowSpacing: 20,
+              rowMainAxisAlignment: MainAxisAlignment.center,
+              rowCrossAxisAlignment: CrossAxisAlignment.center,
+              layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET) ||
+                      ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
+                  ? ResponsiveRowColumnType.COLUMN
+                  : ResponsiveRowColumnType.ROW,
+              children: List.generate(
+                  3,
+                  (index) => const ResponsiveRowColumnItem(
+                        rowFlex: 1,
+                        child: Skeletonizer(
+                          child: ProjectCard(),
+                        ),
+                      )));
+        } else if (state is HomeProjectsError) {
           return Center(
               child: Column(
             children: [
@@ -48,13 +47,13 @@ class Projects extends StatelessWidget {
                 icon: Ionicons.reload,
                 text: 'Retry',
                 onTap: () {
-                  context.read<ProjectsBloc>().add(GetProjectsEvent());
+                  context.read<HomeProjectsBloc>().add(GetHomeProjectsEvent());
                 },
               )
             ],
           ));
-        } else if (state is ProjectsLoaded) {
-          if(state.projects.isEmpty){
+        } else if (state is HomeProjectsLoaded) {
+          if (state.projects.isEmpty) {
             return const Center(child: Text('No projects available'));
           } else {
             return ResponsiveRowColumn(
@@ -63,46 +62,24 @@ class Projects extends StatelessWidget {
               rowMainAxisAlignment: MainAxisAlignment.center,
               rowCrossAxisAlignment: CrossAxisAlignment.start,
               layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET) ||
-                  ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
+                      ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
                   ? ResponsiveRowColumnType.COLUMN
                   : ResponsiveRowColumnType.ROW,
-              children: [
-                ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: ProjectCard(
-                      projectName: state.projects[0].name,
-                      projectDescription: state.projects[0].description,
-                      projectGithubLink: state.projects[0].githubLink,
-                      projectLiveLink: state.projects[0].projectUrl,
-                      projectTechStack: state.projects[0].technologies,
-                      projectImageUrl: state.projects[0].imageUrl,
-                      projectImages: state.projects[0].images,
-                    )),
-                ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: ProjectCard(
-                      projectName: state.projects[1].name,
-                      projectDescription: state.projects[1].description,
-                      projectGithubLink: state.projects[1].githubLink,
-                      projectLiveLink: state.projects[1].projectUrl,
-                      projectTechStack: state.projects[1].technologies,
-                      projectImageUrl: state.projects[1].imageUrl,
-                      projectImages: state.projects[1].images,
-                    )),
-                ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: ProjectCard(
-                      projectName: state.projects[2].name,
-                      projectDescription: state.projects[2].description,
-                      projectGithubLink: state.projects[2].githubLink,
-                      projectLiveLink: state.projects[2].projectUrl,
-                      projectTechStack: state.projects[2].technologies,
-                      projectImageUrl: state.projects[2].imageUrl,
-                      projectImages: state.projects[2].images,
-                    )),
-              ],
+              children: state.projects
+                  .map((project) => ResponsiveRowColumnItem(
+                        rowFlex: 1,
+                        child: ProjectCard(
+                          projectName: project.name,
+                          projectDescription: project.description,
+                          projectGithubLink: project.githubLink,
+                          projectLiveLink: project.projectUrl,
+                          projectTechStack: project.technologies,
+                          projectImageUrl: project.imageUrl,
+                          projectImages: project.images,
+                        ),
+                      ))
+                  .toList(),
             );
-
           }
         }
         return const Center(child: Text('Error'));

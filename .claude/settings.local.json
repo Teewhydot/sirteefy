@@ -6,7 +6,9 @@
       "Bash(flutter build:*)",
       "Bash(flutter clean:*)",
       "Bash(flutter run:*)",
-      "Bash(flutter analyze:*)"
+      "Bash(flutter analyze:*)",
+      "Bash(dart analyze:*)",
+      "Bash(timeout 60 flutter build web --debug)"
     ],
     "deny": [],
     "ask": []

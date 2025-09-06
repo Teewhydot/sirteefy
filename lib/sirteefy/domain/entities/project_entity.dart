@@ -6,6 +6,7 @@ class ProjectEntity {
   final String githubLink;
   final List<String> images;
   final String projectUrl;
+  final bool showOnHome;
 
   ProjectEntity({
     required this.name,
@@ -15,5 +16,6 @@ class ProjectEntity {
     required  this.githubLink,
     required  this.images,
     required  this.projectUrl,
+    required this.showOnHome,
   });
 }
