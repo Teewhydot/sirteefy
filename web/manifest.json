@@ -1,11 +1,11 @@
 {
-    "name": "sirteefy",
-    "short_name": "sirteefy",
+    "name": "Abubakar Issa - Mobile Engineer Portfolio",
+    "short_name": "Issa Portfolio",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#1a1a1a",
+    "theme_color": "#00ff88",
+    "description": "Portfolio of Abubakar Issa, Full Mobile Engineer specializing in iOS, Android, and Flutter development.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
