@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/home_projects/home_projects_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/project_card.dart';
@@ -44,7 +43,7 @@ class Projects extends StatelessWidget {
               verticalSpace(20),
               ProjectButton(
                 borderColor: accentColor,
-                icon: Ionicons.reload,
+                icon: Icons.refresh,
                 text: 'Retry',
                 onTap: () {
                   context.read<HomeProjectsBloc>().add(GetHomeProjectsEvent());

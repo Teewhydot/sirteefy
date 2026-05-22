@@ -1,6 +1,6 @@
 # Sirteefy Portfolio
 
-A Flutter-based portfolio website showcasing the work of Abubakar Issa, a Full Mobile Engineer specializing in iOS, Android, and Flutter development.
+A Flutter-based portfolio website showcasing the work of Abubakar Issa, a Senior Mobile Engineer specializing in iOS, Android, and Flutter development.
 
 ## About
 

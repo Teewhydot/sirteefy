@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/my_skills.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
@@ -103,7 +102,7 @@ class ProjectCard extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Ionicons.image_outline, size: 40),
+            Icon(Icons.image_outlined, size: 40),
             SizedBox(height: 8),
             Text('Image not available', style: TextStyle(fontSize: 12)),
           ],
@@ -169,7 +168,7 @@ class ProjectCard extends ConsumerWidget {
             child: Row(
               children: [
                 ProjectButton(
-                  icon: Ionicons.logo_github,
+                  icon: Icons.code,
                   text: "Code",
                   borderColor: accentColor,
                   opacity: projectGithubLink.isEmpty ? 0.3 : 1.0,
@@ -184,7 +183,7 @@ class ProjectCard extends ConsumerWidget {
                 horizontalSpace(10),
                 ProjectButton(
                   borderColor: accentColor,
-                  icon: Ionicons.play,
+                  icon: Icons.play_arrow,
                   opacity: projectLiveLink.isEmpty ? 0.3 : 1.0,
                   text: "Live",
                   onTap: () {

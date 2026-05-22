@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:sirteefy/utils/color_palette/colors.dart';
 
 import '../../../utils/theme/theme_provider.dart';
@@ -111,7 +110,7 @@ class LightModeWidget extends ConsumerWidget {
     final themeProvider = ref.watch(themeProviderController);
 
     return Center(
-      child: Icon(Ionicons.sunny_outline,
+      child: Icon(Icons.wb_sunny_outlined,
       size: 20,
       color: themeProvider.isDarkModeActive ? Colors.white : grayColor ,),
     );
@@ -124,7 +123,7 @@ class CrescentMoonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Icon(Ionicons.moon_outline,
+      child: Icon(Icons.nightlight_round,
         size: 20,
         color: accentColor ,),
     );

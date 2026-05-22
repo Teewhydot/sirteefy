@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/current_project/current_project_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/current_project_widget.dart';
@@ -151,7 +150,7 @@ class HeaderBanner extends ConsumerWidget {
                       children: [
                     textSpanText("Abubakar Issa is a ", ref),
                     TextSpan(
-                      text: "Full Mobile Engineer ",
+                      text: "Senior Mobile Engineer ",
                       style: AppThemes.firaCodeStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -179,7 +178,7 @@ class HeaderBanner extends ConsumerWidget {
               verticalSpace(50),
               ProjectButton(
                 borderColor: accentColor,
-                icon: Ionicons.phone_portrait_outline,
+                icon: Icons.phone_android_outlined,
                 text: 'Get in touch',
                 onTap: () {
                   scrollToSection(contactKey ?? GlobalKey());

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/theme_widget.dart';
@@ -115,7 +114,7 @@ class _HeaderState extends ConsumerState<Header>
                               child: SizedBox(
                                 height: 20,
                                 width: 20,
-                                child: Icon(Ionicons.arrow_back,
+                                child: Icon(Icons.arrow_back,
                                     color: themeProvider.isDarkModeActive
                                         ? grayColor
                                         : blackColor),

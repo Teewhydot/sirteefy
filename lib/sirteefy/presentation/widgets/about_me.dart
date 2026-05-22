@@ -64,7 +64,7 @@ class AboutMe extends ConsumerWidget {
             ])),
         verticalSpace(50),
         Text(
-          'Using my expertise as a Full Mobile Engineer, I craft beautiful and functional mobile applications for iOS, Android, and cross-platform with Flutter, with great focus on performance, simplicity, and good coding practices. I am passionate about building software that solves real-world problems and makes life easier for people.',
+          'Using my expertise as a Senior Mobile Engineer, I craft beautiful and functional mobile applications for iOS, Android, and cross-platform with Flutter, with great focus on performance, simplicity, and good coding practices. I am passionate about building software that solves real-world problems and makes life easier for people.',
           style: AppThemes.firaCodeStyle(
             fontSize: 16,
             fontWeight: FontWeight.normal,

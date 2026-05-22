@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sirteefy/sirteefy/presentation/manager/social_media/get_sm_links_bloc.dart';
 import 'package:sirteefy/sirteefy/presentation/widgets/spacing.dart';
@@ -35,7 +34,7 @@ class Footer extends ConsumerWidget {
                       launchWebsiteUrl(state.socialMediaLinks.github ?? '');
                     },
                     icon: Icon(
-                      Ionicons.logo_github,
+                      Icons.code,
                       color: themeProvider.isDarkModeActive
                           ? grayColor
                           : blackColor,
@@ -49,7 +48,7 @@ class Footer extends ConsumerWidget {
                       launchWebsiteUrl(state.socialMediaLinks.twitter ?? '');
                     },
                     icon: Icon(
-                      Ionicons.logo_twitter,
+                      Icons.alternate_email,
                       color: themeProvider.isDarkModeActive
                           ? grayColor
                           : blackColor,
@@ -63,7 +62,7 @@ class Footer extends ConsumerWidget {
                       launchWebsiteUrl(state.socialMediaLinks.instagram ?? '');
                     },
                     icon: Icon(
-                      Ionicons.logo_instagram,
+                      Icons.camera_alt,
                       color: themeProvider.isDarkModeActive
                           ? grayColor
                           : blackColor,
@@ -77,7 +76,7 @@ class Footer extends ConsumerWidget {
                       launchWebsiteUrl(state.socialMediaLinks.linkedin ?? '');
                     },
                     icon: Icon(
-                      Ionicons.logo_linkedin,
+                      Icons.business_center,
                       color: themeProvider.isDarkModeActive
                           ? grayColor
                           : blackColor,
@@ -95,28 +94,28 @@ class Footer extends ConsumerWidget {
                       : MainAxisAlignment.spaceEvenly,
                   children: [
                     Icon(
-                      Ionicons.logo_github,
+                      Icons.code,
                       color: themeProvider.isDarkModeActive
                           ? grayColor
                           : blackColor,
                     ),
                     if (desktop) horizontalSpace(20),
                     Icon(
-                      Ionicons.logo_twitter,
+                      Icons.alternate_email,
                       color: themeProvider.isDarkModeActive
                           ? grayColor
                           : blackColor,
                     ),
                     if (desktop) horizontalSpace(20),
                     Icon(
-                      Ionicons.logo_instagram,
+                      Icons.camera_alt,
                       color: themeProvider.isDarkModeActive
                           ? grayColor
                           : blackColor,
                     ),
                     if (desktop) horizontalSpace(20),
                     Icon(
-                      Ionicons.logo_linkedin,
+                      Icons.business_center,
                       color: themeProvider.isDarkModeActive
                           ? grayColor
                           : blackColor,

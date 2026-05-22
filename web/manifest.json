@@ -1,11 +1,11 @@
 {
-    "name": "Abubakar Issa - Mobile Engineer Portfolio",
+    "name": "Abubakar Issa - Senior Mobile Engineer Portfolio",
     "short_name": "Issa Portfolio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#1a1a1a",
     "theme_color": "#00ff88",
-    "description": "Portfolio of Abubakar Issa, Full Mobile Engineer specializing in iOS, Android, and Flutter development.",
+    "description": "Portfolio of Abubakar Issa, Senior Mobile Engineer specializing in iOS, Android, and Flutter development.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
