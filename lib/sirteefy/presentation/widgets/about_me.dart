@@ -27,7 +27,7 @@ class AboutMe extends ConsumerWidget {
                 children: [
               textSpanText("Hi, I'm Issa, a self taught", ref),
               TextSpan(
-                text: " Software Developer ",
+                text: " Mobile Engineer ",
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -36,16 +36,25 @@ class AboutMe extends ConsumerWidget {
               ),
               textSpanText("with specialty in", ref),
               TextSpan(
-                text: " Flutter",
+                text: " iOS",
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: accentColor,
                 ),
               ),
-              textSpanText(" and", ref),
+              textSpanText(",", ref),
               TextSpan(
-                text: " Go ",
+                text: " Android",
+                style: AppThemes.firaCodeStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: accentColor,
+                ),
+              ),
+              textSpanText(", and", ref),
+              TextSpan(
+                text: " Flutter ",
                 style: AppThemes.firaCodeStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -55,7 +64,7 @@ class AboutMe extends ConsumerWidget {
             ])),
         verticalSpace(50),
         Text(
-          'Using my expertise as a Full Stack Engineer, I craft beautiful and functional web and mobile applications with great focus on performance, simplicity, and good coding practices. I am passionate about building software that solves real-world problems and makes life easier for people.',
+          'Using my expertise as a Full Mobile Engineer, I craft beautiful and functional mobile applications for iOS, Android, and cross-platform with Flutter, with great focus on performance, simplicity, and good coding practices. I am passionate about building software that solves real-world problems and makes life easier for people.',
           style: AppThemes.firaCodeStyle(
             fontSize: 16,
             fontWeight: FontWeight.normal,

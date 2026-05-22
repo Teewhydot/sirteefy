@@ -116,7 +116,7 @@ class HeaderBanner extends ConsumerWidget {
                         } else if (state is CurrentProjectError) {
                           return IntrinsicWidth(
                             child: ScrollingText(
-                              project: "a full stack mobile app",
+                              project: "a mobile app",
                               style: AppThemes.firaCodeStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -151,7 +151,7 @@ class HeaderBanner extends ConsumerWidget {
                       children: [
                     textSpanText("Abubakar Issa is a ", ref),
                     TextSpan(
-                      text: "Full Stack Mobile Engineer ",
+                      text: "Full Mobile Engineer ",
                       style: AppThemes.firaCodeStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -170,7 +170,7 @@ class HeaderBanner extends ConsumerWidget {
                   ])),
               verticalSpace(20),
               Text(
-                'Using his expertise with Flutter and Golang, He crafts beautiful and functional web and mobile applications with a touch of elegance and simplicity. He is passionate about building software that solves real-world problems and makes life easier for people.',
+                'Using his expertise in iOS, Android, and Flutter, he crafts beautiful and functional mobile applications with a touch of elegance and simplicity. He is passionate about building software that solves real-world problems and makes life easier for people.',
                 style: AppThemes.firaCodeStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.normal,

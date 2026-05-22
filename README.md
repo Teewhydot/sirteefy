@@ -1,16 +1,45 @@
-# sirteefy
+# Sirteefy Portfolio
 
-A new Flutter project.
+A Flutter-based portfolio website showcasing the work of Abubakar Issa, a Full Mobile Engineer specializing in iOS, Android, and Flutter development.
+
+## About
+
+This portfolio highlights mobile engineering expertise across native iOS, native Android, and cross-platform Flutter development. The site features projects, skills, and professional experience in mobile application development.
+
+## Tech Stack
+
+- **Flutter** - Cross-platform mobile framework
+- **Firebase** - Backend services and hosting
+- **Responsive Design** - Optimized for all screen sizes
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
+- Flutter SDK (latest stable version)
+- Dart SDK
+- Firebase CLI (for deployment)
 
-A few resources to get you started if this is your first Flutter project:
+### Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
+3. Run the app:
+   ```bash
+   flutter run -d chrome
+   ```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Deployment
+
+This portfolio is deployed using Firebase Hosting. To deploy:
+
+```bash
+flutter build web
+firebase deploy
+```
+
+## Contact
+
+For mobile engineering opportunities or collaborations, feel free to reach out through the contact section on the portfolio.
